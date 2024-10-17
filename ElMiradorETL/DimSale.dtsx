@@ -11,8 +11,8 @@
   DTS:LocaleID="17418"
   DTS:ObjectName="DimSale"
   DTS:PackageType="5"
-  DTS:VersionBuild="13"
-  DTS:VersionGUID="{6E640028-A1C3-4376-91DE-84C825471815}">
+  DTS:VersionBuild="14"
+  DTS:VersionGUID="{0B110C7E-60F0-4804-BF2F-C621C221E281}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:ConnectionManagers>
@@ -37,7 +37,7 @@
           <DTS:Password
             DTS:Name="pwd"
             Sensitive="1"
-            Encrypted="1">AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAASQhfRqDEDkOYTZFasgjSZgAAAAAIAAAARABUAFMAAAAQZgAAAAEAACAAAABMT8jNkefAY9SxkfAlwecFW9JTr6oqcORmosEPuzEucwAAAAAOgAAAAAIAACAAAACYEiU+SnTgtph/pTsEg8mPGwUc9xgAZ/9DSaapXCWpmSAAAACNF1o0wuiUxkSPVT+PO9vTbkFtMEfYpXbiQL//buuRJEAAAAD0Ly33puPvBn7SKOyOfclgRsT5odButplOVLFhnb6eccdp4iBUBWSY6+oTJxGsSmyQyILFI1Zh7iLsCzqPF7rW</DTS:Password>
+            Encrypted="1">AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAASQhfRqDEDkOYTZFasgjSZgAAAAAIAAAARABUAFMAAAAQZgAAAAEAACAAAAB08bgOQ1QafmvnKsTLGJ8AEZc2YpKMwEq+5TbN8ec5jAAAAAAOgAAAAAIAACAAAACMQul1letaCu2o9/b1WmGvRBzaIbSqZLJfZkw3dbSyFyAAAABd6bUnexCYNJCfiF8IKvMgzsHvltBjfV0jBUhXg4uZXkAAAAAHmpqKiy4lXFPwRVRKiAZObbeKURIQDazKu/sTgDrPUQJxG/kccIsFhsDiwbMRVlmbZM6JiGeyWn7bV/jdV9mF</DTS:Password>
         </DTS:ConnectionManager>
       </DTS:ObjectData>
     </DTS:ConnectionManager>
@@ -483,7 +483,7 @@ from pos_order</property>
     design-time-name="Package\Data Flow Task">
     <LayoutInfo>
       <GraphLayout
-        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
         <NodeLayout
           Size="174,42"
           Id="Package\Data Flow Task\Tabla pos_order pg"
@@ -511,14 +511,16 @@ from pos_order</property>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <EdgeLabelCollection />
+            <mssgm:EdgeLabel
+              BoundingBox="-16.11447265625,30.35107421875,32.2289453125,9.7978515625"
+              RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
       </GraphLayout>
     </LayoutInfo>
   </TaskHost>
   <PipelineComponentMetadata
-    design-time-name="Package\Data Flow Task\Tabla pos_order pg">
+    design-time-name="Package\Data Flow Task\Tabla DimSale">
     <Properties>
       <Property>
         <Name>DataSourceViewID</Name>
@@ -526,7 +528,7 @@ from pos_order</property>
     </Properties>
   </PipelineComponentMetadata>
   <PipelineComponentMetadata
-    design-time-name="Package\Data Flow Task\Tabla DimSale">
+    design-time-name="Package\Data Flow Task\Tabla pos_order pg">
     <Properties>
       <Property>
         <Name>DataSourceViewID</Name>
