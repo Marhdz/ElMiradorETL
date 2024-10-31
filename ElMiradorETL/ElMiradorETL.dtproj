@@ -26,13 +26,14 @@
           <SSIS:Property SSIS:Name="CreatorComputerName">LAPTOP-3560</SSIS:Property>
           <SSIS:Property SSIS:Name="Description">
           </SSIS:Property>
-          <SSIS:Property SSIS:Name="PasswordVerifier" SSIS:Sensitive="1">AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAASQhfRqDEDkOYTZFasgjSZgAAAAACAAAAAAAQZgAAAAEAACAAAAB2vv8laZ1yerDxdTCD4BlkG3NXl8t6WujkuJXRti7fggAAAAAOgAAAAAIAACAAAACk9e4TRN40JsCQuonGaxv5FRzxzqlXGkyN4MCk3MkgOpAAAAAo5Ofnhi2G3Uweninkp/TBUu9fNVusSdrlpXKSReH/+uTHsvahAnECWBb0jZq9aG4ZDs0nhgv8iYhRhmrjlmhHIWoIzur5cXT6FaMVvOiNZ3IFNYRltG8Xi4ZPqe+WjOe7gOGum7lBamF73Be6xqKvYyCBcTz2ytATP2j62x9MDNBj3xGTehi4FroQ8qYmnDpAAAAAAe9qGmmdQeCnFdYu9bl4zrlXp01Jwg3omKofyroLRPKWoLS5Tf5nO/mZ+sO8pc3YMVOrvDhdBEzM5uA3iSoHsQ==</SSIS:Property>
+          <SSIS:Property SSIS:Name="PasswordVerifier" SSIS:Sensitive="1">AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAASQhfRqDEDkOYTZFasgjSZgAAAAACAAAAAAAQZgAAAAEAACAAAACWLN9IVpla8GCF6QcBONRFWwRsWY+WOw0Snq1E2UaPewAAAAAOgAAAAAIAACAAAABcxsSqimtMTMXhzN7+fSAd1LsTfJYXIgBPnkW55/EiV5AAAADN03tPVMYjO6w0zxoIh1dt/H54pG2PtejXL5xS++Ya7rKhRXUchHBj6x2ZjdgTptDkD4HmRBEKJjLUUg8ccW4i3/gxH4k7l9M0oDK2arRo03hEIvvkfJ1MxMYbVoLVJuIPqagSqhBVe17+z3S5LOuaFEyMckfwhMQWRhthzckjUmWvstWWyZEjW7KIdFJoEFlAAAAAKQZb0f7XENQwmjtv4eyZ3LZyiWPdcpD11On5/Xau90sKOymRQeZ+pt/AM3bc/luzkWHVcq9O10DiFWDWlBqrVg==</SSIS:Property>
           <SSIS:Property SSIS:Name="FormatVersion">1</SSIS:Property>
         </SSIS:Properties>
         <SSIS:Packages>
           <SSIS:Package SSIS:Name="DimSale.dtsx" SSIS:EntryPoint="1" />
           <SSIS:Package SSIS:Name="DimProduct.dtsx" SSIS:EntryPoint="1" />
-          <SSIS:Package SSIS:Name="DimCoupon.dtsx" SSIS:EntryPoint="1" />
+          <SSIS:Package SSIS:Name="DimProgram.dtsx" SSIS:EntryPoint="1" />
+          <SSIS:Package SSIS:Name="FactSaleDetail.dtsx" SSIS:EntryPoint="1" />
         </SSIS:Packages>
         <SSIS:ConnectionManagers />
         <SSIS:DeploymentInfo>
@@ -44,10 +45,10 @@
                 <SSIS:Property SSIS:Name="Name">DimSale</SSIS:Property>
                 <SSIS:Property SSIS:Name="VersionMajor">1</SSIS:Property>
                 <SSIS:Property SSIS:Name="VersionMinor">0</SSIS:Property>
-                <SSIS:Property SSIS:Name="VersionBuild">13</SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionBuild">18</SSIS:Property>
                 <SSIS:Property SSIS:Name="VersionComments">
                 </SSIS:Property>
-                <SSIS:Property SSIS:Name="VersionGUID">{6E640028-A1C3-4376-91DE-84C825471815}</SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionGUID">{D4C32396-2254-4236-A40F-2D37C23C28DA}</SSIS:Property>
                 <SSIS:Property SSIS:Name="PackageFormatVersion">8</SSIS:Property>
                 <SSIS:Property SSIS:Name="Description">
                 </SSIS:Property>
@@ -172,7 +173,7 @@
                     <SSIS:Property SSIS:Name="DataType">18</SSIS:Property>
                   </SSIS:Properties>
                 </SSIS:Parameter>
-                <SSIS:Parameter SSIS:Name="CM.localhost.postgres.openpg1.ConnectByProxy">
+                <SSIS:Parameter SSIS:Name="CM.PostgreSQL35W.openpgadmin.ConnectByProxy">
                   <SSIS:Properties>
                     <SSIS:Property SSIS:Name="ID">
                     </SSIS:Property>
@@ -187,7 +188,7 @@
                     <SSIS:Property SSIS:Name="DataType">3</SSIS:Property>
                   </SSIS:Properties>
                 </SSIS:Parameter>
-                <SSIS:Parameter SSIS:Name="CM.localhost.postgres.openpg1.ConnectionString">
+                <SSIS:Parameter SSIS:Name="CM.PostgreSQL35W.openpgadmin.ConnectionString">
                   <SSIS:Properties>
                     <SSIS:Property SSIS:Name="ID">
                     </SSIS:Property>
@@ -198,11 +199,11 @@
                     <SSIS:Property SSIS:Name="IncludeInDebugDump">0</SSIS:Property>
                     <SSIS:Property SSIS:Name="Required">0</SSIS:Property>
                     <SSIS:Property SSIS:Name="Sensitive">0</SSIS:Property>
-                    <SSIS:Property SSIS:Name="Value">server=localhost;uid=openpgadmin;Driver={PostgreSQL ODBC Driver(ANSI)};database=FarmaciaElMiradorDB;port=5432;sslmode=disable;readonly=0;protocol=7.4;fakeoidindex=0;showoidcolumn=0;rowversioning=0;showsystemtables=1;fetch=100;unknownsizes=0;maxvarcharsize=255;maxlongvarcharsize=8190;debug=0;commlog=0;usedeclarefetch=0;textaslongvarchar=1;unknownsaslongvarchar=0;boolsaschar=1;parse=0;lfconversion=1;updatablecursors=1;trueisminus1=0;bi=0;byteaaslongvarbinary=1;useserversideprepare=1;lowercaseidentifier=0;d6=-101;optionalerrors=0;fetchrefcursors=0;xaopt=1;</SSIS:Property>
+                    <SSIS:Property SSIS:Name="Value">server=localhost;uid=openpgadmin;Dsn=PostgreSQL35W;database=CopiaFarmacia;port=5432;sslmode=disable;readonly=0;protocol=7.4;fakeoidindex=0;showoidcolumn=0;rowversioning=0;showsystemtables=0;fetch=100;unknownsizes=0;maxvarcharsize=255;maxlongvarcharsize=8190;debug=0;commlog=0;usedeclarefetch=0;textaslongvarchar=1;unknownsaslongvarchar=0;boolsaschar=1;parse=0;lfconversion=1;updatablecursors=1;trueisminus1=0;bi=0;byteaaslongvarbinary=1;useserversideprepare=1;lowercaseidentifier=0;d6=-101;optionalerrors=0;fetchrefcursors=0;xaopt=1;</SSIS:Property>
                     <SSIS:Property SSIS:Name="DataType">18</SSIS:Property>
                   </SSIS:Properties>
                 </SSIS:Parameter>
-                <SSIS:Parameter SSIS:Name="CM.localhost.postgres.openpg1.ConnectUsingManagedIdentity">
+                <SSIS:Parameter SSIS:Name="CM.PostgreSQL35W.openpgadmin.ConnectUsingManagedIdentity">
                   <SSIS:Properties>
                     <SSIS:Property SSIS:Name="ID">
                     </SSIS:Property>
@@ -217,7 +218,7 @@
                     <SSIS:Property SSIS:Name="DataType">3</SSIS:Property>
                   </SSIS:Properties>
                 </SSIS:Parameter>
-                <SSIS:Parameter SSIS:Name="CM.localhost.postgres.openpg1.InitialCatalog">
+                <SSIS:Parameter SSIS:Name="CM.PostgreSQL35W.openpgadmin.InitialCatalog">
                   <SSIS:Properties>
                     <SSIS:Property SSIS:Name="ID">
                     </SSIS:Property>
@@ -231,7 +232,7 @@
                     <SSIS:Property SSIS:Name="DataType">18</SSIS:Property>
                   </SSIS:Properties>
                 </SSIS:Parameter>
-                <SSIS:Parameter SSIS:Name="CM.localhost.postgres.openpg1.Password">
+                <SSIS:Parameter SSIS:Name="CM.PostgreSQL35W.openpgadmin.Password">
                   <SSIS:Properties>
                     <SSIS:Property SSIS:Name="ID">
                     </SSIS:Property>
@@ -245,7 +246,7 @@
                     <SSIS:Property SSIS:Name="DataType">18</SSIS:Property>
                   </SSIS:Properties>
                 </SSIS:Parameter>
-                <SSIS:Parameter SSIS:Name="CM.localhost.postgres.openpg1.RetainSameConnection">
+                <SSIS:Parameter SSIS:Name="CM.PostgreSQL35W.openpgadmin.RetainSameConnection">
                   <SSIS:Properties>
                     <SSIS:Property SSIS:Name="ID">
                     </SSIS:Property>
@@ -260,7 +261,7 @@
                     <SSIS:Property SSIS:Name="DataType">3</SSIS:Property>
                   </SSIS:Properties>
                 </SSIS:Parameter>
-                <SSIS:Parameter SSIS:Name="CM.localhost.postgres.openpg1.ServerName">
+                <SSIS:Parameter SSIS:Name="CM.PostgreSQL35W.openpgadmin.ServerName">
                   <SSIS:Properties>
                     <SSIS:Property SSIS:Name="ID">
                     </SSIS:Property>
@@ -275,7 +276,7 @@
                     <SSIS:Property SSIS:Name="DataType">18</SSIS:Property>
                   </SSIS:Properties>
                 </SSIS:Parameter>
-                <SSIS:Parameter SSIS:Name="CM.localhost.postgres.openpg1.UserName">
+                <SSIS:Parameter SSIS:Name="CM.PostgreSQL35W.openpgadmin.UserName">
                   <SSIS:Properties>
                     <SSIS:Property SSIS:Name="ID">
                     </SSIS:Property>
@@ -298,10 +299,10 @@
                 <SSIS:Property SSIS:Name="Name">Package1</SSIS:Property>
                 <SSIS:Property SSIS:Name="VersionMajor">1</SSIS:Property>
                 <SSIS:Property SSIS:Name="VersionMinor">0</SSIS:Property>
-                <SSIS:Property SSIS:Name="VersionBuild">12</SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionBuild">31</SSIS:Property>
                 <SSIS:Property SSIS:Name="VersionComments">
                 </SSIS:Property>
-                <SSIS:Property SSIS:Name="VersionGUID">{6FD4A1DB-FBEB-435A-8897-0F8AC1673C05}</SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionGUID">{5838BD4B-1D9C-4D21-A6E7-7950B2E887CF}</SSIS:Property>
                 <SSIS:Property SSIS:Name="PackageFormatVersion">8</SSIS:Property>
                 <SSIS:Property SSIS:Name="Description">
                 </SSIS:Property>
@@ -426,7 +427,7 @@
                     <SSIS:Property SSIS:Name="DataType">18</SSIS:Property>
                   </SSIS:Properties>
                 </SSIS:Parameter>
-                <SSIS:Parameter SSIS:Name="CM.localhost.FarmaciaElMiradorDB.openpgadmin2.ConnectByProxy">
+                <SSIS:Parameter SSIS:Name="CM.PostgreSQL35W.openpgadmin.ConnectByProxy">
                   <SSIS:Properties>
                     <SSIS:Property SSIS:Name="ID">
                     </SSIS:Property>
@@ -441,7 +442,7 @@
                     <SSIS:Property SSIS:Name="DataType">3</SSIS:Property>
                   </SSIS:Properties>
                 </SSIS:Parameter>
-                <SSIS:Parameter SSIS:Name="CM.localhost.FarmaciaElMiradorDB.openpgadmin2.ConnectionString">
+                <SSIS:Parameter SSIS:Name="CM.PostgreSQL35W.openpgadmin.ConnectionString">
                   <SSIS:Properties>
                     <SSIS:Property SSIS:Name="ID">
                     </SSIS:Property>
@@ -452,11 +453,11 @@
                     <SSIS:Property SSIS:Name="IncludeInDebugDump">0</SSIS:Property>
                     <SSIS:Property SSIS:Name="Required">0</SSIS:Property>
                     <SSIS:Property SSIS:Name="Sensitive">0</SSIS:Property>
-                    <SSIS:Property SSIS:Name="Value">server=localhost;uid=openpgadmin;Driver={PostgreSQL Unicode};database=FarmaciaElMiradorDB;port=5432;sslmode=disable;readonly=0;protocol=7.4;fakeoidindex=0;showoidcolumn=1;rowversioning=0;showsystemtables=0;fetch=100;unknownsizes=0;maxvarcharsize=255;maxlongvarcharsize=8190;debug=0;commlog=0;usedeclarefetch=0;textaslongvarchar=1;unknownsaslongvarchar=0;boolsaschar=1;parse=0;lfconversion=1;updatablecursors=1;trueisminus1=0;bi=0;byteaaslongvarbinary=1;useserversideprepare=1;lowercaseidentifier=0;d6=-101;optionalerrors=0;fetchrefcursors=0;xaopt=1;</SSIS:Property>
+                    <SSIS:Property SSIS:Name="Value">server=localhost;uid=openpgadmin;Dsn=PostgreSQL35W;database=CopiaFarmacia;port=5432;sslmode=disable;readonly=0;protocol=7.4;fakeoidindex=0;showoidcolumn=0;rowversioning=0;showsystemtables=0;fetch=100;unknownsizes=0;maxvarcharsize=255;maxlongvarcharsize=8190;debug=0;commlog=0;usedeclarefetch=0;textaslongvarchar=1;unknownsaslongvarchar=0;boolsaschar=1;parse=0;lfconversion=1;updatablecursors=1;trueisminus1=0;bi=0;byteaaslongvarbinary=1;useserversideprepare=1;lowercaseidentifier=0;d6=-101;optionalerrors=0;fetchrefcursors=0;xaopt=1;</SSIS:Property>
                     <SSIS:Property SSIS:Name="DataType">18</SSIS:Property>
                   </SSIS:Properties>
                 </SSIS:Parameter>
-                <SSIS:Parameter SSIS:Name="CM.localhost.FarmaciaElMiradorDB.openpgadmin2.ConnectUsingManagedIdentity">
+                <SSIS:Parameter SSIS:Name="CM.PostgreSQL35W.openpgadmin.ConnectUsingManagedIdentity">
                   <SSIS:Properties>
                     <SSIS:Property SSIS:Name="ID">
                     </SSIS:Property>
@@ -471,7 +472,7 @@
                     <SSIS:Property SSIS:Name="DataType">3</SSIS:Property>
                   </SSIS:Properties>
                 </SSIS:Parameter>
-                <SSIS:Parameter SSIS:Name="CM.localhost.FarmaciaElMiradorDB.openpgadmin2.InitialCatalog">
+                <SSIS:Parameter SSIS:Name="CM.PostgreSQL35W.openpgadmin.InitialCatalog">
                   <SSIS:Properties>
                     <SSIS:Property SSIS:Name="ID">
                     </SSIS:Property>
@@ -485,7 +486,7 @@
                     <SSIS:Property SSIS:Name="DataType">18</SSIS:Property>
                   </SSIS:Properties>
                 </SSIS:Parameter>
-                <SSIS:Parameter SSIS:Name="CM.localhost.FarmaciaElMiradorDB.openpgadmin2.Password">
+                <SSIS:Parameter SSIS:Name="CM.PostgreSQL35W.openpgadmin.Password">
                   <SSIS:Properties>
                     <SSIS:Property SSIS:Name="ID">
                     </SSIS:Property>
@@ -499,7 +500,7 @@
                     <SSIS:Property SSIS:Name="DataType">18</SSIS:Property>
                   </SSIS:Properties>
                 </SSIS:Parameter>
-                <SSIS:Parameter SSIS:Name="CM.localhost.FarmaciaElMiradorDB.openpgadmin2.RetainSameConnection">
+                <SSIS:Parameter SSIS:Name="CM.PostgreSQL35W.openpgadmin.RetainSameConnection">
                   <SSIS:Properties>
                     <SSIS:Property SSIS:Name="ID">
                     </SSIS:Property>
@@ -514,7 +515,7 @@
                     <SSIS:Property SSIS:Name="DataType">3</SSIS:Property>
                   </SSIS:Properties>
                 </SSIS:Parameter>
-                <SSIS:Parameter SSIS:Name="CM.localhost.FarmaciaElMiradorDB.openpgadmin2.ServerName">
+                <SSIS:Parameter SSIS:Name="CM.PostgreSQL35W.openpgadmin.ServerName">
                   <SSIS:Properties>
                     <SSIS:Property SSIS:Name="ID">
                     </SSIS:Property>
@@ -529,7 +530,7 @@
                     <SSIS:Property SSIS:Name="DataType">18</SSIS:Property>
                   </SSIS:Properties>
                 </SSIS:Parameter>
-                <SSIS:Parameter SSIS:Name="CM.localhost.FarmaciaElMiradorDB.openpgadmin2.UserName">
+                <SSIS:Parameter SSIS:Name="CM.PostgreSQL35W.openpgadmin.UserName">
                   <SSIS:Properties>
                     <SSIS:Property SSIS:Name="ID">
                     </SSIS:Property>
@@ -546,16 +547,16 @@
                 </SSIS:Parameter>
               </SSIS:Parameters>
             </SSIS:PackageMetaData>
-            <SSIS:PackageMetaData SSIS:Name="DimCoupon.dtsx">
+            <SSIS:PackageMetaData SSIS:Name="DimProgram.dtsx">
               <SSIS:Properties>
-                <SSIS:Property SSIS:Name="ID">{F0AF8C13-9B3C-4B80-ADAF-0F897DE0A1CD}</SSIS:Property>
-                <SSIS:Property SSIS:Name="Name">DimCoupon</SSIS:Property>
+                <SSIS:Property SSIS:Name="ID">{88AF53DC-D0DA-4CA3-ADDA-DE21EFD91CD0}</SSIS:Property>
+                <SSIS:Property SSIS:Name="Name">DimProgram</SSIS:Property>
                 <SSIS:Property SSIS:Name="VersionMajor">1</SSIS:Property>
                 <SSIS:Property SSIS:Name="VersionMinor">0</SSIS:Property>
-                <SSIS:Property SSIS:Name="VersionBuild">6</SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionBuild">9</SSIS:Property>
                 <SSIS:Property SSIS:Name="VersionComments">
                 </SSIS:Property>
-                <SSIS:Property SSIS:Name="VersionGUID">{6A0215D5-13A9-4653-AE49-14AD3150C195}</SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionGUID">{EC3F0985-04C3-447B-95AE-C9B445E3E287}</SSIS:Property>
                 <SSIS:Property SSIS:Name="PackageFormatVersion">8</SSIS:Property>
                 <SSIS:Property SSIS:Name="Description">
                 </SSIS:Property>
@@ -680,7 +681,7 @@
                     <SSIS:Property SSIS:Name="DataType">18</SSIS:Property>
                   </SSIS:Properties>
                 </SSIS:Parameter>
-                <SSIS:Parameter SSIS:Name="CM.localhost.FarmaciaElMiradorDB.openpgadmin2.ConnectByProxy">
+                <SSIS:Parameter SSIS:Name="CM.PostgreSQL35W.openpgadmin.ConnectByProxy">
                   <SSIS:Properties>
                     <SSIS:Property SSIS:Name="ID">
                     </SSIS:Property>
@@ -695,7 +696,7 @@
                     <SSIS:Property SSIS:Name="DataType">3</SSIS:Property>
                   </SSIS:Properties>
                 </SSIS:Parameter>
-                <SSIS:Parameter SSIS:Name="CM.localhost.FarmaciaElMiradorDB.openpgadmin2.ConnectionString">
+                <SSIS:Parameter SSIS:Name="CM.PostgreSQL35W.openpgadmin.ConnectionString">
                   <SSIS:Properties>
                     <SSIS:Property SSIS:Name="ID">
                     </SSIS:Property>
@@ -706,11 +707,11 @@
                     <SSIS:Property SSIS:Name="IncludeInDebugDump">0</SSIS:Property>
                     <SSIS:Property SSIS:Name="Required">0</SSIS:Property>
                     <SSIS:Property SSIS:Name="Sensitive">0</SSIS:Property>
-                    <SSIS:Property SSIS:Name="Value">server=localhost;uid=openpgadmin;Driver={PostgreSQL Unicode};database=FarmaciaElMiradorDB;port=5432;sslmode=disable;readonly=0;protocol=7.4;fakeoidindex=0;showoidcolumn=1;rowversioning=0;showsystemtables=0;fetch=100;unknownsizes=0;maxvarcharsize=255;maxlongvarcharsize=8190;debug=0;commlog=0;usedeclarefetch=0;textaslongvarchar=1;unknownsaslongvarchar=0;boolsaschar=1;parse=0;lfconversion=1;updatablecursors=1;trueisminus1=0;bi=0;byteaaslongvarbinary=1;useserversideprepare=1;lowercaseidentifier=0;d6=-101;optionalerrors=0;fetchrefcursors=0;xaopt=1;</SSIS:Property>
+                    <SSIS:Property SSIS:Name="Value">server=localhost;uid=openpgadmin;Dsn=PostgreSQL35W;database=CopiaFarmacia;port=5432;sslmode=disable;readonly=0;protocol=7.4;fakeoidindex=0;showoidcolumn=0;rowversioning=0;showsystemtables=0;fetch=100;unknownsizes=0;maxvarcharsize=255;maxlongvarcharsize=8190;debug=0;commlog=0;usedeclarefetch=0;textaslongvarchar=1;unknownsaslongvarchar=0;boolsaschar=1;parse=0;lfconversion=1;updatablecursors=1;trueisminus1=0;bi=0;byteaaslongvarbinary=1;useserversideprepare=1;lowercaseidentifier=0;d6=-101;optionalerrors=0;fetchrefcursors=0;xaopt=1;</SSIS:Property>
                     <SSIS:Property SSIS:Name="DataType">18</SSIS:Property>
                   </SSIS:Properties>
                 </SSIS:Parameter>
-                <SSIS:Parameter SSIS:Name="CM.localhost.FarmaciaElMiradorDB.openpgadmin2.ConnectUsingManagedIdentity">
+                <SSIS:Parameter SSIS:Name="CM.PostgreSQL35W.openpgadmin.ConnectUsingManagedIdentity">
                   <SSIS:Properties>
                     <SSIS:Property SSIS:Name="ID">
                     </SSIS:Property>
@@ -725,7 +726,7 @@
                     <SSIS:Property SSIS:Name="DataType">3</SSIS:Property>
                   </SSIS:Properties>
                 </SSIS:Parameter>
-                <SSIS:Parameter SSIS:Name="CM.localhost.FarmaciaElMiradorDB.openpgadmin2.InitialCatalog">
+                <SSIS:Parameter SSIS:Name="CM.PostgreSQL35W.openpgadmin.InitialCatalog">
                   <SSIS:Properties>
                     <SSIS:Property SSIS:Name="ID">
                     </SSIS:Property>
@@ -739,7 +740,7 @@
                     <SSIS:Property SSIS:Name="DataType">18</SSIS:Property>
                   </SSIS:Properties>
                 </SSIS:Parameter>
-                <SSIS:Parameter SSIS:Name="CM.localhost.FarmaciaElMiradorDB.openpgadmin2.Password">
+                <SSIS:Parameter SSIS:Name="CM.PostgreSQL35W.openpgadmin.Password">
                   <SSIS:Properties>
                     <SSIS:Property SSIS:Name="ID">
                     </SSIS:Property>
@@ -753,7 +754,7 @@
                     <SSIS:Property SSIS:Name="DataType">18</SSIS:Property>
                   </SSIS:Properties>
                 </SSIS:Parameter>
-                <SSIS:Parameter SSIS:Name="CM.localhost.FarmaciaElMiradorDB.openpgadmin2.RetainSameConnection">
+                <SSIS:Parameter SSIS:Name="CM.PostgreSQL35W.openpgadmin.RetainSameConnection">
                   <SSIS:Properties>
                     <SSIS:Property SSIS:Name="ID">
                     </SSIS:Property>
@@ -768,7 +769,7 @@
                     <SSIS:Property SSIS:Name="DataType">3</SSIS:Property>
                   </SSIS:Properties>
                 </SSIS:Parameter>
-                <SSIS:Parameter SSIS:Name="CM.localhost.FarmaciaElMiradorDB.openpgadmin2.ServerName">
+                <SSIS:Parameter SSIS:Name="CM.PostgreSQL35W.openpgadmin.ServerName">
                   <SSIS:Properties>
                     <SSIS:Property SSIS:Name="ID">
                     </SSIS:Property>
@@ -783,7 +784,7 @@
                     <SSIS:Property SSIS:Name="DataType">18</SSIS:Property>
                   </SSIS:Properties>
                 </SSIS:Parameter>
-                <SSIS:Parameter SSIS:Name="CM.localhost.FarmaciaElMiradorDB.openpgadmin2.UserName">
+                <SSIS:Parameter SSIS:Name="CM.PostgreSQL35W.openpgadmin.UserName">
                   <SSIS:Properties>
                     <SSIS:Property SSIS:Name="ID">
                     </SSIS:Property>
@@ -799,6 +800,23 @@
                   </SSIS:Properties>
                 </SSIS:Parameter>
               </SSIS:Parameters>
+            </SSIS:PackageMetaData>
+            <SSIS:PackageMetaData SSIS:Name="FactSaleDetail.dtsx">
+              <SSIS:Properties>
+                <SSIS:Property SSIS:Name="ID">{E35751DC-AEF6-4147-9B0A-5A911029FA40}</SSIS:Property>
+                <SSIS:Property SSIS:Name="Name">FactSaleDetail</SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionMajor">1</SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionMinor">0</SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionBuild">1</SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionComments">
+                </SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionGUID">{6AFCFFAE-A0E4-40D8-86A6-1AB0BD39AD59}</SSIS:Property>
+                <SSIS:Property SSIS:Name="PackageFormatVersion">8</SSIS:Property>
+                <SSIS:Property SSIS:Name="Description">
+                </SSIS:Property>
+                <SSIS:Property SSIS:Name="ProtectionLevel">1</SSIS:Property>
+              </SSIS:Properties>
+              <SSIS:Parameters />
             </SSIS:PackageMetaData>
           </SSIS:PackageInfo>
         </SSIS:DeploymentInfo>

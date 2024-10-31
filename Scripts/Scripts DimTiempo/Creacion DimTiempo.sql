@@ -1,5 +1,5 @@
 
-create table DimTiempo (
+create table DimDate (
 dateKey int not null,
 date smalldatetime,
 dayOfWeek tinyint,

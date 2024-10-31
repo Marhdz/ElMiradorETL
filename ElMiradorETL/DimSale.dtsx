@@ -11,8 +11,8 @@
   DTS:LocaleID="17418"
   DTS:ObjectName="DimSale"
   DTS:PackageType="5"
-  DTS:VersionBuild="14"
-  DTS:VersionGUID="{0B110C7E-60F0-4804-BF2F-C621C221E281}">
+  DTS:VersionBuild="19"
+  DTS:VersionGUID="{55E832F2-CDF2-4742-9EA0-CF6642EC7B73}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:ConnectionManagers>
@@ -27,17 +27,17 @@
       </DTS:ObjectData>
     </DTS:ConnectionManager>
     <DTS:ConnectionManager
-      DTS:refId="Package.ConnectionManagers[localhost.postgres.openpg1]"
+      DTS:refId="Package.ConnectionManagers[PostgreSQL35W.openpgadmin]"
       DTS:CreationName="ADO.NET:System.Data.Odbc.OdbcConnection, System.Data, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089"
-      DTS:DTSID="{28A5887F-6E78-4EFF-9CB1-11F735330FFC}"
-      DTS:ObjectName="localhost.postgres.openpg1">
+      DTS:DTSID="{02C63D52-FE24-4D42-9BBC-06D88ACBA6C7}"
+      DTS:ObjectName="PostgreSQL35W.openpgadmin">
       <DTS:ObjectData>
         <DTS:ConnectionManager
-          DTS:ConnectionString="server=localhost;uid=openpgadmin;Driver={PostgreSQL ODBC Driver(ANSI)};database=FarmaciaElMiradorDB;port=5432;sslmode=disable;readonly=0;protocol=7.4;fakeoidindex=0;showoidcolumn=0;rowversioning=0;showsystemtables=1;fetch=100;unknownsizes=0;maxvarcharsize=255;maxlongvarcharsize=8190;debug=0;commlog=0;usedeclarefetch=0;textaslongvarchar=1;unknownsaslongvarchar=0;boolsaschar=1;parse=0;lfconversion=1;updatablecursors=1;trueisminus1=0;bi=0;byteaaslongvarbinary=1;useserversideprepare=1;lowercaseidentifier=0;d6=-101;optionalerrors=0;fetchrefcursors=0;xaopt=1;">
+          DTS:ConnectionString="server=localhost;uid=openpgadmin;Dsn=PostgreSQL35W;database=CopiaFarmacia;port=5432;sslmode=disable;readonly=0;protocol=7.4;fakeoidindex=0;showoidcolumn=0;rowversioning=0;showsystemtables=0;fetch=100;unknownsizes=0;maxvarcharsize=255;maxlongvarcharsize=8190;debug=0;commlog=0;usedeclarefetch=0;textaslongvarchar=1;unknownsaslongvarchar=0;boolsaschar=1;parse=0;lfconversion=1;updatablecursors=1;trueisminus1=0;bi=0;byteaaslongvarbinary=1;useserversideprepare=1;lowercaseidentifier=0;d6=-101;optionalerrors=0;fetchrefcursors=0;xaopt=1;">
           <DTS:Password
             DTS:Name="pwd"
             Sensitive="1"
-            Encrypted="1">AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAASQhfRqDEDkOYTZFasgjSZgAAAAAIAAAARABUAFMAAAAQZgAAAAEAACAAAAB08bgOQ1QafmvnKsTLGJ8AEZc2YpKMwEq+5TbN8ec5jAAAAAAOgAAAAAIAACAAAACMQul1letaCu2o9/b1WmGvRBzaIbSqZLJfZkw3dbSyFyAAAABd6bUnexCYNJCfiF8IKvMgzsHvltBjfV0jBUhXg4uZXkAAAAAHmpqKiy4lXFPwRVRKiAZObbeKURIQDazKu/sTgDrPUQJxG/kccIsFhsDiwbMRVlmbZM6JiGeyWn7bV/jdV9mF</DTS:Password>
+            Encrypted="1">AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAASQhfRqDEDkOYTZFasgjSZgAAAAAIAAAARABUAFMAAAAQZgAAAAEAACAAAAB0jklTuI/GhBl5r+BFED2vUDrOElEJ2P08U1AomCqOPQAAAAAOgAAAAAIAACAAAABs1a0iXcb/Zvk9VVhOfzw7ezY7hS9mZX8rYQPxaSdVmCAAAAD/HZ4QKmNjC1kEvzk7+1VhQByTKYfXnv9Og9c9qsorykAAAAAXJVGoJRvOeh/0wUTAA5WFBHix+DYTF2sotrnxcWXU9YXFL3WDWiSqKJZJHsoebpeLHdBm7urV+/sco8T5opce</DTS:Password>
         </DTS:ConnectionManager>
       </DTS:ObjectData>
     </DTS:ConnectionManager>
@@ -107,42 +107,61 @@
                   name="Entrada de destino de ADO NET">
                   <inputColumns>
                     <inputColumn
-                      refId="Package\Data Flow Task\Tabla DimSale.Inputs[Entrada de destino de ADO NET].Columns[date_order]"
-                      cachedDataType="dbTimeStamp"
-                      cachedName="date_order"
-                      externalMetadataColumnId="Package\Data Flow Task\Tabla DimSale.Inputs[Entrada de destino de ADO NET].ExternalColumns[date_order]"
-                      lineageId="Package\Data Flow Task\Tabla pos_order pg.Outputs[Salida de origen de ADO NET].Columns[date_order]" />
+                      refId="Package\Data Flow Task\Tabla DimSale.Inputs[Entrada de destino de ADO NET].Columns[ticketCode]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="ticketCode"
+                      externalMetadataColumnId="Package\Data Flow Task\Tabla DimSale.Inputs[Entrada de destino de ADO NET].ExternalColumns[ticketCode]"
+                      lineageId="Package\Data Flow Task\Tabla pos_order pg.Outputs[Salida de origen de ADO NET].Columns[ticketCode]" />
                     <inputColumn
-                      refId="Package\Data Flow Task\Tabla DimSale.Inputs[Entrada de destino de ADO NET].Columns[create_date]"
-                      cachedDataType="dbTimeStamp"
-                      cachedName="create_date"
-                      externalMetadataColumnId="Package\Data Flow Task\Tabla DimSale.Inputs[Entrada de destino de ADO NET].ExternalColumns[create_date]"
-                      lineageId="Package\Data Flow Task\Tabla pos_order pg.Outputs[Salida de origen de ADO NET].Columns[create_date]" />
+                      refId="Package\Data Flow Task\Tabla DimSale.Inputs[Entrada de destino de ADO NET].Columns[storeName]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="storeName"
+                      externalMetadataColumnId="Package\Data Flow Task\Tabla DimSale.Inputs[Entrada de destino de ADO NET].ExternalColumns[storeName]"
+                      lineageId="Package\Data Flow Task\Tabla pos_order pg.Outputs[Salida de origen de ADO NET].Columns[storeName]" />
                     <inputColumn
-                      refId="Package\Data Flow Task\Tabla DimSale.Inputs[Entrada de destino de ADO NET].Columns[write_date]"
-                      cachedDataType="dbTimeStamp"
-                      cachedName="write_date"
-                      externalMetadataColumnId="Package\Data Flow Task\Tabla DimSale.Inputs[Entrada de destino de ADO NET].ExternalColumns[write_date]"
-                      lineageId="Package\Data Flow Task\Tabla pos_order pg.Outputs[Salida de origen de ADO NET].Columns[write_date]" />
+                      refId="Package\Data Flow Task\Tabla DimSale.Inputs[Entrada de destino de ADO NET].Columns[amountTax]"
+                      cachedDataType="numeric"
+                      cachedName="amountTax"
+                      cachedPrecision="28"
+                      cachedScale="6"
+                      externalMetadataColumnId="Package\Data Flow Task\Tabla DimSale.Inputs[Entrada de destino de ADO NET].ExternalColumns[AmountTax]"
+                      lineageId="Package\Data Flow Task\Tabla pos_order pg.Outputs[Salida de origen de ADO NET].Columns[amountTax]" />
                     <inputColumn
-                      refId="Package\Data Flow Task\Tabla DimSale.Inputs[Entrada de destino de ADO NET].Columns[time_order]"
+                      refId="Package\Data Flow Task\Tabla DimSale.Inputs[Entrada de destino de ADO NET].Columns[amountTotal]"
+                      cachedDataType="numeric"
+                      cachedName="amountTotal"
+                      cachedPrecision="28"
+                      cachedScale="6"
+                      externalMetadataColumnId="Package\Data Flow Task\Tabla DimSale.Inputs[Entrada de destino de ADO NET].ExternalColumns[AmountTotal]"
+                      lineageId="Package\Data Flow Task\Tabla pos_order pg.Outputs[Salida de origen de ADO NET].Columns[amountTotal]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task\Tabla DimSale.Inputs[Entrada de destino de ADO NET].Columns[amountPaid]"
+                      cachedDataType="numeric"
+                      cachedName="amountPaid"
+                      cachedPrecision="28"
+                      cachedScale="6"
+                      externalMetadataColumnId="Package\Data Flow Task\Tabla DimSale.Inputs[Entrada de destino de ADO NET].ExternalColumns[AmountPaid]"
+                      lineageId="Package\Data Flow Task\Tabla pos_order pg.Outputs[Salida de origen de ADO NET].Columns[amountPaid]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task\Tabla DimSale.Inputs[Entrada de destino de ADO NET].Columns[dateOrder]"
+                      cachedDataType="dbTimeStamp"
+                      cachedName="dateOrder"
+                      externalMetadataColumnId="Package\Data Flow Task\Tabla DimSale.Inputs[Entrada de destino de ADO NET].ExternalColumns[dateOrder]"
+                      lineageId="Package\Data Flow Task\Tabla pos_order pg.Outputs[Salida de origen de ADO NET].Columns[dateOrder]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task\Tabla DimSale.Inputs[Entrada de destino de ADO NET].Columns[timeOrder]"
                       cachedDataType="nText"
-                      cachedName="time_order"
-                      externalMetadataColumnId="Package\Data Flow Task\Tabla DimSale.Inputs[Entrada de destino de ADO NET].ExternalColumns[time_order]"
-                      lineageId="Package\Data Flow Task\Tabla pos_order pg.Outputs[Salida de origen de ADO NET].Columns[time_order]" />
+                      cachedName="timeOrder"
+                      externalMetadataColumnId="Package\Data Flow Task\Tabla DimSale.Inputs[Entrada de destino de ADO NET].ExternalColumns[timeOrder]"
+                      lineageId="Package\Data Flow Task\Tabla pos_order pg.Outputs[Salida de origen de ADO NET].Columns[timeOrder]" />
                     <inputColumn
                       refId="Package\Data Flow Task\Tabla DimSale.Inputs[Entrada de destino de ADO NET].Columns[id]"
                       cachedDataType="i4"
                       cachedName="id"
                       externalMetadataColumnId="Package\Data Flow Task\Tabla DimSale.Inputs[Entrada de destino de ADO NET].ExternalColumns[saleID]"
                       lineageId="Package\Data Flow Task\Tabla pos_order pg.Outputs[Salida de origen de ADO NET].Columns[id]" />
-                    <inputColumn
-                      refId="Package\Data Flow Task\Tabla DimSale.Inputs[Entrada de destino de ADO NET].Columns[ticket_code]"
-                      cachedDataType="wstr"
-                      cachedLength="50"
-                      cachedName="ticket_code"
-                      externalMetadataColumnId="Package\Data Flow Task\Tabla DimSale.Inputs[Entrada de destino de ADO NET].ExternalColumns[code]"
-                      lineageId="Package\Data Flow Task\Tabla pos_order pg.Outputs[Salida de origen de ADO NET].Columns[ticket_code]" />
                   </inputColumns>
                   <externalMetadataColumns
                     isUsed="True">
@@ -155,27 +174,36 @@
                       dataType="i4"
                       name="saleID" />
                     <externalMetadataColumn
-                      refId="Package\Data Flow Task\Tabla DimSale.Inputs[Entrada de destino de ADO NET].ExternalColumns[code]"
+                      refId="Package\Data Flow Task\Tabla DimSale.Inputs[Entrada de destino de ADO NET].ExternalColumns[ticketCode]"
                       dataType="wstr"
                       length="50"
-                      name="code" />
+                      name="ticketCode" />
                     <externalMetadataColumn
-                      refId="Package\Data Flow Task\Tabla DimSale.Inputs[Entrada de destino de ADO NET].ExternalColumns[date_order]"
-                      dataType="dbTimeStamp"
-                      name="date_order" />
-                    <externalMetadataColumn
-                      refId="Package\Data Flow Task\Tabla DimSale.Inputs[Entrada de destino de ADO NET].ExternalColumns[create_date]"
-                      dataType="dbTimeStamp"
-                      name="create_date" />
-                    <externalMetadataColumn
-                      refId="Package\Data Flow Task\Tabla DimSale.Inputs[Entrada de destino de ADO NET].ExternalColumns[write_date]"
-                      dataType="dbTimeStamp"
-                      name="write_date" />
-                    <externalMetadataColumn
-                      refId="Package\Data Flow Task\Tabla DimSale.Inputs[Entrada de destino de ADO NET].ExternalColumns[time_order]"
+                      refId="Package\Data Flow Task\Tabla DimSale.Inputs[Entrada de destino de ADO NET].ExternalColumns[storeName]"
                       dataType="wstr"
                       length="50"
-                      name="time_order" />
+                      name="storeName" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\Tabla DimSale.Inputs[Entrada de destino de ADO NET].ExternalColumns[AmountTax]"
+                      dataType="r8"
+                      name="AmountTax" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\Tabla DimSale.Inputs[Entrada de destino de ADO NET].ExternalColumns[AmountTotal]"
+                      dataType="r8"
+                      name="AmountTotal" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\Tabla DimSale.Inputs[Entrada de destino de ADO NET].ExternalColumns[AmountPaid]"
+                      dataType="r8"
+                      name="AmountPaid" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\Tabla DimSale.Inputs[Entrada de destino de ADO NET].ExternalColumns[dateOrder]"
+                      dataType="dbTimeStamp"
+                      name="dateOrder" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\Tabla DimSale.Inputs[Entrada de destino de ADO NET].ExternalColumns[timeOrder]"
+                      dataType="wstr"
+                      length="50"
+                      name="timeOrder" />
                   </externalMetadataColumns>
                 </input>
               </inputs>
@@ -218,9 +246,12 @@
                   description="Especifica la instrucción SQL utilizada por el componente para extraer datos."
                   expressionType="Notify"
                   name="SqlCommand"
-                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">select id, coalesce(ticket_code, 'No hay codigo de ticket') as ticket_code, date_order, create_date, write_date, 
-to_char(date_order, 'HH:MI:SS') as time_order 
-from pos_order</property>
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">select po.id, coalesce(po.ticket_code, 'No hay codigo de ticket') as "ticketCode", 
+pc."name" as "storeName", po.amount_tax as "amountTax", po.amount_total as "amountTotal", 
+po.amount_paid as "amountPaid", po.date_order as "dateOrder", 
+to_char(date_order, 'HH:MI:SS') as "timeOrder" 
+from pos_order po
+left outer join pos_config pc on po.config_id = pc.id</property>
                 <property
                   dataType="System.Int32"
                   description="Número de segundos antes de que se agote el tiempo de espera de un comando. Un valor de 0 indica un tiempo de espera infinito."
@@ -247,8 +278,8 @@ from pos_order</property>
               <connections>
                 <connection
                   refId="Package\Data Flow Task\Tabla pos_order pg.Connections[IDbConnection]"
-                  connectionManagerID="Package.ConnectionManagers[localhost.postgres.openpg1]"
-                  connectionManagerRefId="Package.ConnectionManagers[localhost.postgres.openpg1]"
+                  connectionManagerID="Package.ConnectionManagers[PostgreSQL35W.openpgadmin]"
+                  connectionManagerRefId="Package.ConnectionManagers[PostgreSQL35W.openpgadmin]"
                   description="Administrador de conexiones administrado"
                   name="IDbConnection" />
               </connections>
@@ -267,50 +298,75 @@ from pos_order</property>
                       name="id"
                       truncationRowDisposition="FailComponent" />
                     <outputColumn
-                      refId="Package\Data Flow Task\Tabla pos_order pg.Outputs[Salida de origen de ADO NET].Columns[ticket_code]"
+                      refId="Package\Data Flow Task\Tabla pos_order pg.Outputs[Salida de origen de ADO NET].Columns[ticketCode]"
                       dataType="wstr"
                       errorOrTruncationOperation="Conversión"
                       errorRowDisposition="FailComponent"
-                      externalMetadataColumnId="Package\Data Flow Task\Tabla pos_order pg.Outputs[Salida de origen de ADO NET].ExternalColumns[ticket_code]"
-                      length="50"
-                      lineageId="Package\Data Flow Task\Tabla pos_order pg.Outputs[Salida de origen de ADO NET].Columns[ticket_code]"
-                      name="ticket_code"
+                      externalMetadataColumnId="Package\Data Flow Task\Tabla pos_order pg.Outputs[Salida de origen de ADO NET].ExternalColumns[ticketCode]"
+                      length="255"
+                      lineageId="Package\Data Flow Task\Tabla pos_order pg.Outputs[Salida de origen de ADO NET].Columns[ticketCode]"
+                      name="ticketCode"
                       truncationRowDisposition="FailComponent" />
                     <outputColumn
-                      refId="Package\Data Flow Task\Tabla pos_order pg.Outputs[Salida de origen de ADO NET].Columns[date_order]"
+                      refId="Package\Data Flow Task\Tabla pos_order pg.Outputs[Salida de origen de ADO NET].Columns[storeName]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversión"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task\Tabla pos_order pg.Outputs[Salida de origen de ADO NET].ExternalColumns[storeName]"
+                      length="255"
+                      lineageId="Package\Data Flow Task\Tabla pos_order pg.Outputs[Salida de origen de ADO NET].Columns[storeName]"
+                      name="storeName"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\Tabla pos_order pg.Outputs[Salida de origen de ADO NET].Columns[amountTax]"
+                      dataType="numeric"
+                      errorOrTruncationOperation="Conversión"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task\Tabla pos_order pg.Outputs[Salida de origen de ADO NET].ExternalColumns[amountTax]"
+                      lineageId="Package\Data Flow Task\Tabla pos_order pg.Outputs[Salida de origen de ADO NET].Columns[amountTax]"
+                      name="amountTax"
+                      precision="28"
+                      scale="6"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\Tabla pos_order pg.Outputs[Salida de origen de ADO NET].Columns[amountTotal]"
+                      dataType="numeric"
+                      errorOrTruncationOperation="Conversión"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task\Tabla pos_order pg.Outputs[Salida de origen de ADO NET].ExternalColumns[amountTotal]"
+                      lineageId="Package\Data Flow Task\Tabla pos_order pg.Outputs[Salida de origen de ADO NET].Columns[amountTotal]"
+                      name="amountTotal"
+                      precision="28"
+                      scale="6"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\Tabla pos_order pg.Outputs[Salida de origen de ADO NET].Columns[amountPaid]"
+                      dataType="numeric"
+                      errorOrTruncationOperation="Conversión"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task\Tabla pos_order pg.Outputs[Salida de origen de ADO NET].ExternalColumns[amountPaid]"
+                      lineageId="Package\Data Flow Task\Tabla pos_order pg.Outputs[Salida de origen de ADO NET].Columns[amountPaid]"
+                      name="amountPaid"
+                      precision="28"
+                      scale="6"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\Tabla pos_order pg.Outputs[Salida de origen de ADO NET].Columns[dateOrder]"
                       dataType="dbTimeStamp"
                       errorOrTruncationOperation="Conversión"
                       errorRowDisposition="FailComponent"
-                      externalMetadataColumnId="Package\Data Flow Task\Tabla pos_order pg.Outputs[Salida de origen de ADO NET].ExternalColumns[date_order]"
-                      lineageId="Package\Data Flow Task\Tabla pos_order pg.Outputs[Salida de origen de ADO NET].Columns[date_order]"
-                      name="date_order"
+                      externalMetadataColumnId="Package\Data Flow Task\Tabla pos_order pg.Outputs[Salida de origen de ADO NET].ExternalColumns[dateOrder]"
+                      lineageId="Package\Data Flow Task\Tabla pos_order pg.Outputs[Salida de origen de ADO NET].Columns[dateOrder]"
+                      name="dateOrder"
                       truncationRowDisposition="FailComponent" />
                     <outputColumn
-                      refId="Package\Data Flow Task\Tabla pos_order pg.Outputs[Salida de origen de ADO NET].Columns[create_date]"
-                      dataType="dbTimeStamp"
-                      errorOrTruncationOperation="Conversión"
-                      errorRowDisposition="FailComponent"
-                      externalMetadataColumnId="Package\Data Flow Task\Tabla pos_order pg.Outputs[Salida de origen de ADO NET].ExternalColumns[create_date]"
-                      lineageId="Package\Data Flow Task\Tabla pos_order pg.Outputs[Salida de origen de ADO NET].Columns[create_date]"
-                      name="create_date"
-                      truncationRowDisposition="FailComponent" />
-                    <outputColumn
-                      refId="Package\Data Flow Task\Tabla pos_order pg.Outputs[Salida de origen de ADO NET].Columns[write_date]"
-                      dataType="dbTimeStamp"
-                      errorOrTruncationOperation="Conversión"
-                      errorRowDisposition="FailComponent"
-                      externalMetadataColumnId="Package\Data Flow Task\Tabla pos_order pg.Outputs[Salida de origen de ADO NET].ExternalColumns[write_date]"
-                      lineageId="Package\Data Flow Task\Tabla pos_order pg.Outputs[Salida de origen de ADO NET].Columns[write_date]"
-                      name="write_date"
-                      truncationRowDisposition="FailComponent" />
-                    <outputColumn
-                      refId="Package\Data Flow Task\Tabla pos_order pg.Outputs[Salida de origen de ADO NET].Columns[time_order]"
+                      refId="Package\Data Flow Task\Tabla pos_order pg.Outputs[Salida de origen de ADO NET].Columns[timeOrder]"
                       dataType="nText"
                       errorOrTruncationOperation="Conversión"
                       errorRowDisposition="FailComponent"
-                      externalMetadataColumnId="Package\Data Flow Task\Tabla pos_order pg.Outputs[Salida de origen de ADO NET].ExternalColumns[time_order]"
-                      lineageId="Package\Data Flow Task\Tabla pos_order pg.Outputs[Salida de origen de ADO NET].Columns[time_order]"
-                      name="time_order"
+                      externalMetadataColumnId="Package\Data Flow Task\Tabla pos_order pg.Outputs[Salida de origen de ADO NET].ExternalColumns[timeOrder]"
+                      lineageId="Package\Data Flow Task\Tabla pos_order pg.Outputs[Salida de origen de ADO NET].Columns[timeOrder]"
+                      name="timeOrder"
                       truncationRowDisposition="FailComponent" />
                   </outputColumns>
                   <externalMetadataColumns
@@ -320,26 +376,41 @@ from pos_order</property>
                       dataType="i4"
                       name="id" />
                     <externalMetadataColumn
-                      refId="Package\Data Flow Task\Tabla pos_order pg.Outputs[Salida de origen de ADO NET].ExternalColumns[ticket_code]"
+                      refId="Package\Data Flow Task\Tabla pos_order pg.Outputs[Salida de origen de ADO NET].ExternalColumns[ticketCode]"
                       dataType="wstr"
-                      length="50"
-                      name="ticket_code" />
+                      length="255"
+                      name="ticketCode" />
                     <externalMetadataColumn
-                      refId="Package\Data Flow Task\Tabla pos_order pg.Outputs[Salida de origen de ADO NET].ExternalColumns[date_order]"
+                      refId="Package\Data Flow Task\Tabla pos_order pg.Outputs[Salida de origen de ADO NET].ExternalColumns[storeName]"
+                      dataType="wstr"
+                      length="255"
+                      name="storeName" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\Tabla pos_order pg.Outputs[Salida de origen de ADO NET].ExternalColumns[amountTax]"
+                      dataType="numeric"
+                      name="amountTax"
+                      precision="28"
+                      scale="6" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\Tabla pos_order pg.Outputs[Salida de origen de ADO NET].ExternalColumns[amountTotal]"
+                      dataType="numeric"
+                      name="amountTotal"
+                      precision="28"
+                      scale="6" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\Tabla pos_order pg.Outputs[Salida de origen de ADO NET].ExternalColumns[amountPaid]"
+                      dataType="numeric"
+                      name="amountPaid"
+                      precision="28"
+                      scale="6" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\Tabla pos_order pg.Outputs[Salida de origen de ADO NET].ExternalColumns[dateOrder]"
                       dataType="dbTimeStamp"
-                      name="date_order" />
+                      name="dateOrder" />
                     <externalMetadataColumn
-                      refId="Package\Data Flow Task\Tabla pos_order pg.Outputs[Salida de origen de ADO NET].ExternalColumns[create_date]"
-                      dataType="dbTimeStamp"
-                      name="create_date" />
-                    <externalMetadataColumn
-                      refId="Package\Data Flow Task\Tabla pos_order pg.Outputs[Salida de origen de ADO NET].ExternalColumns[write_date]"
-                      dataType="dbTimeStamp"
-                      name="write_date" />
-                    <externalMetadataColumn
-                      refId="Package\Data Flow Task\Tabla pos_order pg.Outputs[Salida de origen de ADO NET].ExternalColumns[time_order]"
+                      refId="Package\Data Flow Task\Tabla pos_order pg.Outputs[Salida de origen de ADO NET].ExternalColumns[timeOrder]"
                       dataType="nText"
-                      name="time_order" />
+                      name="timeOrder" />
                   </externalMetadataColumns>
                 </output>
                 <output
@@ -353,31 +424,48 @@ from pos_order</property>
                       lineageId="Package\Data Flow Task\Tabla pos_order pg.Outputs[Salida de error de origen de ADO NET].Columns[id]"
                       name="id" />
                     <outputColumn
-                      refId="Package\Data Flow Task\Tabla pos_order pg.Outputs[Salida de error de origen de ADO NET].Columns[ticket_code]"
+                      refId="Package\Data Flow Task\Tabla pos_order pg.Outputs[Salida de error de origen de ADO NET].Columns[ticketCode]"
                       dataType="wstr"
                       length="255"
-                      lineageId="Package\Data Flow Task\Tabla pos_order pg.Outputs[Salida de error de origen de ADO NET].Columns[ticket_code]"
-                      name="ticket_code" />
+                      lineageId="Package\Data Flow Task\Tabla pos_order pg.Outputs[Salida de error de origen de ADO NET].Columns[ticketCode]"
+                      name="ticketCode" />
                     <outputColumn
-                      refId="Package\Data Flow Task\Tabla pos_order pg.Outputs[Salida de error de origen de ADO NET].Columns[date_order]"
+                      refId="Package\Data Flow Task\Tabla pos_order pg.Outputs[Salida de error de origen de ADO NET].Columns[storeName]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\Data Flow Task\Tabla pos_order pg.Outputs[Salida de error de origen de ADO NET].Columns[storeName]"
+                      name="storeName" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\Tabla pos_order pg.Outputs[Salida de error de origen de ADO NET].Columns[amountTax]"
+                      dataType="numeric"
+                      lineageId="Package\Data Flow Task\Tabla pos_order pg.Outputs[Salida de error de origen de ADO NET].Columns[amountTax]"
+                      name="amountTax"
+                      precision="28"
+                      scale="6" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\Tabla pos_order pg.Outputs[Salida de error de origen de ADO NET].Columns[amountTotal]"
+                      dataType="numeric"
+                      lineageId="Package\Data Flow Task\Tabla pos_order pg.Outputs[Salida de error de origen de ADO NET].Columns[amountTotal]"
+                      name="amountTotal"
+                      precision="28"
+                      scale="6" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\Tabla pos_order pg.Outputs[Salida de error de origen de ADO NET].Columns[amountPaid]"
+                      dataType="numeric"
+                      lineageId="Package\Data Flow Task\Tabla pos_order pg.Outputs[Salida de error de origen de ADO NET].Columns[amountPaid]"
+                      name="amountPaid"
+                      precision="28"
+                      scale="6" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\Tabla pos_order pg.Outputs[Salida de error de origen de ADO NET].Columns[dateOrder]"
                       dataType="dbTimeStamp"
-                      lineageId="Package\Data Flow Task\Tabla pos_order pg.Outputs[Salida de error de origen de ADO NET].Columns[date_order]"
-                      name="date_order" />
+                      lineageId="Package\Data Flow Task\Tabla pos_order pg.Outputs[Salida de error de origen de ADO NET].Columns[dateOrder]"
+                      name="dateOrder" />
                     <outputColumn
-                      refId="Package\Data Flow Task\Tabla pos_order pg.Outputs[Salida de error de origen de ADO NET].Columns[create_date]"
-                      dataType="dbTimeStamp"
-                      lineageId="Package\Data Flow Task\Tabla pos_order pg.Outputs[Salida de error de origen de ADO NET].Columns[create_date]"
-                      name="create_date" />
-                    <outputColumn
-                      refId="Package\Data Flow Task\Tabla pos_order pg.Outputs[Salida de error de origen de ADO NET].Columns[write_date]"
-                      dataType="dbTimeStamp"
-                      lineageId="Package\Data Flow Task\Tabla pos_order pg.Outputs[Salida de error de origen de ADO NET].Columns[write_date]"
-                      name="write_date" />
-                    <outputColumn
-                      refId="Package\Data Flow Task\Tabla pos_order pg.Outputs[Salida de error de origen de ADO NET].Columns[time_order]"
+                      refId="Package\Data Flow Task\Tabla pos_order pg.Outputs[Salida de error de origen de ADO NET].Columns[timeOrder]"
                       dataType="nText"
-                      lineageId="Package\Data Flow Task\Tabla pos_order pg.Outputs[Salida de error de origen de ADO NET].Columns[time_order]"
-                      name="time_order" />
+                      lineageId="Package\Data Flow Task\Tabla pos_order pg.Outputs[Salida de error de origen de ADO NET].Columns[timeOrder]"
+                      name="timeOrder" />
                     <outputColumn
                       refId="Package\Data Flow Task\Tabla pos_order pg.Outputs[Salida de error de origen de ADO NET].Columns[ErrorCode]"
                       dataType="i4"
@@ -483,7 +571,7 @@ from pos_order</property>
     design-time-name="Package\Data Flow Task">
     <LayoutInfo>
       <GraphLayout
-        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
         <NodeLayout
           Size="174,42"
           Id="Package\Data Flow Task\Tabla pos_order pg"
@@ -511,9 +599,7 @@ from pos_order</property>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="-16.11447265625,30.35107421875,32.2289453125,9.7978515625"
-              RelativePosition="Any" />
+            <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
       </GraphLayout>

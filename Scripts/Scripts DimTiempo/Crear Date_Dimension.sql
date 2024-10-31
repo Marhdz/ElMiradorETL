@@ -1,6 +1,6 @@
 /* DDL for the date dimension */
-create table Date_Dimension (
-date_key smallint not null,
+create table TempDimDate (
+date_key int not null,
 full_date smalldatetime,
 day_of_week tinyint,
 day_num_in_month tinyint,
@@ -11,7 +11,7 @@ weekday_flag char(1),
 week_num_in_year tinyint,
 week_num_overall smallint,
 week_begin_date datetime,
-week_begin_date_key smallint,
+week_begin_date_key int,
 month tinyint,
 month_num_overall smallint,
 month_name varchar(12),

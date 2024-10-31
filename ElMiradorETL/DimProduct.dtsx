@@ -11,8 +11,8 @@
   DTS:LocaleID="1033"
   DTS:ObjectName="Package1"
   DTS:PackageType="5"
-  DTS:VersionBuild="24"
-  DTS:VersionGUID="{FBD67B0E-8A13-4E29-A478-8CE24058AE6F}">
+  DTS:VersionBuild="32"
+  DTS:VersionGUID="{81E6E4F6-6AD6-47D6-B1F1-46F5978850E5}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:ConnectionManagers>
@@ -27,17 +27,17 @@
       </DTS:ObjectData>
     </DTS:ConnectionManager>
     <DTS:ConnectionManager
-      DTS:refId="Package.ConnectionManagers[localhost.FarmaciaElMiradorDB.openpgadmin2]"
+      DTS:refId="Package.ConnectionManagers[PostgreSQL35W.openpgadmin]"
       DTS:CreationName="ADO.NET:System.Data.Odbc.OdbcConnection, System.Data, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089"
-      DTS:DTSID="{44A332A1-454E-4D8F-B3D0-CD1A2F7FB053}"
-      DTS:ObjectName="localhost.FarmaciaElMiradorDB.openpgadmin2">
+      DTS:DTSID="{02C63D52-FE24-4D42-9BBC-06D88ACBA6C7}"
+      DTS:ObjectName="PostgreSQL35W.openpgadmin">
       <DTS:ObjectData>
         <DTS:ConnectionManager
-          DTS:ConnectionString="server=localhost;uid=openpgadmin;Driver={PostgreSQL Unicode};database=FarmaciaElMiradorDB;port=5432;sslmode=disable;readonly=0;protocol=7.4;fakeoidindex=0;showoidcolumn=1;rowversioning=0;showsystemtables=0;fetch=100;unknownsizes=0;maxvarcharsize=255;maxlongvarcharsize=8190;debug=0;commlog=0;usedeclarefetch=0;textaslongvarchar=1;unknownsaslongvarchar=0;boolsaschar=1;parse=0;lfconversion=1;updatablecursors=1;trueisminus1=0;bi=0;byteaaslongvarbinary=1;useserversideprepare=1;lowercaseidentifier=0;d6=-101;optionalerrors=0;fetchrefcursors=0;xaopt=1;">
+          DTS:ConnectionString="server=localhost;uid=openpgadmin;Dsn=PostgreSQL35W;database=CopiaFarmacia;port=5432;sslmode=disable;readonly=0;protocol=7.4;fakeoidindex=0;showoidcolumn=0;rowversioning=0;showsystemtables=0;fetch=100;unknownsizes=0;maxvarcharsize=255;maxlongvarcharsize=8190;debug=0;commlog=0;usedeclarefetch=0;textaslongvarchar=1;unknownsaslongvarchar=0;boolsaschar=1;parse=0;lfconversion=1;updatablecursors=1;trueisminus1=0;bi=0;byteaaslongvarbinary=1;useserversideprepare=1;lowercaseidentifier=0;d6=-101;optionalerrors=0;fetchrefcursors=0;xaopt=1;">
           <DTS:Password
             DTS:Name="pwd"
             Sensitive="1"
-            Encrypted="1">AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAASQhfRqDEDkOYTZFasgjSZgAAAAAIAAAARABUAFMAAAAQZgAAAAEAACAAAADdcOT3poGooSGvfa7SfcbquS3G29S0jXtuG9xmM/BPugAAAAAOgAAAAAIAACAAAADe9KLQDPpegIl8u0RW4G6hhgT9khKtZFHv6G3sJq/ZIyAAAACAMD5OfB+Hlu5r842t5/GQAcryx2pbljsYJQm565bIqkAAAABY91SAlMQE7IelKGbFbmxzz7ca36rxVNAykcXO11TxWN39P8+HcqECowPmw3HZYxi7O04AE6/NlW1+ORjwfizY</DTS:Password>
+            Encrypted="1">AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAASQhfRqDEDkOYTZFasgjSZgAAAAAIAAAARABUAFMAAAAQZgAAAAEAACAAAAADT65Ka/neYeJ7kQrs7OOkyEeY0oaKz6xKxXlwk60xPAAAAAAOgAAAAAIAACAAAAArP7/ZpEDXV3dZtpMHvh51S0WsNi/gk7Nv7TW0o8G1TCAAAACEp9mx7FZAtscKJLoH0mNkpM94osM48ztinJiBSUmoskAAAABzxp8KZaTvklOjecM1pUR6jBVQ07yaa2rlXhBysVksuqeP/AmXye6PNoLcU3UJhq0EoFDcaHnbdSqBhD26uj21</DTS:Password>
         </DTS:ConnectionManager>
       </DTS:ObjectData>
     </DTS:ConnectionManager>
@@ -108,6 +108,12 @@
                   name="Entrada de destino de ADO NET">
                   <inputColumns>
                     <inputColumn
+                      refId="Package\Tabla DimProduct\Destino de ADO NET.Inputs[Entrada de destino de ADO NET].Columns[productname]"
+                      cachedDataType="nText"
+                      cachedName="productname"
+                      externalMetadataColumnId="Package\Tabla DimProduct\Destino de ADO NET.Inputs[Entrada de destino de ADO NET].ExternalColumns[productName]"
+                      lineageId="Package\Tabla DimProduct\Origen de ADO NET.Outputs[Salida de origen de ADO NET].Columns[productname]" />
+                    <inputColumn
                       refId="Package\Tabla DimProduct\Destino de ADO NET.Inputs[Entrada de destino de ADO NET].Columns[category]"
                       cachedDataType="wstr"
                       cachedLength="255"
@@ -115,12 +121,26 @@
                       externalMetadataColumnId="Package\Tabla DimProduct\Destino de ADO NET.Inputs[Entrada de destino de ADO NET].ExternalColumns[category]"
                       lineageId="Package\Tabla DimProduct\Origen de ADO NET.Outputs[Salida de origen de ADO NET].Columns[category]" />
                     <inputColumn
+                      refId="Package\Tabla DimProduct\Destino de ADO NET.Inputs[Entrada de destino de ADO NET].Columns[unitOfMeasure]"
+                      cachedDataType="nText"
+                      cachedName="unitOfMeasure"
+                      externalMetadataColumnId="Package\Tabla DimProduct\Destino de ADO NET.Inputs[Entrada de destino de ADO NET].ExternalColumns[unitOfMeasure]"
+                      lineageId="Package\Tabla DimProduct\Origen de ADO NET.Outputs[Salida de origen de ADO NET].Columns[unitOfMeasure]" />
+                    <inputColumn
                       refId="Package\Tabla DimProduct\Destino de ADO NET.Inputs[Entrada de destino de ADO NET].Columns[type]"
                       cachedDataType="wstr"
                       cachedLength="255"
                       cachedName="type"
                       externalMetadataColumnId="Package\Tabla DimProduct\Destino de ADO NET.Inputs[Entrada de destino de ADO NET].ExternalColumns[type]"
                       lineageId="Package\Tabla DimProduct\Origen de ADO NET.Outputs[Salida de origen de ADO NET].Columns[type]" />
+                    <inputColumn
+                      refId="Package\Tabla DimProduct\Destino de ADO NET.Inputs[Entrada de destino de ADO NET].Columns[listPrice]"
+                      cachedDataType="numeric"
+                      cachedName="listPrice"
+                      cachedPrecision="28"
+                      cachedScale="6"
+                      externalMetadataColumnId="Package\Tabla DimProduct\Destino de ADO NET.Inputs[Entrada de destino de ADO NET].ExternalColumns[listPrice]"
+                      lineageId="Package\Tabla DimProduct\Origen de ADO NET.Outputs[Salida de origen de ADO NET].Columns[listPrice]" />
                     <inputColumn
                       refId="Package\Tabla DimProduct\Destino de ADO NET.Inputs[Entrada de destino de ADO NET].Columns[descriptionSale]"
                       cachedDataType="nText"
@@ -139,44 +159,6 @@
                       cachedName="id"
                       externalMetadataColumnId="Package\Tabla DimProduct\Destino de ADO NET.Inputs[Entrada de destino de ADO NET].ExternalColumns[productID]"
                       lineageId="Package\Tabla DimProduct\Origen de ADO NET.Outputs[Salida de origen de ADO NET].Columns[id]" />
-                    <inputColumn
-                      refId="Package\Tabla DimProduct\Destino de ADO NET.Inputs[Entrada de destino de ADO NET].Columns[unitOfMeasure]"
-                      cachedDataType="nText"
-                      cachedName="unitOfMeasure"
-                      externalMetadataColumnId="Package\Tabla DimProduct\Destino de ADO NET.Inputs[Entrada de destino de ADO NET].ExternalColumns[uom]"
-                      lineageId="Package\Tabla DimProduct\Origen de ADO NET.Outputs[Salida de origen de ADO NET].Columns[unitOfMeasure]" />
-                    <inputColumn
-                      refId="Package\Tabla DimProduct\Destino de ADO NET.Inputs[Entrada de destino de ADO NET].Columns[productname]"
-                      cachedDataType="nText"
-                      cachedName="productname"
-                      externalMetadataColumnId="Package\Tabla DimProduct\Destino de ADO NET.Inputs[Entrada de destino de ADO NET].ExternalColumns[name]"
-                      lineageId="Package\Tabla DimProduct\Origen de ADO NET.Outputs[Salida de origen de ADO NET].Columns[productname]" />
-                    <inputColumn
-                      refId="Package\Tabla DimProduct\Destino de ADO NET.Inputs[Entrada de destino de ADO NET].Columns[list_price]"
-                      cachedDataType="numeric"
-                      cachedName="list_price"
-                      cachedPrecision="28"
-                      cachedScale="6"
-                      externalMetadataColumnId="Package\Tabla DimProduct\Destino de ADO NET.Inputs[Entrada de destino de ADO NET].ExternalColumns[listPrice]"
-                      lineageId="Package\Tabla DimProduct\Origen de ADO NET.Outputs[Salida de origen de ADO NET].Columns[list_price]" />
-                    <inputColumn
-                      refId="Package\Tabla DimProduct\Destino de ADO NET.Inputs[Entrada de destino de ADO NET].Columns[create_date]"
-                      cachedDataType="dbTimeStamp"
-                      cachedName="create_date"
-                      externalMetadataColumnId="Package\Tabla DimProduct\Destino de ADO NET.Inputs[Entrada de destino de ADO NET].ExternalColumns[createDate]"
-                      lineageId="Package\Tabla DimProduct\Origen de ADO NET.Outputs[Salida de origen de ADO NET].Columns[create_date]" />
-                    <inputColumn
-                      refId="Package\Tabla DimProduct\Destino de ADO NET.Inputs[Entrada de destino de ADO NET].Columns[write_date]"
-                      cachedDataType="dbTimeStamp"
-                      cachedName="write_date"
-                      externalMetadataColumnId="Package\Tabla DimProduct\Destino de ADO NET.Inputs[Entrada de destino de ADO NET].ExternalColumns[writeDate]"
-                      lineageId="Package\Tabla DimProduct\Origen de ADO NET.Outputs[Salida de origen de ADO NET].Columns[write_date]" />
-                    <inputColumn
-                      refId="Package\Tabla DimProduct\Destino de ADO NET.Inputs[Entrada de destino de ADO NET].Columns[country_of_origin]"
-                      cachedDataType="nText"
-                      cachedName="country_of_origin"
-                      externalMetadataColumnId="Package\Tabla DimProduct\Destino de ADO NET.Inputs[Entrada de destino de ADO NET].ExternalColumns[countryOfOrigin]"
-                      lineageId="Package\Tabla DimProduct\Origen de ADO NET.Outputs[Salida de origen de ADO NET].Columns[country_of_origin]" />
                   </inputColumns>
                   <externalMetadataColumns
                     isUsed="True">
@@ -189,54 +171,39 @@
                       dataType="i4"
                       name="productID" />
                     <externalMetadataColumn
+                      refId="Package\Tabla DimProduct\Destino de ADO NET.Inputs[Entrada de destino de ADO NET].ExternalColumns[productName]"
+                      dataType="wstr"
+                      length="50"
+                      name="productName" />
+                    <externalMetadataColumn
                       refId="Package\Tabla DimProduct\Destino de ADO NET.Inputs[Entrada de destino de ADO NET].ExternalColumns[category]"
                       dataType="wstr"
-                      length="255"
+                      length="50"
                       name="category" />
                     <externalMetadataColumn
-                      refId="Package\Tabla DimProduct\Destino de ADO NET.Inputs[Entrada de destino de ADO NET].ExternalColumns[uom]"
+                      refId="Package\Tabla DimProduct\Destino de ADO NET.Inputs[Entrada de destino de ADO NET].ExternalColumns[unitOfMeasure]"
                       dataType="wstr"
-                      length="255"
-                      name="uom" />
+                      length="50"
+                      name="unitOfMeasure" />
                     <externalMetadataColumn
                       refId="Package\Tabla DimProduct\Destino de ADO NET.Inputs[Entrada de destino de ADO NET].ExternalColumns[type]"
                       dataType="wstr"
-                      length="255"
+                      length="50"
                       name="type" />
                     <externalMetadataColumn
-                      refId="Package\Tabla DimProduct\Destino de ADO NET.Inputs[Entrada de destino de ADO NET].ExternalColumns[name]"
-                      dataType="wstr"
-                      length="255"
-                      name="name" />
-                    <externalMetadataColumn
                       refId="Package\Tabla DimProduct\Destino de ADO NET.Inputs[Entrada de destino de ADO NET].ExternalColumns[listPrice]"
-                      dataType="numeric"
-                      name="listPrice"
-                      precision="28"
-                      scale="6" />
+                      dataType="r8"
+                      name="listPrice" />
                     <externalMetadataColumn
                       refId="Package\Tabla DimProduct\Destino de ADO NET.Inputs[Entrada de destino de ADO NET].ExternalColumns[descriptionSale]"
                       dataType="wstr"
-                      length="500"
+                      length="300"
                       name="descriptionSale" />
                     <externalMetadataColumn
                       refId="Package\Tabla DimProduct\Destino de ADO NET.Inputs[Entrada de destino de ADO NET].ExternalColumns[active]"
                       dataType="wstr"
-                      length="255"
+                      length="10"
                       name="active" />
-                    <externalMetadataColumn
-                      refId="Package\Tabla DimProduct\Destino de ADO NET.Inputs[Entrada de destino de ADO NET].ExternalColumns[createDate]"
-                      dataType="dbTimeStamp"
-                      name="createDate" />
-                    <externalMetadataColumn
-                      refId="Package\Tabla DimProduct\Destino de ADO NET.Inputs[Entrada de destino de ADO NET].ExternalColumns[writeDate]"
-                      dataType="dbTimeStamp"
-                      name="writeDate" />
-                    <externalMetadataColumn
-                      refId="Package\Tabla DimProduct\Destino de ADO NET.Inputs[Entrada de destino de ADO NET].ExternalColumns[countryOfOrigin]"
-                      dataType="wstr"
-                      length="255"
-                      name="countryOfOrigin" />
                   </externalMetadataColumns>
                 </input>
               </inputs>
@@ -295,23 +262,19 @@ when d.value = 'U'  then 'Unidades'
 else 'Sin unidad de medida'
 end
 as "unitOfMeasure", pt.type, 
-pt.list_price,
+pt.list_price as "listPrice",
 coalesce(ds.value, 'Sin descripcion')
 as "descriptionSale",
 case 
 when pt.active = true then 'Activo'
 else 'Inactivo'
-end as active,
-pt.create_date, pt.write_date, 
-case 
-when pt.country_of_origin is null then 'El Salvador'
-end as country_of_origin
+end as active
 from product_template pt
 left outer join product_category pc ON pt.categ_id = pc.id
 left outer join uom_uom uu on pt.uom_id = uu.id
 left outer join jsonb_each_text(uu.name) d on true
 left outer join jsonb_each_text(pt.name) nm on true
-left outer join jsonb_each_text(pt.description_sale) ds on true limit 100</property>
+left outer join jsonb_each_text(pt.description_sale) ds on true</property>
                 <property
                   dataType="System.Int32"
                   description="Número de segundos antes de que se agote el tiempo de espera de un comando. Un valor de 0 indica un tiempo de espera infinito."
@@ -338,8 +301,8 @@ left outer join jsonb_each_text(pt.description_sale) ds on true limit 100</prope
               <connections>
                 <connection
                   refId="Package\Tabla DimProduct\Origen de ADO NET.Connections[IDbConnection]"
-                  connectionManagerID="Package.ConnectionManagers[localhost.FarmaciaElMiradorDB.openpgadmin2]"
-                  connectionManagerRefId="Package.ConnectionManagers[localhost.FarmaciaElMiradorDB.openpgadmin2]"
+                  connectionManagerID="Package.ConnectionManagers[PostgreSQL35W.openpgadmin]"
+                  connectionManagerRefId="Package.ConnectionManagers[PostgreSQL35W.openpgadmin]"
                   description="Administrador de conexiones administrado"
                   name="IDbConnection" />
               </connections>
@@ -396,13 +359,13 @@ left outer join jsonb_each_text(pt.description_sale) ds on true limit 100</prope
                       name="type"
                       truncationRowDisposition="FailComponent" />
                     <outputColumn
-                      refId="Package\Tabla DimProduct\Origen de ADO NET.Outputs[Salida de origen de ADO NET].Columns[list_price]"
+                      refId="Package\Tabla DimProduct\Origen de ADO NET.Outputs[Salida de origen de ADO NET].Columns[listPrice]"
                       dataType="numeric"
                       errorOrTruncationOperation="Conversión"
                       errorRowDisposition="FailComponent"
-                      externalMetadataColumnId="Package\Tabla DimProduct\Origen de ADO NET.Outputs[Salida de origen de ADO NET].ExternalColumns[list_price]"
-                      lineageId="Package\Tabla DimProduct\Origen de ADO NET.Outputs[Salida de origen de ADO NET].Columns[list_price]"
-                      name="list_price"
+                      externalMetadataColumnId="Package\Tabla DimProduct\Origen de ADO NET.Outputs[Salida de origen de ADO NET].ExternalColumns[listPrice]"
+                      lineageId="Package\Tabla DimProduct\Origen de ADO NET.Outputs[Salida de origen de ADO NET].Columns[listPrice]"
+                      name="listPrice"
                       precision="28"
                       scale="6"
                       truncationRowDisposition="FailComponent" />
@@ -423,33 +386,6 @@ left outer join jsonb_each_text(pt.description_sale) ds on true limit 100</prope
                       externalMetadataColumnId="Package\Tabla DimProduct\Origen de ADO NET.Outputs[Salida de origen de ADO NET].ExternalColumns[active]"
                       lineageId="Package\Tabla DimProduct\Origen de ADO NET.Outputs[Salida de origen de ADO NET].Columns[active]"
                       name="active"
-                      truncationRowDisposition="FailComponent" />
-                    <outputColumn
-                      refId="Package\Tabla DimProduct\Origen de ADO NET.Outputs[Salida de origen de ADO NET].Columns[create_date]"
-                      dataType="dbTimeStamp"
-                      errorOrTruncationOperation="Conversión"
-                      errorRowDisposition="FailComponent"
-                      externalMetadataColumnId="Package\Tabla DimProduct\Origen de ADO NET.Outputs[Salida de origen de ADO NET].ExternalColumns[create_date]"
-                      lineageId="Package\Tabla DimProduct\Origen de ADO NET.Outputs[Salida de origen de ADO NET].Columns[create_date]"
-                      name="create_date"
-                      truncationRowDisposition="FailComponent" />
-                    <outputColumn
-                      refId="Package\Tabla DimProduct\Origen de ADO NET.Outputs[Salida de origen de ADO NET].Columns[write_date]"
-                      dataType="dbTimeStamp"
-                      errorOrTruncationOperation="Conversión"
-                      errorRowDisposition="FailComponent"
-                      externalMetadataColumnId="Package\Tabla DimProduct\Origen de ADO NET.Outputs[Salida de origen de ADO NET].ExternalColumns[write_date]"
-                      lineageId="Package\Tabla DimProduct\Origen de ADO NET.Outputs[Salida de origen de ADO NET].Columns[write_date]"
-                      name="write_date"
-                      truncationRowDisposition="FailComponent" />
-                    <outputColumn
-                      refId="Package\Tabla DimProduct\Origen de ADO NET.Outputs[Salida de origen de ADO NET].Columns[country_of_origin]"
-                      dataType="nText"
-                      errorOrTruncationOperation="Conversión"
-                      errorRowDisposition="FailComponent"
-                      externalMetadataColumnId="Package\Tabla DimProduct\Origen de ADO NET.Outputs[Salida de origen de ADO NET].ExternalColumns[country_of_origin]"
-                      lineageId="Package\Tabla DimProduct\Origen de ADO NET.Outputs[Salida de origen de ADO NET].Columns[country_of_origin]"
-                      name="country_of_origin"
                       truncationRowDisposition="FailComponent" />
                   </outputColumns>
                   <externalMetadataColumns
@@ -477,9 +413,9 @@ left outer join jsonb_each_text(pt.description_sale) ds on true limit 100</prope
                       length="255"
                       name="type" />
                     <externalMetadataColumn
-                      refId="Package\Tabla DimProduct\Origen de ADO NET.Outputs[Salida de origen de ADO NET].ExternalColumns[list_price]"
+                      refId="Package\Tabla DimProduct\Origen de ADO NET.Outputs[Salida de origen de ADO NET].ExternalColumns[listPrice]"
                       dataType="numeric"
-                      name="list_price"
+                      name="listPrice"
                       precision="28"
                       scale="6" />
                     <externalMetadataColumn
@@ -490,18 +426,6 @@ left outer join jsonb_each_text(pt.description_sale) ds on true limit 100</prope
                       refId="Package\Tabla DimProduct\Origen de ADO NET.Outputs[Salida de origen de ADO NET].ExternalColumns[active]"
                       dataType="nText"
                       name="active" />
-                    <externalMetadataColumn
-                      refId="Package\Tabla DimProduct\Origen de ADO NET.Outputs[Salida de origen de ADO NET].ExternalColumns[create_date]"
-                      dataType="dbTimeStamp"
-                      name="create_date" />
-                    <externalMetadataColumn
-                      refId="Package\Tabla DimProduct\Origen de ADO NET.Outputs[Salida de origen de ADO NET].ExternalColumns[write_date]"
-                      dataType="dbTimeStamp"
-                      name="write_date" />
-                    <externalMetadataColumn
-                      refId="Package\Tabla DimProduct\Origen de ADO NET.Outputs[Salida de origen de ADO NET].ExternalColumns[country_of_origin]"
-                      dataType="nText"
-                      name="country_of_origin" />
                   </externalMetadataColumns>
                 </output>
                 <output
@@ -537,10 +461,10 @@ left outer join jsonb_each_text(pt.description_sale) ds on true limit 100</prope
                       lineageId="Package\Tabla DimProduct\Origen de ADO NET.Outputs[Salida de error de origen de ADO NET].Columns[type]"
                       name="type" />
                     <outputColumn
-                      refId="Package\Tabla DimProduct\Origen de ADO NET.Outputs[Salida de error de origen de ADO NET].Columns[list_price]"
+                      refId="Package\Tabla DimProduct\Origen de ADO NET.Outputs[Salida de error de origen de ADO NET].Columns[listPrice]"
                       dataType="numeric"
-                      lineageId="Package\Tabla DimProduct\Origen de ADO NET.Outputs[Salida de error de origen de ADO NET].Columns[list_price]"
-                      name="list_price"
+                      lineageId="Package\Tabla DimProduct\Origen de ADO NET.Outputs[Salida de error de origen de ADO NET].Columns[listPrice]"
+                      name="listPrice"
                       precision="28"
                       scale="6" />
                     <outputColumn
@@ -553,21 +477,6 @@ left outer join jsonb_each_text(pt.description_sale) ds on true limit 100</prope
                       dataType="nText"
                       lineageId="Package\Tabla DimProduct\Origen de ADO NET.Outputs[Salida de error de origen de ADO NET].Columns[active]"
                       name="active" />
-                    <outputColumn
-                      refId="Package\Tabla DimProduct\Origen de ADO NET.Outputs[Salida de error de origen de ADO NET].Columns[create_date]"
-                      dataType="dbTimeStamp"
-                      lineageId="Package\Tabla DimProduct\Origen de ADO NET.Outputs[Salida de error de origen de ADO NET].Columns[create_date]"
-                      name="create_date" />
-                    <outputColumn
-                      refId="Package\Tabla DimProduct\Origen de ADO NET.Outputs[Salida de error de origen de ADO NET].Columns[write_date]"
-                      dataType="dbTimeStamp"
-                      lineageId="Package\Tabla DimProduct\Origen de ADO NET.Outputs[Salida de error de origen de ADO NET].Columns[write_date]"
-                      name="write_date" />
-                    <outputColumn
-                      refId="Package\Tabla DimProduct\Origen de ADO NET.Outputs[Salida de error de origen de ADO NET].Columns[country_of_origin]"
-                      dataType="nText"
-                      lineageId="Package\Tabla DimProduct\Origen de ADO NET.Outputs[Salida de error de origen de ADO NET].Columns[country_of_origin]"
-                      name="country_of_origin" />
                     <outputColumn
                       refId="Package\Tabla DimProduct\Origen de ADO NET.Outputs[Salida de error de origen de ADO NET].Columns[ErrorCode]"
                       dataType="i4"
@@ -673,44 +582,42 @@ left outer join jsonb_each_text(pt.description_sale) ds on true limit 100</prope
     design-time-name="Package\Tabla DimProduct">
     <LayoutInfo>
       <GraphLayout
-        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
-        <NodeLayout
-          Size="179,42"
-          Id="Package\Tabla DimProduct\Origen de ADO NET"
-          TopLeft="465,71" />
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
         <NodeLayout
           Size="183,42"
           Id="Package\Tabla DimProduct\Destino de ADO NET"
-          TopLeft="463,230" />
+          TopLeft="505,290" />
+        <NodeLayout
+          Size="179,42"
+          Id="Package\Tabla DimProduct\Origen de ADO NET"
+          TopLeft="504,123" />
         <EdgeLayout
           Id="Package\Tabla DimProduct.Paths[Salida de origen de ADO NET]"
-          TopLeft="554.5,113">
+          TopLeft="595,165">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="0,117"
+              EndConnector="0,125"
               Start="0,0"
-              End="0,109.5">
+              End="0,117.5">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,109.5" />
+                    End="0,117.5" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="-8,46.75,16,16"
-              RelativePosition="Any" />
+            <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
       </GraphLayout>
     </LayoutInfo>
   </TaskHost>
   <PipelineComponentMetadata
-    design-time-name="Package\Tabla DimProduct\Origen de ADO NET">
+    design-time-name="Package\Tabla DimProduct\Destino de ADO NET">
     <Properties>
       <Property>
         <Name>DataSourceViewID</Name>
@@ -718,7 +625,7 @@ left outer join jsonb_each_text(pt.description_sale) ds on true limit 100</prope
     </Properties>
   </PipelineComponentMetadata>
   <PipelineComponentMetadata
-    design-time-name="Package\Tabla DimProduct\Destino de ADO NET">
+    design-time-name="Package\Tabla DimProduct\Origen de ADO NET">
     <Properties>
       <Property>
         <Name>DataSourceViewID</Name>
