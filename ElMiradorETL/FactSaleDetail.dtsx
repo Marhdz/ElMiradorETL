@@ -11,10 +11,37 @@
   DTS:LocaleID="1033"
   DTS:ObjectName="FactSaleDetail"
   DTS:PackageType="5"
-  DTS:VersionBuild="1"
-  DTS:VersionGUID="{6AFCFFAE-A0E4-40D8-86A6-1AB0BD39AD59}">
+  DTS:VersionBuild="3"
+  DTS:VersionGUID="{48364F72-7AD5-4D7E-819A-68AE69F1DD2E}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
+  <DTS:ConnectionManagers>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[CLL\SQLEXPRESS.FarmaciaMiradorDW]"
+      DTS:CreationName="ADO.NET:System.Data.SqlClient.SqlConnection, System.Data, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089"
+      DTS:DTSID="{8318F1CB-B713-47A7-A457-C46CA2A5E6CB}"
+      DTS:ObjectName="CLL\SQLEXPRESS.FarmaciaMiradorDW">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectionString="Data Source=CLL\SQLEXPRESS;Initial Catalog=FarmaciaMiradorDW;Integrated Security=True;Encrypt=False;Application Name=SSIS-FactSaleDetail-{8318F1CB-B713-47A7-A457-C46CA2A5E6CB}CLL\SQLEXPRESS.FarmaciaMiradorDW;" />
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[PostgreSQL35W.openpgadmin]"
+      DTS:CreationName="ADO.NET:System.Data.Odbc.OdbcConnection, System.Data, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089"
+      DTS:DTSID="{FEFC658E-53FB-4E28-921F-A57F09397EFB}"
+      DTS:ObjectName="PostgreSQL35W.openpgadmin">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectionString="uid=openpgadmin;Dsn=PostgreSQL35W;">
+          <DTS:Password
+            DTS:Name="pwd"
+            Sensitive="1"
+            Encrypted="1">AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAASQhfRqDEDkOYTZFasgjSZgAAAAAIAAAARABUAFMAAAAQZgAAAAEAACAAAAC5UJjg9tE/kzQfeZIwmoECXEnOQckMQPCUjZdK2NjL/AAAAAAOgAAAAAIAACAAAADPOUo7UDQdVQQnBDhP3kPVlxKrc/76JZtk/Rhgtd4ydyAAAADJQZOF0atB6sppRG6liLymyXIY0EeZYUV3Pp6sC3OywEAAAADumfE979/zIzxbtSaoYwgaxVZC7KXHnr+eHDXgDfiO5PrtwRi+A8IqsB1EVZDNxp5Gw1yVomvN0LHTJCy8PwBe</DTS:Password>
+        </DTS:ConnectionManager>
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+  </DTS:ConnectionManagers>
   <DTS:Variables />
   <DTS:Executables>
     <DTS:Executable
