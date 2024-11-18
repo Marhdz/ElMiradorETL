@@ -1,7 +1,7 @@
 
 create table DimDate (
 dateKey int not null,
-date smalldatetime,
+date date,
 dayOfWeek tinyint,
 dayOfMonth tinyint,
 dayOfYear smallint,

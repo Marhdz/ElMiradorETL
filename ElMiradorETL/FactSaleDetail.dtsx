@@ -11,8 +11,8 @@
   DTS:LocaleID="1033"
   DTS:ObjectName="FactSaleDetail"
   DTS:PackageType="5"
-  DTS:VersionBuild="3"
-  DTS:VersionGUID="{48364F72-7AD5-4D7E-819A-68AE69F1DD2E}">
+  DTS:VersionBuild="47"
+  DTS:VersionGUID="{8D269AF0-1462-4E18-A17E-E2CF8951994A}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:ConnectionManagers>
@@ -27,17 +27,29 @@
       </DTS:ObjectData>
     </DTS:ConnectionManager>
     <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[OLEDB FarmaciaMiradorDW]"
+      DTS:CreationName="OLEDB"
+      DTS:DTSID="{50BD5F58-4344-4628-90A6-455327BADAFF}"
+      DTS:ObjectName="OLEDB FarmaciaMiradorDW">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectRetryCount="1"
+          DTS:ConnectRetryInterval="5"
+          DTS:ConnectionString="Data Source=CLL\SQLEXPRESS;Initial Catalog=FarmaciaMiradorDW;Provider=SQLOLEDB.1;Integrated Security=SSPI;Application Name=SSIS-FactSaleDetail-{50BD5F58-4344-4628-90A6-455327BADAFF}CLL\SQLEXPRESS.FarmaciaMiradorDW1;Auto Translate=False;" />
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+    <DTS:ConnectionManager
       DTS:refId="Package.ConnectionManagers[PostgreSQL35W.openpgadmin]"
       DTS:CreationName="ADO.NET:System.Data.Odbc.OdbcConnection, System.Data, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089"
-      DTS:DTSID="{FEFC658E-53FB-4E28-921F-A57F09397EFB}"
+      DTS:DTSID="{02C63D52-FE24-4D42-9BBC-06D88ACBA6C7}"
       DTS:ObjectName="PostgreSQL35W.openpgadmin">
       <DTS:ObjectData>
         <DTS:ConnectionManager
-          DTS:ConnectionString="uid=openpgadmin;Dsn=PostgreSQL35W;">
+          DTS:ConnectionString="server=localhost;uid=openpgadmin;Dsn=PostgreSQL35W;database=CopiaFarmacia;port=5432;sslmode=disable;readonly=0;protocol=7.4;fakeoidindex=0;showoidcolumn=0;rowversioning=0;showsystemtables=0;fetch=100;unknownsizes=0;maxvarcharsize=255;maxlongvarcharsize=8190;debug=0;commlog=0;usedeclarefetch=0;textaslongvarchar=1;unknownsaslongvarchar=0;boolsaschar=1;parse=0;lfconversion=1;updatablecursors=1;trueisminus1=0;bi=0;byteaaslongvarbinary=1;useserversideprepare=1;lowercaseidentifier=0;d6=-101;optionalerrors=0;fetchrefcursors=0;xaopt=1;">
           <DTS:Password
             DTS:Name="pwd"
             Sensitive="1"
-            Encrypted="1">AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAASQhfRqDEDkOYTZFasgjSZgAAAAAIAAAARABUAFMAAAAQZgAAAAEAACAAAAC5UJjg9tE/kzQfeZIwmoECXEnOQckMQPCUjZdK2NjL/AAAAAAOgAAAAAIAACAAAADPOUo7UDQdVQQnBDhP3kPVlxKrc/76JZtk/Rhgtd4ydyAAAADJQZOF0atB6sppRG6liLymyXIY0EeZYUV3Pp6sC3OywEAAAADumfE979/zIzxbtSaoYwgaxVZC7KXHnr+eHDXgDfiO5PrtwRi+A8IqsB1EVZDNxp5Gw1yVomvN0LHTJCy8PwBe</DTS:Password>
+            Encrypted="1">AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAASQhfRqDEDkOYTZFasgjSZgAAAAAIAAAARABUAFMAAAAQZgAAAAEAACAAAABf0ZVVsFbJTM8PbPiiT0oiUHWT2RjYdQ1xCYhv5YrDrgAAAAAOgAAAAAIAACAAAAAApD3vzzVWvhKWhHu8z+m3ks3JV+FrSgZf4EOOsI0TiSAAAAApASUB/2jqkPLhSkutnKl3jSEUbwsuqE/Qmh4PoGUcj0AAAADhq8V3BnRUJfd/eQrp3ym1mTjkiVs03VH1iLLfKwFlT807dCG2YSI8IhFEiY4W1JcvczXpP4BbUPcinZ4Km4qQ</DTS:Password>
         </DTS:ConnectionManager>
       </DTS:ObjectData>
     </DTS:ConnectionManager>
@@ -56,10 +68,1495 @@
       <DTS:Variables />
       <DTS:ObjectData>
         <pipeline
-          version="1" />
+          version="1">
+          <components>
+            <component
+              refId="Package\Data Flow Task\Surrogada de fecha"
+              componentClassID="Microsoft.Lookup"
+              contactInfo="Lookup;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;6"
+              description="Joins additional columns to the data flow by looking up values in a table. For example, join to the 'employee id' column the employees table to get 'hire date' and 'employee name'. We recommend this transformation when the lookup table can fit into memory."
+              name="Surrogada de fecha"
+              usesDispositions="true"
+              version="6">
+              <properties>
+                <property
+                  dataType="System.String"
+                  description="Specifies the SQL statement that generates the lookup table."
+                  expressionType="Notify"
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">select * from [dbo].[DimDate]</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies a SQL statement that uses parameters to generate the lookup table."
+                  expressionType="Notify"
+                  name="SqlCommandParam"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">select * from (select * from [dbo].[DimDate]) [refTable]
+where [refTable].[date] = ?</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the type of connection used to access the reference dataset."
+                  name="ConnectionType"
+                  typeConverter="LookupConnectionType">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the cache type of the lookup table."
+                  name="CacheType"
+                  typeConverter="CacheType">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies how the Lookup transformation handles rows without matching entries in the reference data set."
+                  name="NoMatchBehavior"
+                  typeConverter="LookupNoMatchBehavior">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the percentage of the cache that is allocated for rows with no matching entries in the reference dataset."
+                  name="NoMatchCachePercentage">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Maximum Memory Usage for Reference Cache on a 32 bit platform."
+                  name="MaxMemoryUsage">25</property>
+                <property
+                  dataType="System.Int64"
+                  description="Maximum Memory Usage for Reference Cache on a 64 bit platform."
+                  name="MaxMemoryUsage64">25</property>
+                <property
+                  dataType="System.String"
+                  description="Indicates whether to reference metadata in an XML format."
+                  name="ReferenceMetadataXml">&lt;referenceMetadata&gt;&lt;referenceColumns&gt;&lt;referenceColumn name="dateKey" dataType="DT_I4" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="date" dataType="DT_WSTR" length="10" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="dayOfWeek" dataType="DT_UI1" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="dayOfMonth" dataType="DT_UI1" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="dayOfYear" dataType="DT_I2" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="nameOfDay" dataType="DT_STR" length="12" precision="0" scale="0" codePage="1252"/&gt;&lt;referenceColumn name="weekNumberByYear" dataType="DT_UI1" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="weekNumber" dataType="DT_I2" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="weekFirstDay" dataType="DT_DBTIMESTAMP" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="weekFirstDayKey" dataType="DT_I4" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="monthNumber" dataType="DT_UI1" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="monthName" dataType="DT_STR" length="12" precision="0" scale="0" codePage="1252"/&gt;&lt;referenceColumn name="year" dataType="DT_I2" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;/referenceColumns&gt;&lt;/referenceMetadata&gt;</property>
+                <property
+                  containsID="true"
+                  dataType="System.String"
+                  description="Specifies the list of lineage identifiers that map to the parameters that the SQL statement in the SQLCommand property uses. Entries in the list are separated by semicolons."
+                  name="ParameterMap">#{Package\Data Flow Task\Tabla pos_order_line pg.Outputs[Salida de origen de ADO NET].Columns[createDate]};</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Determines whether duplicate keys in the reference data should be treated as errors when full cache mode is used."
+                  name="TreatDuplicateKeysAsError">false</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Data Flow Task\Surrogada de fecha.Connections[OleDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[OLEDB FarmaciaMiradorDW]"
+                  connectionManagerRefId="Package.ConnectionManagers[OLEDB FarmaciaMiradorDW]"
+                  description="Connection manager used to access lookup data."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\Data Flow Task\Surrogada de fecha.Inputs[Lookup Input]"
+                  name="Lookup Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Data Flow Task\Surrogada de fecha.Inputs[Lookup Input].Columns[createDate]"
+                      cachedDataType="wstr"
+                      cachedLength="50"
+                      cachedName="createDate"
+                      lineageId="Package\Data Flow Task\Tabla pos_order_line pg.Outputs[Salida de origen de ADO NET].Columns[createDate]">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          description="Specifies the column in the reference table that a column joins."
+                          name="JoinToReferenceColumn">date</property>
+                        <property
+                          dataType="System.Null"
+                          description="Specifies the column in the reference table from which a column is copied."
+                          name="CopyFromReferenceColumn" />
+                      </properties>
+                    </inputColumn>
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Data Flow Task\Surrogada de fecha.Outputs[Lookup Match Output]"
+                  errorOrTruncationOperation="Lookup"
+                  errorRowDisposition="FailComponent"
+                  exclusionGroup="1"
+                  name="Lookup Match Output"
+                  synchronousInputId="Package\Data Flow Task\Surrogada de fecha.Inputs[Lookup Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Data Flow Task\Surrogada de fecha.Outputs[Lookup Match Output].Columns[dateKey]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Copy Column"
+                      lineageId="Package\Data Flow Task\Surrogada de fecha.Outputs[Lookup Match Output].Columns[dateKey]"
+                      name="dateKey"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          description="Specifies the column in the reference table from which a column is copied."
+                          name="CopyFromReferenceColumn">dateKey</property>
+                      </properties>
+                    </outputColumn>
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\Data Flow Task\Surrogada de fecha.Outputs[Lookup No Match Output]"
+                  description="The Lookup output that handles rows with no matching entries in the reference dataset. Use this output when the NoMatchBehavior property is set to &quot;Send rows with no matching entries to the no match output.&quot;"
+                  exclusionGroup="1"
+                  name="Lookup No Match Output"
+                  synchronousInputId="Package\Data Flow Task\Surrogada de fecha.Inputs[Lookup Input]">
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\Data Flow Task\Surrogada de fecha.Outputs[Lookup Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="Lookup Error Output"
+                  synchronousInputId="Package\Data Flow Task\Surrogada de fecha.Inputs[Lookup Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Data Flow Task\Surrogada de fecha.Outputs[Lookup Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Data Flow Task\Surrogada de fecha.Outputs[Lookup Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\Surrogada de fecha.Outputs[Lookup Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Data Flow Task\Surrogada de fecha.Outputs[Lookup Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Data Flow Task\Surrogada de product"
+              componentClassID="Microsoft.Lookup"
+              contactInfo="Lookup;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;6"
+              description="Joins additional columns to the data flow by looking up values in a table. For example, join to the 'employee id' column the employees table to get 'hire date' and 'employee name'. We recommend this transformation when the lookup table can fit into memory."
+              name="Surrogada de product"
+              usesDispositions="true"
+              version="6">
+              <properties>
+                <property
+                  dataType="System.String"
+                  description="Specifies the SQL statement that generates the lookup table."
+                  expressionType="Notify"
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">select * from [dbo].[DimProduct]</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies a SQL statement that uses parameters to generate the lookup table."
+                  expressionType="Notify"
+                  name="SqlCommandParam"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">select * from (select * from [dbo].[DimProduct]) [refTable]
+where [refTable].[productID] = ?</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the type of connection used to access the reference dataset."
+                  name="ConnectionType"
+                  typeConverter="LookupConnectionType">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the cache type of the lookup table."
+                  name="CacheType"
+                  typeConverter="CacheType">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies how the Lookup transformation handles rows without matching entries in the reference data set."
+                  name="NoMatchBehavior"
+                  typeConverter="LookupNoMatchBehavior">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the percentage of the cache that is allocated for rows with no matching entries in the reference dataset."
+                  name="NoMatchCachePercentage">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Maximum Memory Usage for Reference Cache on a 32 bit platform."
+                  name="MaxMemoryUsage">25</property>
+                <property
+                  dataType="System.Int64"
+                  description="Maximum Memory Usage for Reference Cache on a 64 bit platform."
+                  name="MaxMemoryUsage64">25</property>
+                <property
+                  dataType="System.String"
+                  description="Indicates whether to reference metadata in an XML format."
+                  name="ReferenceMetadataXml">&lt;referenceMetadata&gt;&lt;referenceColumns&gt;&lt;referenceColumn name="productKey" dataType="DT_I4" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="productID" dataType="DT_I4" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="productName" dataType="DT_STR" length="255" precision="0" scale="0" codePage="1252"/&gt;&lt;referenceColumn name="category" dataType="DT_STR" length="255" precision="0" scale="0" codePage="1252"/&gt;&lt;referenceColumn name="unitOfMeasure" dataType="DT_STR" length="255" precision="0" scale="0" codePage="1252"/&gt;&lt;referenceColumn name="type" dataType="DT_STR" length="255" precision="0" scale="0" codePage="1252"/&gt;&lt;referenceColumn name="listPrice" dataType="DT_R8" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="descriptionSale" dataType="DT_STR" length="500" precision="0" scale="0" codePage="1252"/&gt;&lt;referenceColumn name="active" dataType="DT_STR" length="255" precision="0" scale="0" codePage="1252"/&gt;&lt;/referenceColumns&gt;&lt;/referenceMetadata&gt;</property>
+                <property
+                  containsID="true"
+                  dataType="System.String"
+                  description="Specifies the list of lineage identifiers that map to the parameters that the SQL statement in the SQLCommand property uses. Entries in the list are separated by semicolons."
+                  name="ParameterMap">#{Package\Data Flow Task\228:invalid};</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Determines whether duplicate keys in the reference data should be treated as errors when full cache mode is used."
+                  name="TreatDuplicateKeysAsError">false</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Data Flow Task\Surrogada de product.Connections[OleDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[OLEDB FarmaciaMiradorDW]"
+                  connectionManagerRefId="Package.ConnectionManagers[OLEDB FarmaciaMiradorDW]"
+                  description="Connection manager used to access lookup data."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\Data Flow Task\Surrogada de product.Inputs[Lookup Input]"
+                  name="Lookup Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Data Flow Task\Surrogada de product.Inputs[Lookup Input].Columns[productId]"
+                      cachedDataType="i4"
+                      cachedName="productId"
+                      lineageId="Package\Data Flow Task\Tabla pos_order_line pg.Outputs[Salida de origen de ADO NET].Columns[productId]">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          description="Specifies the column in the reference table that a column joins."
+                          name="JoinToReferenceColumn">productID</property>
+                        <property
+                          dataType="System.Null"
+                          description="Specifies the column in the reference table from which a column is copied."
+                          name="CopyFromReferenceColumn" />
+                      </properties>
+                    </inputColumn>
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Data Flow Task\Surrogada de product.Outputs[Lookup Match Output]"
+                  errorOrTruncationOperation="Lookup"
+                  errorRowDisposition="FailComponent"
+                  exclusionGroup="1"
+                  name="Lookup Match Output"
+                  synchronousInputId="Package\Data Flow Task\Surrogada de product.Inputs[Lookup Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Data Flow Task\Surrogada de product.Outputs[Lookup Match Output].Columns[productKey]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Copy Column"
+                      lineageId="Package\Data Flow Task\Surrogada de product.Outputs[Lookup Match Output].Columns[productKey]"
+                      name="productKey"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          description="Specifies the column in the reference table from which a column is copied."
+                          name="CopyFromReferenceColumn">productKey</property>
+                      </properties>
+                    </outputColumn>
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\Data Flow Task\Surrogada de product.Outputs[Lookup No Match Output]"
+                  description="The Lookup output that handles rows with no matching entries in the reference dataset. Use this output when the NoMatchBehavior property is set to &quot;Send rows with no matching entries to the no match output.&quot;"
+                  exclusionGroup="1"
+                  name="Lookup No Match Output"
+                  synchronousInputId="Package\Data Flow Task\Surrogada de product.Inputs[Lookup Input]">
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\Data Flow Task\Surrogada de product.Outputs[Lookup Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="Lookup Error Output"
+                  synchronousInputId="Package\Data Flow Task\Surrogada de product.Inputs[Lookup Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Data Flow Task\Surrogada de product.Outputs[Lookup Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Data Flow Task\Surrogada de product.Outputs[Lookup Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\Surrogada de product.Outputs[Lookup Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Data Flow Task\Surrogada de product.Outputs[Lookup Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Data Flow Task\Surrogada de programa"
+              componentClassID="Microsoft.Lookup"
+              contactInfo="Lookup;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;6"
+              description="Joins additional columns to the data flow by looking up values in a table. For example, join to the 'employee id' column the employees table to get 'hire date' and 'employee name'. We recommend this transformation when the lookup table can fit into memory."
+              name="Surrogada de programa"
+              usesDispositions="true"
+              version="6">
+              <properties>
+                <property
+                  dataType="System.String"
+                  description="Specifies the SQL statement that generates the lookup table."
+                  expressionType="Notify"
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">select * from [dbo].[DimProgram]</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies a SQL statement that uses parameters to generate the lookup table."
+                  expressionType="Notify"
+                  name="SqlCommandParam"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">select * from (select * from [dbo].[DimProgram]) [refTable]
+where [refTable].[programID] = ?</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the type of connection used to access the reference dataset."
+                  name="ConnectionType"
+                  typeConverter="LookupConnectionType">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the cache type of the lookup table."
+                  name="CacheType"
+                  typeConverter="CacheType">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies how the Lookup transformation handles rows without matching entries in the reference data set."
+                  name="NoMatchBehavior"
+                  typeConverter="LookupNoMatchBehavior">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the percentage of the cache that is allocated for rows with no matching entries in the reference dataset."
+                  name="NoMatchCachePercentage">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Maximum Memory Usage for Reference Cache on a 32 bit platform."
+                  name="MaxMemoryUsage">25</property>
+                <property
+                  dataType="System.Int64"
+                  description="Maximum Memory Usage for Reference Cache on a 64 bit platform."
+                  name="MaxMemoryUsage64">25</property>
+                <property
+                  dataType="System.String"
+                  description="Indicates whether to reference metadata in an XML format."
+                  name="ReferenceMetadataXml">&lt;referenceMetadata&gt;&lt;referenceColumns&gt;&lt;referenceColumn name="programKey" dataType="DT_I4" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="programID" dataType="DT_I4" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="rewardType" dataType="DT_STR" length="50" precision="0" scale="0" codePage="1252"/&gt;&lt;referenceColumn name="discountMode" dataType="DT_STR" length="50" precision="0" scale="0" codePage="1252"/&gt;&lt;referenceColumn name="couponDescription" dataType="DT_STR" length="250" precision="0" scale="0" codePage="1252"/&gt;&lt;referenceColumn name="active" dataType="DT_STR" length="50" precision="0" scale="0" codePage="1252"/&gt;&lt;referenceColumn name="discountPercent" dataType="DT_R8" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="minimumQty" dataType="DT_I4" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="maxUsage" dataType="DT_I4" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="campaingType" dataType="DT_STR" length="50" precision="0" scale="0" codePage="1252"/&gt;&lt;referenceColumn name="campaingName" dataType="DT_STR" length="150" precision="0" scale="0" codePage="1252"/&gt;&lt;referenceColumn name="startDate" dataType="DT_WSTR" length="10" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="endDate" dataType="DT_WSTR" length="10" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="isLimitedCampaing" dataType="DT_STR" length="50" precision="0" scale="0" codePage="1252"/&gt;&lt;/referenceColumns&gt;&lt;/referenceMetadata&gt;</property>
+                <property
+                  containsID="true"
+                  dataType="System.String"
+                  description="Specifies the list of lineage identifiers that map to the parameters that the SQL statement in the SQLCommand property uses. Entries in the list are separated by semicolons."
+                  name="ParameterMap">#{Package\Data Flow Task\229:invalid};</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Determines whether duplicate keys in the reference data should be treated as errors when full cache mode is used."
+                  name="TreatDuplicateKeysAsError">false</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Data Flow Task\Surrogada de programa.Connections[OleDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[OLEDB FarmaciaMiradorDW]"
+                  connectionManagerRefId="Package.ConnectionManagers[OLEDB FarmaciaMiradorDW]"
+                  description="Connection manager used to access lookup data."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\Data Flow Task\Surrogada de programa.Inputs[Lookup Input]"
+                  name="Lookup Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Data Flow Task\Surrogada de programa.Inputs[Lookup Input].Columns[programId]"
+                      cachedDataType="i4"
+                      cachedName="programId"
+                      lineageId="Package\Data Flow Task\Tabla pos_order_line pg.Outputs[Salida de origen de ADO NET].Columns[programId]">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          description="Specifies the column in the reference table that a column joins."
+                          name="JoinToReferenceColumn">programID</property>
+                        <property
+                          dataType="System.Null"
+                          description="Specifies the column in the reference table from which a column is copied."
+                          name="CopyFromReferenceColumn" />
+                      </properties>
+                    </inputColumn>
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Data Flow Task\Surrogada de programa.Outputs[Lookup Match Output]"
+                  errorOrTruncationOperation="Lookup"
+                  errorRowDisposition="FailComponent"
+                  exclusionGroup="1"
+                  name="Lookup Match Output"
+                  synchronousInputId="Package\Data Flow Task\Surrogada de programa.Inputs[Lookup Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Data Flow Task\Surrogada de programa.Outputs[Lookup Match Output].Columns[programKey]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Copy Column"
+                      lineageId="Package\Data Flow Task\Surrogada de programa.Outputs[Lookup Match Output].Columns[programKey]"
+                      name="programKey"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          description="Specifies the column in the reference table from which a column is copied."
+                          name="CopyFromReferenceColumn">programKey</property>
+                      </properties>
+                    </outputColumn>
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\Data Flow Task\Surrogada de programa.Outputs[Lookup No Match Output]"
+                  description="The Lookup output that handles rows with no matching entries in the reference dataset. Use this output when the NoMatchBehavior property is set to &quot;Send rows with no matching entries to the no match output.&quot;"
+                  exclusionGroup="1"
+                  name="Lookup No Match Output"
+                  synchronousInputId="Package\Data Flow Task\Surrogada de programa.Inputs[Lookup Input]">
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\Data Flow Task\Surrogada de programa.Outputs[Lookup Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="Lookup Error Output"
+                  synchronousInputId="Package\Data Flow Task\Surrogada de programa.Inputs[Lookup Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Data Flow Task\Surrogada de programa.Outputs[Lookup Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Data Flow Task\Surrogada de programa.Outputs[Lookup Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\Surrogada de programa.Outputs[Lookup Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Data Flow Task\Surrogada de programa.Outputs[Lookup Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Data Flow Task\Surrogada de sucursal"
+              componentClassID="Microsoft.Lookup"
+              contactInfo="Lookup;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;6"
+              description="Joins additional columns to the data flow by looking up values in a table. For example, join to the 'employee id' column the employees table to get 'hire date' and 'employee name'. We recommend this transformation when the lookup table can fit into memory."
+              name="Surrogada de sucursal"
+              usesDispositions="true"
+              version="6">
+              <properties>
+                <property
+                  dataType="System.String"
+                  description="Specifies the SQL statement that generates the lookup table."
+                  expressionType="Notify"
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">select * from [dbo].[DimStore]</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies a SQL statement that uses parameters to generate the lookup table."
+                  expressionType="Notify"
+                  name="SqlCommandParam"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">select * from (select * from [dbo].[DimStore]) [refTable]
+where [refTable].[storeID] = ?</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the type of connection used to access the reference dataset."
+                  name="ConnectionType"
+                  typeConverter="LookupConnectionType">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the cache type of the lookup table."
+                  name="CacheType"
+                  typeConverter="CacheType">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies how the Lookup transformation handles rows without matching entries in the reference data set."
+                  name="NoMatchBehavior"
+                  typeConverter="LookupNoMatchBehavior">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the percentage of the cache that is allocated for rows with no matching entries in the reference dataset."
+                  name="NoMatchCachePercentage">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Maximum Memory Usage for Reference Cache on a 32 bit platform."
+                  name="MaxMemoryUsage">25</property>
+                <property
+                  dataType="System.Int64"
+                  description="Maximum Memory Usage for Reference Cache on a 64 bit platform."
+                  name="MaxMemoryUsage64">25</property>
+                <property
+                  dataType="System.String"
+                  description="Indicates whether to reference metadata in an XML format."
+                  name="ReferenceMetadataXml">&lt;referenceMetadata&gt;&lt;referenceColumns&gt;&lt;referenceColumn name="storeKey" dataType="DT_I4" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="storeID" dataType="DT_I4" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="storeName" dataType="DT_STR" length="100" precision="0" scale="0" codePage="1252"/&gt;&lt;/referenceColumns&gt;&lt;/referenceMetadata&gt;</property>
+                <property
+                  containsID="true"
+                  dataType="System.String"
+                  description="Specifies the list of lineage identifiers that map to the parameters that the SQL statement in the SQLCommand property uses. Entries in the list are separated by semicolons."
+                  name="ParameterMap">#{Package\Data Flow Task\Tabla pos_order_line pg.Outputs[Salida de origen de ADO NET].Columns[storeId]};</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Determines whether duplicate keys in the reference data should be treated as errors when full cache mode is used."
+                  name="TreatDuplicateKeysAsError">false</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Data Flow Task\Surrogada de sucursal.Connections[OleDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[OLEDB FarmaciaMiradorDW]"
+                  connectionManagerRefId="Package.ConnectionManagers[OLEDB FarmaciaMiradorDW]"
+                  description="Connection manager used to access lookup data."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\Data Flow Task\Surrogada de sucursal.Inputs[Lookup Input]"
+                  name="Lookup Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Data Flow Task\Surrogada de sucursal.Inputs[Lookup Input].Columns[storeId]"
+                      cachedDataType="i4"
+                      cachedName="storeId"
+                      lineageId="Package\Data Flow Task\Tabla pos_order_line pg.Outputs[Salida de origen de ADO NET].Columns[storeId]">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          description="Specifies the column in the reference table that a column joins."
+                          name="JoinToReferenceColumn">storeID</property>
+                        <property
+                          dataType="System.Null"
+                          description="Specifies the column in the reference table from which a column is copied."
+                          name="CopyFromReferenceColumn" />
+                      </properties>
+                    </inputColumn>
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Data Flow Task\Surrogada de sucursal.Outputs[Lookup Match Output]"
+                  errorOrTruncationOperation="Lookup"
+                  errorRowDisposition="FailComponent"
+                  exclusionGroup="1"
+                  name="Lookup Match Output"
+                  synchronousInputId="Package\Data Flow Task\Surrogada de sucursal.Inputs[Lookup Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Data Flow Task\Surrogada de sucursal.Outputs[Lookup Match Output].Columns[storeKey]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Copy Column"
+                      lineageId="Package\Data Flow Task\Surrogada de sucursal.Outputs[Lookup Match Output].Columns[storeKey]"
+                      name="storeKey"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          description="Specifies the column in the reference table from which a column is copied."
+                          name="CopyFromReferenceColumn">storeKey</property>
+                      </properties>
+                    </outputColumn>
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\Data Flow Task\Surrogada de sucursal.Outputs[Lookup No Match Output]"
+                  description="The Lookup output that handles rows with no matching entries in the reference dataset. Use this output when the NoMatchBehavior property is set to &quot;Send rows with no matching entries to the no match output.&quot;"
+                  exclusionGroup="1"
+                  name="Lookup No Match Output"
+                  synchronousInputId="Package\Data Flow Task\Surrogada de sucursal.Inputs[Lookup Input]">
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\Data Flow Task\Surrogada de sucursal.Outputs[Lookup Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="Lookup Error Output"
+                  synchronousInputId="Package\Data Flow Task\Surrogada de sucursal.Inputs[Lookup Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Data Flow Task\Surrogada de sucursal.Outputs[Lookup Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Data Flow Task\Surrogada de sucursal.Outputs[Lookup Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\Surrogada de sucursal.Outputs[Lookup Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Data Flow Task\Surrogada de sucursal.Outputs[Lookup Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Data Flow Task\Surrogada de venta"
+              componentClassID="Microsoft.Lookup"
+              contactInfo="Lookup;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;6"
+              description="Joins additional columns to the data flow by looking up values in a table. For example, join to the 'employee id' column the employees table to get 'hire date' and 'employee name'. We recommend this transformation when the lookup table can fit into memory."
+              name="Surrogada de venta"
+              usesDispositions="true"
+              version="6">
+              <properties>
+                <property
+                  dataType="System.String"
+                  description="Specifies the SQL statement that generates the lookup table."
+                  expressionType="Notify"
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">select * from [dbo].[DimSale]</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies a SQL statement that uses parameters to generate the lookup table."
+                  expressionType="Notify"
+                  name="SqlCommandParam"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">select * from (select * from [dbo].[DimSale]) [refTable]
+where [refTable].[saleID] = ?</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the type of connection used to access the reference dataset."
+                  name="ConnectionType"
+                  typeConverter="LookupConnectionType">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the cache type of the lookup table."
+                  name="CacheType"
+                  typeConverter="CacheType">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies how the Lookup transformation handles rows without matching entries in the reference data set."
+                  name="NoMatchBehavior"
+                  typeConverter="LookupNoMatchBehavior">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the percentage of the cache that is allocated for rows with no matching entries in the reference dataset."
+                  name="NoMatchCachePercentage">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Maximum Memory Usage for Reference Cache on a 32 bit platform."
+                  name="MaxMemoryUsage">25</property>
+                <property
+                  dataType="System.Int64"
+                  description="Maximum Memory Usage for Reference Cache on a 64 bit platform."
+                  name="MaxMemoryUsage64">25</property>
+                <property
+                  dataType="System.String"
+                  description="Indicates whether to reference metadata in an XML format."
+                  name="ReferenceMetadataXml">&lt;referenceMetadata&gt;&lt;referenceColumns&gt;&lt;referenceColumn name="saleKey" dataType="DT_I4" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="saleID" dataType="DT_I4" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="ticketCode" dataType="DT_STR" length="50" precision="0" scale="0" codePage="1252"/&gt;&lt;referenceColumn name="storeName" dataType="DT_STR" length="50" precision="0" scale="0" codePage="1252"/&gt;&lt;referenceColumn name="AmountTax" dataType="DT_R8" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="AmountTotal" dataType="DT_R8" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="AmountPaid" dataType="DT_R8" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="dateOrder" dataType="DT_DBTIMESTAMP" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="timeOrder" dataType="DT_STR" length="50" precision="0" scale="0" codePage="1252"/&gt;&lt;/referenceColumns&gt;&lt;/referenceMetadata&gt;</property>
+                <property
+                  containsID="true"
+                  dataType="System.String"
+                  description="Specifies the list of lineage identifiers that map to the parameters that the SQL statement in the SQLCommand property uses. Entries in the list are separated by semicolons."
+                  name="ParameterMap">#{Package\Data Flow Task\230:invalid};</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Determines whether duplicate keys in the reference data should be treated as errors when full cache mode is used."
+                  name="TreatDuplicateKeysAsError">false</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Data Flow Task\Surrogada de venta.Connections[OleDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[OLEDB FarmaciaMiradorDW]"
+                  connectionManagerRefId="Package.ConnectionManagers[OLEDB FarmaciaMiradorDW]"
+                  description="Connection manager used to access lookup data."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\Data Flow Task\Surrogada de venta.Inputs[Lookup Input]"
+                  name="Lookup Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Data Flow Task\Surrogada de venta.Inputs[Lookup Input].Columns[saleId]"
+                      cachedDataType="i4"
+                      cachedName="saleId"
+                      lineageId="Package\Data Flow Task\Tabla pos_order_line pg.Outputs[Salida de origen de ADO NET].Columns[saleId]">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          description="Specifies the column in the reference table that a column joins."
+                          name="JoinToReferenceColumn">saleID</property>
+                        <property
+                          dataType="System.Null"
+                          description="Specifies the column in the reference table from which a column is copied."
+                          name="CopyFromReferenceColumn" />
+                      </properties>
+                    </inputColumn>
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Data Flow Task\Surrogada de venta.Outputs[Lookup Match Output]"
+                  errorOrTruncationOperation="Lookup"
+                  errorRowDisposition="FailComponent"
+                  exclusionGroup="1"
+                  name="Lookup Match Output"
+                  synchronousInputId="Package\Data Flow Task\Surrogada de venta.Inputs[Lookup Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Data Flow Task\Surrogada de venta.Outputs[Lookup Match Output].Columns[saleKey]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Copy Column"
+                      lineageId="Package\Data Flow Task\Surrogada de venta.Outputs[Lookup Match Output].Columns[saleKey]"
+                      name="saleKey"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          description="Specifies the column in the reference table from which a column is copied."
+                          name="CopyFromReferenceColumn">saleKey</property>
+                      </properties>
+                    </outputColumn>
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\Data Flow Task\Surrogada de venta.Outputs[Lookup No Match Output]"
+                  description="The Lookup output that handles rows with no matching entries in the reference dataset. Use this output when the NoMatchBehavior property is set to &quot;Send rows with no matching entries to the no match output.&quot;"
+                  exclusionGroup="1"
+                  name="Lookup No Match Output"
+                  synchronousInputId="Package\Data Flow Task\Surrogada de venta.Inputs[Lookup Input]">
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\Data Flow Task\Surrogada de venta.Outputs[Lookup Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="Lookup Error Output"
+                  synchronousInputId="Package\Data Flow Task\Surrogada de venta.Inputs[Lookup Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Data Flow Task\Surrogada de venta.Outputs[Lookup Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Data Flow Task\Surrogada de venta.Outputs[Lookup Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\Surrogada de venta.Outputs[Lookup Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Data Flow Task\Surrogada de venta.Outputs[Lookup Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Data Flow Task\Tabla FactSaleDetail"
+              componentClassID="Microsoft.ManagedComponentHost"
+              contactInfo="Carga datos en una base de datos compatible con ADO.NET que use una vista o tabla de base de datos. Se cargan datos en una tabla nueva o existente. Por ejemplo, se usa un proveedor ADO.NET para ODBC para cargar datos en un destino ODBC.;Microsoft Corporation; Microsoft SQL Server; © Microsoft Corporation; Todos los derechos reservados; http://www.microsoft.com/sql/support;2"
+              description="Carga datos en una base de datos compatible con ADO.NET que use una vista o tabla de base de datos. Se cargan datos en una tabla nueva o existente. Por ejemplo, se usa un proveedor ADO.NET para ODBC para cargar datos en un destino ODBC."
+              name="Tabla FactSaleDetail"
+              usesDispositions="true"
+              version="2">
+              <properties>
+                <property
+                  dataType="System.String"
+                  description="Nombre de la tabla de la base de datos de destino."
+                  expressionType="Notify"
+                  name="TableOrViewName"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">"dbo"."FactSaleDetail"</property>
+                <property
+                  dataType="System.Int32"
+                  description="Especifique el número de filas por lote. El valor predeterminado es 0, que utiliza el mismo tamaño que el búfer interno de SSIS. "
+                  expressionType="Notify"
+                  name="BatchSize">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Número de segundos antes de que se agote el tiempo de espera de un comando. Un valor de 0 indica un tiempo de espera infinito. "
+                  expressionType="Notify"
+                  name="CommandTimeout">30</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Especifica si se debe usar la interfaz SqlBulkCopy para mejorar el rendimiento de las operaciones de inserción masiva. No todos los proveedores admiten esta interfaz."
+                  expressionType="Notify"
+                  name="UseBulkInsertWhenPossible">true</property>
+                <property
+                  dataType="System.String"
+                  name="UserComponentTypeName">Microsoft.ADONETDestination</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Data Flow Task\Tabla FactSaleDetail.Connections[IDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[CLL\SQLEXPRESS.FarmaciaMiradorDW]"
+                  connectionManagerRefId="Package.ConnectionManagers[CLL\SQLEXPRESS.FarmaciaMiradorDW]"
+                  description="Administrador de conexiones administrado"
+                  name="IDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\Data Flow Task\Tabla FactSaleDetail.Inputs[Entrada de destino de ADO NET]"
+                  errorRowDisposition="FailComponent"
+                  hasSideEffects="true"
+                  name="Entrada de destino de ADO NET">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Data Flow Task\Tabla FactSaleDetail.Inputs[Entrada de destino de ADO NET].Columns[priceUnit]"
+                      cachedDataType="numeric"
+                      cachedName="priceUnit"
+                      cachedPrecision="28"
+                      cachedScale="6"
+                      externalMetadataColumnId="Package\Data Flow Task\Tabla FactSaleDetail.Inputs[Entrada de destino de ADO NET].ExternalColumns[priceUnit]"
+                      lineageId="Package\Data Flow Task\Tabla pos_order_line pg.Outputs[Salida de origen de ADO NET].Columns[priceUnit]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task\Tabla FactSaleDetail.Inputs[Entrada de destino de ADO NET].Columns[quantity]"
+                      cachedDataType="numeric"
+                      cachedName="quantity"
+                      cachedPrecision="28"
+                      cachedScale="6"
+                      externalMetadataColumnId="Package\Data Flow Task\Tabla FactSaleDetail.Inputs[Entrada de destino de ADO NET].ExternalColumns[quantity]"
+                      lineageId="Package\Data Flow Task\Tabla pos_order_line pg.Outputs[Salida de origen de ADO NET].Columns[quantity]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task\Tabla FactSaleDetail.Inputs[Entrada de destino de ADO NET].Columns[priceSubTotal]"
+                      cachedDataType="numeric"
+                      cachedName="priceSubTotal"
+                      cachedPrecision="28"
+                      cachedScale="6"
+                      externalMetadataColumnId="Package\Data Flow Task\Tabla FactSaleDetail.Inputs[Entrada de destino de ADO NET].ExternalColumns[priceSubTotal]"
+                      lineageId="Package\Data Flow Task\Tabla pos_order_line pg.Outputs[Salida de origen de ADO NET].Columns[priceSubTotal]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task\Tabla FactSaleDetail.Inputs[Entrada de destino de ADO NET].Columns[priceSubTotalTaxIncluded]"
+                      cachedDataType="numeric"
+                      cachedName="priceSubTotalTaxIncluded"
+                      cachedPrecision="28"
+                      cachedScale="6"
+                      externalMetadataColumnId="Package\Data Flow Task\Tabla FactSaleDetail.Inputs[Entrada de destino de ADO NET].ExternalColumns[priceSubTotalTaxIncluded]"
+                      lineageId="Package\Data Flow Task\Tabla pos_order_line pg.Outputs[Salida de origen de ADO NET].Columns[priceSubTotalTaxIncluded]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task\Tabla FactSaleDetail.Inputs[Entrada de destino de ADO NET].Columns[taxes]"
+                      cachedDataType="nText"
+                      cachedName="taxes"
+                      externalMetadataColumnId="Package\Data Flow Task\Tabla FactSaleDetail.Inputs[Entrada de destino de ADO NET].ExternalColumns[taxes]"
+                      lineageId="Package\Data Flow Task\Tabla pos_order_line pg.Outputs[Salida de origen de ADO NET].Columns[taxes]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task\Tabla FactSaleDetail.Inputs[Entrada de destino de ADO NET].Columns[discount]"
+                      cachedDataType="numeric"
+                      cachedName="discount"
+                      cachedPrecision="28"
+                      cachedScale="6"
+                      externalMetadataColumnId="Package\Data Flow Task\Tabla FactSaleDetail.Inputs[Entrada de destino de ADO NET].ExternalColumns[discount]"
+                      lineageId="Package\Data Flow Task\Tabla pos_order_line pg.Outputs[Salida de origen de ADO NET].Columns[discount]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task\Tabla FactSaleDetail.Inputs[Entrada de destino de ADO NET].Columns[totalCost]"
+                      cachedDataType="numeric"
+                      cachedName="totalCost"
+                      cachedPrecision="28"
+                      cachedScale="6"
+                      externalMetadataColumnId="Package\Data Flow Task\Tabla FactSaleDetail.Inputs[Entrada de destino de ADO NET].ExternalColumns[totalCost]"
+                      lineageId="Package\Data Flow Task\Tabla pos_order_line pg.Outputs[Salida de origen de ADO NET].Columns[totalCost]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task\Tabla FactSaleDetail.Inputs[Entrada de destino de ADO NET].Columns[isRewardLine]"
+                      cachedDataType="nText"
+                      cachedName="isRewardLine"
+                      externalMetadataColumnId="Package\Data Flow Task\Tabla FactSaleDetail.Inputs[Entrada de destino de ADO NET].ExternalColumns[isRewardLine]"
+                      lineageId="Package\Data Flow Task\Tabla pos_order_line pg.Outputs[Salida de origen de ADO NET].Columns[isRewardLine]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task\Tabla FactSaleDetail.Inputs[Entrada de destino de ADO NET].Columns[pointsCost]"
+                      cachedDataType="r8"
+                      cachedName="pointsCost"
+                      externalMetadataColumnId="Package\Data Flow Task\Tabla FactSaleDetail.Inputs[Entrada de destino de ADO NET].ExternalColumns[pointsCost]"
+                      lineageId="Package\Data Flow Task\Tabla pos_order_line pg.Outputs[Salida de origen de ADO NET].Columns[pointsCost]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task\Tabla FactSaleDetail.Inputs[Entrada de destino de ADO NET].Columns[createDate]"
+                      cachedDataType="wstr"
+                      cachedLength="50"
+                      cachedName="createDate"
+                      externalMetadataColumnId="Package\Data Flow Task\Tabla FactSaleDetail.Inputs[Entrada de destino de ADO NET].ExternalColumns[createDate]"
+                      lineageId="Package\Data Flow Task\Tabla pos_order_line pg.Outputs[Salida de origen de ADO NET].Columns[createDate]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task\Tabla FactSaleDetail.Inputs[Entrada de destino de ADO NET].Columns[productKey]"
+                      cachedDataType="i4"
+                      cachedName="productKey"
+                      externalMetadataColumnId="Package\Data Flow Task\Tabla FactSaleDetail.Inputs[Entrada de destino de ADO NET].ExternalColumns[productKey]"
+                      lineageId="Package\Data Flow Task\Surrogada de product.Outputs[Lookup Match Output].Columns[productKey]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task\Tabla FactSaleDetail.Inputs[Entrada de destino de ADO NET].Columns[programKey]"
+                      cachedDataType="i4"
+                      cachedName="programKey"
+                      externalMetadataColumnId="Package\Data Flow Task\Tabla FactSaleDetail.Inputs[Entrada de destino de ADO NET].ExternalColumns[programKey]"
+                      lineageId="Package\Data Flow Task\Surrogada de programa.Outputs[Lookup Match Output].Columns[programKey]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task\Tabla FactSaleDetail.Inputs[Entrada de destino de ADO NET].Columns[saleKey]"
+                      cachedDataType="i4"
+                      cachedName="saleKey"
+                      externalMetadataColumnId="Package\Data Flow Task\Tabla FactSaleDetail.Inputs[Entrada de destino de ADO NET].ExternalColumns[saleKey]"
+                      lineageId="Package\Data Flow Task\Surrogada de venta.Outputs[Lookup Match Output].Columns[saleKey]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task\Tabla FactSaleDetail.Inputs[Entrada de destino de ADO NET].Columns[dateKey]"
+                      cachedDataType="i4"
+                      cachedName="dateKey"
+                      externalMetadataColumnId="Package\Data Flow Task\Tabla FactSaleDetail.Inputs[Entrada de destino de ADO NET].ExternalColumns[dateKey]"
+                      lineageId="Package\Data Flow Task\Surrogada de fecha.Outputs[Lookup Match Output].Columns[dateKey]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task\Tabla FactSaleDetail.Inputs[Entrada de destino de ADO NET].Columns[storeKey]"
+                      cachedDataType="i4"
+                      cachedName="storeKey"
+                      externalMetadataColumnId="Package\Data Flow Task\Tabla FactSaleDetail.Inputs[Entrada de destino de ADO NET].ExternalColumns[storeKey]"
+                      lineageId="Package\Data Flow Task\Surrogada de sucursal.Outputs[Lookup Match Output].Columns[storeKey]" />
+                  </inputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\Tabla FactSaleDetail.Inputs[Entrada de destino de ADO NET].ExternalColumns[dateKey]"
+                      dataType="i4"
+                      name="dateKey" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\Tabla FactSaleDetail.Inputs[Entrada de destino de ADO NET].ExternalColumns[productKey]"
+                      dataType="i4"
+                      name="productKey" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\Tabla FactSaleDetail.Inputs[Entrada de destino de ADO NET].ExternalColumns[saleKey]"
+                      dataType="i4"
+                      name="saleKey" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\Tabla FactSaleDetail.Inputs[Entrada de destino de ADO NET].ExternalColumns[programKey]"
+                      dataType="i4"
+                      name="programKey" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\Tabla FactSaleDetail.Inputs[Entrada de destino de ADO NET].ExternalColumns[storeKey]"
+                      dataType="i4"
+                      name="storeKey" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\Tabla FactSaleDetail.Inputs[Entrada de destino de ADO NET].ExternalColumns[priceUnit]"
+                      dataType="r8"
+                      name="priceUnit" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\Tabla FactSaleDetail.Inputs[Entrada de destino de ADO NET].ExternalColumns[quantity]"
+                      dataType="i4"
+                      name="quantity" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\Tabla FactSaleDetail.Inputs[Entrada de destino de ADO NET].ExternalColumns[priceSubTotal]"
+                      dataType="r8"
+                      name="priceSubTotal" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\Tabla FactSaleDetail.Inputs[Entrada de destino de ADO NET].ExternalColumns[priceSubTotalTaxIncluded]"
+                      dataType="r8"
+                      name="priceSubTotalTaxIncluded" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\Tabla FactSaleDetail.Inputs[Entrada de destino de ADO NET].ExternalColumns[taxes]"
+                      dataType="wstr"
+                      length="10"
+                      name="taxes" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\Tabla FactSaleDetail.Inputs[Entrada de destino de ADO NET].ExternalColumns[discount]"
+                      dataType="r8"
+                      name="discount" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\Tabla FactSaleDetail.Inputs[Entrada de destino de ADO NET].ExternalColumns[totalCost]"
+                      dataType="r8"
+                      name="totalCost" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\Tabla FactSaleDetail.Inputs[Entrada de destino de ADO NET].ExternalColumns[isRewardLine]"
+                      dataType="wstr"
+                      length="25"
+                      name="isRewardLine" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\Tabla FactSaleDetail.Inputs[Entrada de destino de ADO NET].ExternalColumns[pointsCost]"
+                      dataType="wstr"
+                      length="20"
+                      name="pointsCost" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\Tabla FactSaleDetail.Inputs[Entrada de destino de ADO NET].ExternalColumns[createDate]"
+                      dataType="dbTimeStamp"
+                      name="createDate" />
+                  </externalMetadataColumns>
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Data Flow Task\Tabla FactSaleDetail.Outputs[Salida de error de destino de ADO NET]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="Salida de error de destino de ADO NET"
+                  synchronousInputId="Package\Data Flow Task\Tabla FactSaleDetail.Inputs[Entrada de destino de ADO NET]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Data Flow Task\Tabla FactSaleDetail.Outputs[Salida de error de destino de ADO NET].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Data Flow Task\Tabla FactSaleDetail.Outputs[Salida de error de destino de ADO NET].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\Tabla FactSaleDetail.Outputs[Salida de error de destino de ADO NET].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Data Flow Task\Tabla FactSaleDetail.Outputs[Salida de error de destino de ADO NET].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Data Flow Task\Tabla pos_order_line pg"
+              componentClassID="Microsoft.ManagedComponentHost"
+              contactInfo="Consume datos de SQL Server, OLE DB, ODBC u Oracle mediante el correspondiente proveedor de datos de .NET Framework. Se usa una instrucción Transact-SQL para definir el conjunto de resultados. Por ejemplo, se extraen datos de SQL Server con el proveedor de datos de .NET Framework para SQL Server.;Microsoft Corporation; Microsoft SQL Server; © Microsoft Corporation; Todos los derechos reservados; http://www.microsoft.com/sql/support;4"
+              description="Consume datos de SQL Server, OLE DB, ODBC u Oracle mediante el correspondiente proveedor de datos de .NET Framework. Se usa una instrucción Transact-SQL para definir el conjunto de resultados. Por ejemplo, se extraen datos de SQL Server con el proveedor de datos de .NET Framework para SQL Server."
+              name="Tabla pos_order_line pg"
+              usesDispositions="true"
+              version="4">
+              <properties>
+                <property
+                  dataType="System.String"
+                  description="Especifica la instrucción SQL utilizada por el componente para extraer datos."
+                  expressionType="Notify"
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">select pol.price_unit as "priceUnit", pol.qty as quantity,
+pol.price_subtotal as "priceSubTotal", pol.price_subtotal_incl as "priceSubTotalTaxIncluded",
+coalesce(tx.value, 'Sin impuestos') as "taxes", pol.discount, 
+coalesce(pol.total_cost, 0) as "totalCost",
+case
+	when pol.is_reward_line = true then 'Recompensa'
+	else 'No es recompensa'
+end
+as "isRewardLine",
+coalesce(pol.points_cost, 0) as "pointsCost",
+to_char(pol.create_date, 'YYYY-MM-DD') as "createDate", pp.product_tmpl_id as "productId",
+coalesce(pol.reward_id, 0) as "programId", pol.order_id as "saleId",
+po.config_id as "storeId"
+from pos_order_line pol
+left outer join account_tax_pos_order_line_rel atpolr on atpolr.pos_order_line_id = pol.id
+left outer join account_tax at2 on atpolr.account_tax_id = at2.id
+left outer join product_product pp on pol.product_id = pp.id 
+left outer join pos_order po on pol.order_id = po.id 
+left outer join jsonb_each_text(at2.name) tx on true</property>
+                <property
+                  dataType="System.Int32"
+                  description="Número de segundos antes de que se agote el tiempo de espera de un comando. Un valor de 0 indica un tiempo de espera infinito."
+                  name="CommandTimeout">30</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indica si se debe permitir que columnas externas que no sean de cadenas se conviertan implícitamente en cadenas en las columnas de salida."
+                  name="AllowImplicitStringConversion">true</property>
+                <property
+                  dataType="System.String"
+                  description="Nombre de la tabla de la base de datos de origen."
+                  expressionType="Notify"
+                  name="TableOrViewName"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Especificar el modo de recuperar información de columnas externas"
+                  name="AccessMode"
+                  typeConverter="Microsoft.SqlServer.Dts.Pipeline.DataReaderSourceAdapter+EnumToStringConverter">2</property>
+                <property
+                  dataType="System.String"
+                  name="UserComponentTypeName">Microsoft.DataReaderSourceAdapter</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Data Flow Task\Tabla pos_order_line pg.Connections[IDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[PostgreSQL35W.openpgadmin]"
+                  connectionManagerRefId="Package.ConnectionManagers[PostgreSQL35W.openpgadmin]"
+                  description="Administrador de conexiones administrado"
+                  name="IDbConnection" />
+              </connections>
+              <outputs>
+                <output
+                  refId="Package\Data Flow Task\Tabla pos_order_line pg.Outputs[Salida de origen de ADO NET]"
+                  name="Salida de origen de ADO NET">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Data Flow Task\Tabla pos_order_line pg.Outputs[Salida de origen de ADO NET].Columns[priceUnit]"
+                      dataType="numeric"
+                      errorOrTruncationOperation="Conversión"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task\Tabla pos_order_line pg.Outputs[Salida de origen de ADO NET].ExternalColumns[priceUnit]"
+                      lineageId="Package\Data Flow Task\Tabla pos_order_line pg.Outputs[Salida de origen de ADO NET].Columns[priceUnit]"
+                      name="priceUnit"
+                      precision="28"
+                      scale="6"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\Tabla pos_order_line pg.Outputs[Salida de origen de ADO NET].Columns[quantity]"
+                      dataType="numeric"
+                      errorOrTruncationOperation="Conversión"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task\Tabla pos_order_line pg.Outputs[Salida de origen de ADO NET].ExternalColumns[quantity]"
+                      lineageId="Package\Data Flow Task\Tabla pos_order_line pg.Outputs[Salida de origen de ADO NET].Columns[quantity]"
+                      name="quantity"
+                      precision="28"
+                      scale="6"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\Tabla pos_order_line pg.Outputs[Salida de origen de ADO NET].Columns[priceSubTotal]"
+                      dataType="numeric"
+                      errorOrTruncationOperation="Conversión"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task\Tabla pos_order_line pg.Outputs[Salida de origen de ADO NET].ExternalColumns[priceSubTotal]"
+                      lineageId="Package\Data Flow Task\Tabla pos_order_line pg.Outputs[Salida de origen de ADO NET].Columns[priceSubTotal]"
+                      name="priceSubTotal"
+                      precision="28"
+                      scale="6"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\Tabla pos_order_line pg.Outputs[Salida de origen de ADO NET].Columns[priceSubTotalTaxIncluded]"
+                      dataType="numeric"
+                      errorOrTruncationOperation="Conversión"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task\Tabla pos_order_line pg.Outputs[Salida de origen de ADO NET].ExternalColumns[priceSubTotalTaxIncluded]"
+                      lineageId="Package\Data Flow Task\Tabla pos_order_line pg.Outputs[Salida de origen de ADO NET].Columns[priceSubTotalTaxIncluded]"
+                      name="priceSubTotalTaxIncluded"
+                      precision="28"
+                      scale="6"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\Tabla pos_order_line pg.Outputs[Salida de origen de ADO NET].Columns[taxes]"
+                      dataType="nText"
+                      errorOrTruncationOperation="Conversión"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task\Tabla pos_order_line pg.Outputs[Salida de origen de ADO NET].ExternalColumns[taxes]"
+                      lineageId="Package\Data Flow Task\Tabla pos_order_line pg.Outputs[Salida de origen de ADO NET].Columns[taxes]"
+                      name="taxes"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\Tabla pos_order_line pg.Outputs[Salida de origen de ADO NET].Columns[discount]"
+                      dataType="numeric"
+                      errorOrTruncationOperation="Conversión"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task\Tabla pos_order_line pg.Outputs[Salida de origen de ADO NET].ExternalColumns[discount]"
+                      lineageId="Package\Data Flow Task\Tabla pos_order_line pg.Outputs[Salida de origen de ADO NET].Columns[discount]"
+                      name="discount"
+                      precision="28"
+                      scale="6"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\Tabla pos_order_line pg.Outputs[Salida de origen de ADO NET].Columns[totalCost]"
+                      dataType="numeric"
+                      errorOrTruncationOperation="Conversión"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task\Tabla pos_order_line pg.Outputs[Salida de origen de ADO NET].ExternalColumns[totalCost]"
+                      lineageId="Package\Data Flow Task\Tabla pos_order_line pg.Outputs[Salida de origen de ADO NET].Columns[totalCost]"
+                      name="totalCost"
+                      precision="28"
+                      scale="6"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\Tabla pos_order_line pg.Outputs[Salida de origen de ADO NET].Columns[isRewardLine]"
+                      dataType="nText"
+                      errorOrTruncationOperation="Conversión"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task\Tabla pos_order_line pg.Outputs[Salida de origen de ADO NET].ExternalColumns[isRewardLine]"
+                      lineageId="Package\Data Flow Task\Tabla pos_order_line pg.Outputs[Salida de origen de ADO NET].Columns[isRewardLine]"
+                      name="isRewardLine"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\Tabla pos_order_line pg.Outputs[Salida de origen de ADO NET].Columns[pointsCost]"
+                      dataType="r8"
+                      errorOrTruncationOperation="Conversión"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task\Tabla pos_order_line pg.Outputs[Salida de origen de ADO NET].ExternalColumns[pointsCost]"
+                      lineageId="Package\Data Flow Task\Tabla pos_order_line pg.Outputs[Salida de origen de ADO NET].Columns[pointsCost]"
+                      name="pointsCost"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\Tabla pos_order_line pg.Outputs[Salida de origen de ADO NET].Columns[createDate]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversión"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task\Tabla pos_order_line pg.Outputs[Salida de origen de ADO NET].ExternalColumns[createDate]"
+                      length="50"
+                      lineageId="Package\Data Flow Task\Tabla pos_order_line pg.Outputs[Salida de origen de ADO NET].Columns[createDate]"
+                      name="createDate"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\Tabla pos_order_line pg.Outputs[Salida de origen de ADO NET].Columns[productId]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversión"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task\Tabla pos_order_line pg.Outputs[Salida de origen de ADO NET].ExternalColumns[productId]"
+                      lineageId="Package\Data Flow Task\Tabla pos_order_line pg.Outputs[Salida de origen de ADO NET].Columns[productId]"
+                      name="productId"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\Tabla pos_order_line pg.Outputs[Salida de origen de ADO NET].Columns[programId]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversión"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task\Tabla pos_order_line pg.Outputs[Salida de origen de ADO NET].ExternalColumns[programId]"
+                      lineageId="Package\Data Flow Task\Tabla pos_order_line pg.Outputs[Salida de origen de ADO NET].Columns[programId]"
+                      name="programId"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\Tabla pos_order_line pg.Outputs[Salida de origen de ADO NET].Columns[saleId]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversión"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task\Tabla pos_order_line pg.Outputs[Salida de origen de ADO NET].ExternalColumns[saleId]"
+                      lineageId="Package\Data Flow Task\Tabla pos_order_line pg.Outputs[Salida de origen de ADO NET].Columns[saleId]"
+                      name="saleId"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\Tabla pos_order_line pg.Outputs[Salida de origen de ADO NET].Columns[storeId]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversión"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task\Tabla pos_order_line pg.Outputs[Salida de origen de ADO NET].ExternalColumns[storeId]"
+                      lineageId="Package\Data Flow Task\Tabla pos_order_line pg.Outputs[Salida de origen de ADO NET].Columns[storeId]"
+                      name="storeId"
+                      truncationRowDisposition="FailComponent" />
+                  </outputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\Tabla pos_order_line pg.Outputs[Salida de origen de ADO NET].ExternalColumns[priceUnit]"
+                      dataType="numeric"
+                      name="priceUnit"
+                      precision="28"
+                      scale="6" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\Tabla pos_order_line pg.Outputs[Salida de origen de ADO NET].ExternalColumns[quantity]"
+                      dataType="numeric"
+                      name="quantity"
+                      precision="28"
+                      scale="6" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\Tabla pos_order_line pg.Outputs[Salida de origen de ADO NET].ExternalColumns[priceSubTotal]"
+                      dataType="numeric"
+                      name="priceSubTotal"
+                      precision="28"
+                      scale="6" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\Tabla pos_order_line pg.Outputs[Salida de origen de ADO NET].ExternalColumns[priceSubTotalTaxIncluded]"
+                      dataType="numeric"
+                      name="priceSubTotalTaxIncluded"
+                      precision="28"
+                      scale="6" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\Tabla pos_order_line pg.Outputs[Salida de origen de ADO NET].ExternalColumns[taxes]"
+                      dataType="nText"
+                      name="taxes" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\Tabla pos_order_line pg.Outputs[Salida de origen de ADO NET].ExternalColumns[discount]"
+                      dataType="numeric"
+                      name="discount"
+                      precision="28"
+                      scale="6" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\Tabla pos_order_line pg.Outputs[Salida de origen de ADO NET].ExternalColumns[totalCost]"
+                      dataType="numeric"
+                      name="totalCost"
+                      precision="28"
+                      scale="6" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\Tabla pos_order_line pg.Outputs[Salida de origen de ADO NET].ExternalColumns[isRewardLine]"
+                      dataType="nText"
+                      name="isRewardLine" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\Tabla pos_order_line pg.Outputs[Salida de origen de ADO NET].ExternalColumns[pointsCost]"
+                      dataType="r8"
+                      name="pointsCost" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\Tabla pos_order_line pg.Outputs[Salida de origen de ADO NET].ExternalColumns[createDate]"
+                      dataType="wstr"
+                      length="50"
+                      name="createDate" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\Tabla pos_order_line pg.Outputs[Salida de origen de ADO NET].ExternalColumns[productId]"
+                      dataType="i4"
+                      name="productId" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\Tabla pos_order_line pg.Outputs[Salida de origen de ADO NET].ExternalColumns[programId]"
+                      dataType="i4"
+                      name="programId" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\Tabla pos_order_line pg.Outputs[Salida de origen de ADO NET].ExternalColumns[saleId]"
+                      dataType="i4"
+                      name="saleId" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\Tabla pos_order_line pg.Outputs[Salida de origen de ADO NET].ExternalColumns[storeId]"
+                      dataType="i4"
+                      name="storeId" />
+                  </externalMetadataColumns>
+                </output>
+                <output
+                  refId="Package\Data Flow Task\Tabla pos_order_line pg.Outputs[Salida de error de origen de ADO NET]"
+                  isErrorOut="true"
+                  name="Salida de error de origen de ADO NET">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Data Flow Task\Tabla pos_order_line pg.Outputs[Salida de error de origen de ADO NET].Columns[priceUnit]"
+                      dataType="numeric"
+                      lineageId="Package\Data Flow Task\Tabla pos_order_line pg.Outputs[Salida de error de origen de ADO NET].Columns[priceUnit]"
+                      name="priceUnit"
+                      precision="28"
+                      scale="6" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\Tabla pos_order_line pg.Outputs[Salida de error de origen de ADO NET].Columns[quantity]"
+                      dataType="numeric"
+                      lineageId="Package\Data Flow Task\Tabla pos_order_line pg.Outputs[Salida de error de origen de ADO NET].Columns[quantity]"
+                      name="quantity"
+                      precision="28"
+                      scale="6" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\Tabla pos_order_line pg.Outputs[Salida de error de origen de ADO NET].Columns[priceSubTotal]"
+                      dataType="numeric"
+                      lineageId="Package\Data Flow Task\Tabla pos_order_line pg.Outputs[Salida de error de origen de ADO NET].Columns[priceSubTotal]"
+                      name="priceSubTotal"
+                      precision="28"
+                      scale="6" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\Tabla pos_order_line pg.Outputs[Salida de error de origen de ADO NET].Columns[priceSubTotalTaxIncluded]"
+                      dataType="numeric"
+                      lineageId="Package\Data Flow Task\Tabla pos_order_line pg.Outputs[Salida de error de origen de ADO NET].Columns[priceSubTotalTaxIncluded]"
+                      name="priceSubTotalTaxIncluded"
+                      precision="28"
+                      scale="6" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\Tabla pos_order_line pg.Outputs[Salida de error de origen de ADO NET].Columns[taxes]"
+                      dataType="nText"
+                      lineageId="Package\Data Flow Task\Tabla pos_order_line pg.Outputs[Salida de error de origen de ADO NET].Columns[taxes]"
+                      name="taxes" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\Tabla pos_order_line pg.Outputs[Salida de error de origen de ADO NET].Columns[discount]"
+                      dataType="numeric"
+                      lineageId="Package\Data Flow Task\Tabla pos_order_line pg.Outputs[Salida de error de origen de ADO NET].Columns[discount]"
+                      name="discount"
+                      precision="28"
+                      scale="6" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\Tabla pos_order_line pg.Outputs[Salida de error de origen de ADO NET].Columns[totalCost]"
+                      dataType="numeric"
+                      lineageId="Package\Data Flow Task\Tabla pos_order_line pg.Outputs[Salida de error de origen de ADO NET].Columns[totalCost]"
+                      name="totalCost"
+                      precision="28"
+                      scale="6" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\Tabla pos_order_line pg.Outputs[Salida de error de origen de ADO NET].Columns[isRewardLine]"
+                      dataType="nText"
+                      lineageId="Package\Data Flow Task\Tabla pos_order_line pg.Outputs[Salida de error de origen de ADO NET].Columns[isRewardLine]"
+                      name="isRewardLine" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\Tabla pos_order_line pg.Outputs[Salida de error de origen de ADO NET].Columns[pointsCost]"
+                      dataType="r8"
+                      lineageId="Package\Data Flow Task\Tabla pos_order_line pg.Outputs[Salida de error de origen de ADO NET].Columns[pointsCost]"
+                      name="pointsCost" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\Tabla pos_order_line pg.Outputs[Salida de error de origen de ADO NET].Columns[createDate]"
+                      dataType="nText"
+                      lineageId="Package\Data Flow Task\Tabla pos_order_line pg.Outputs[Salida de error de origen de ADO NET].Columns[createDate]"
+                      name="createDate" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\Tabla pos_order_line pg.Outputs[Salida de error de origen de ADO NET].Columns[productId]"
+                      dataType="i4"
+                      lineageId="Package\Data Flow Task\Tabla pos_order_line pg.Outputs[Salida de error de origen de ADO NET].Columns[productId]"
+                      name="productId" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\Tabla pos_order_line pg.Outputs[Salida de error de origen de ADO NET].Columns[programId]"
+                      dataType="i4"
+                      lineageId="Package\Data Flow Task\Tabla pos_order_line pg.Outputs[Salida de error de origen de ADO NET].Columns[programId]"
+                      name="programId" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\Tabla pos_order_line pg.Outputs[Salida de error de origen de ADO NET].Columns[saleId]"
+                      dataType="i4"
+                      lineageId="Package\Data Flow Task\Tabla pos_order_line pg.Outputs[Salida de error de origen de ADO NET].Columns[saleId]"
+                      name="saleId" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\Tabla pos_order_line pg.Outputs[Salida de error de origen de ADO NET].Columns[storeId]"
+                      dataType="i4"
+                      lineageId="Package\Data Flow Task\Tabla pos_order_line pg.Outputs[Salida de error de origen de ADO NET].Columns[storeId]"
+                      name="storeId" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\Tabla pos_order_line pg.Outputs[Salida de error de origen de ADO NET].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Data Flow Task\Tabla pos_order_line pg.Outputs[Salida de error de origen de ADO NET].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\Tabla pos_order_line pg.Outputs[Salida de error de origen de ADO NET].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Data Flow Task\Tabla pos_order_line pg.Outputs[Salida de error de origen de ADO NET].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+          </components>
+          <paths>
+            <path
+              refId="Package\Data Flow Task.Paths[Lookup Match Output]"
+              endId="Package\Data Flow Task\Surrogada de programa.Inputs[Lookup Input]"
+              name="Lookup Match Output"
+              startId="Package\Data Flow Task\Surrogada de product.Outputs[Lookup Match Output]" />
+            <path
+              refId="Package\Data Flow Task.Paths[Lookup Match Output1]"
+              endId="Package\Data Flow Task\Surrogada de venta.Inputs[Lookup Input]"
+              name="Lookup Match Output"
+              startId="Package\Data Flow Task\Surrogada de programa.Outputs[Lookup Match Output]" />
+            <path
+              refId="Package\Data Flow Task.Paths[Lookup Match Output2]"
+              endId="Package\Data Flow Task\Surrogada de fecha.Inputs[Lookup Input]"
+              name="Lookup Match Output"
+              startId="Package\Data Flow Task\Surrogada de venta.Outputs[Lookup Match Output]" />
+            <path
+              refId="Package\Data Flow Task.Paths[Lookup Match Output3]"
+              endId="Package\Data Flow Task\Surrogada de sucursal.Inputs[Lookup Input]"
+              name="Lookup Match Output"
+              startId="Package\Data Flow Task\Surrogada de fecha.Outputs[Lookup Match Output]" />
+            <path
+              refId="Package\Data Flow Task.Paths[Lookup Match Output4]"
+              endId="Package\Data Flow Task\Tabla FactSaleDetail.Inputs[Entrada de destino de ADO NET]"
+              name="Lookup Match Output"
+              startId="Package\Data Flow Task\Surrogada de sucursal.Outputs[Lookup Match Output]" />
+            <path
+              refId="Package\Data Flow Task.Paths[Salida de origen de ADO NET]"
+              endId="Package\Data Flow Task\Surrogada de product.Inputs[Lookup Input]"
+              name="Salida de origen de ADO NET"
+              startId="Package\Data Flow Task\Tabla pos_order_line pg.Outputs[Salida de origen de ADO NET]" />
+          </paths>
+        </pipeline>
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\Limpia FactSaleDetail"
+      DTS:CreationName="Microsoft.ExecuteSQLTask"
+      DTS:Description="Tarea Ejecutar SQL"
+      DTS:DTSID="{AE65AE82-1A69-4556-8D91-07B3F72F5DB9}"
+      DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Limpia FactSaleDetail"
+      DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2022; © 2022 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+      DTS:ThreadHint="0">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <SQLTask:SqlTaskData
+          SQLTask:Connection="{8318F1CB-B713-47A7-A457-C46CA2A5E6CB}"
+          SQLTask:SqlStatementSource="DELETE FactSaleDetail" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
       </DTS:ObjectData>
     </DTS:Executable>
   </DTS:Executables>
+  <DTS:PrecedenceConstraints>
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Restricción]"
+      DTS:CreationName=""
+      DTS:DTSID="{9F669A4D-B6EC-4CE3-B9D5-85C19D54F69D}"
+      DTS:From="Package\Limpia FactSaleDetail"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Restricción"
+      DTS:To="Package\Data Flow Task" />
+  </DTS:PrecedenceConstraints>
   <DTS:DesignTimeProperties><![CDATA[<?xml version="1.0"?>
 <!--Esta sección CDATA contiene la información de diseño del paquete. Esta sección incluye información como, por ejemplo, las coordenadas (x,y), el ancho y el alto.-->
 <!--Si edita manualmente esta sección y comete un error, puede eliminarlo. -->
@@ -71,13 +1568,367 @@
     design-time-name="Package">
     <LayoutInfo>
       <GraphLayout
-        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph">
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
         <NodeLayout
           Size="155,42"
           Id="Package\Data Flow Task"
-          TopLeft="418.5,121.5" />
+          TopLeft="383.5,229.5" />
+        <NodeLayout
+          Size="186,42"
+          Id="Package\Limpia FactSaleDetail"
+          TopLeft="378,94" />
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Restricción]"
+          TopLeft="471,136">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-10,93.5"
+              Start="0,0"
+              End="-10,86">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,42.75" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,42.75"
+                    Point2="0,46.75"
+                    Point3="-4,46.75" />
+                  <mssgle:LineSegment
+                    End="-6,46.75" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-6,46.75"
+                    Point2="-10,46.75"
+                    Point3="-10,50.75" />
+                  <mssgle:LineSegment
+                    End="-10,86" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
       </GraphLayout>
     </LayoutInfo>
   </Package>
+  <TaskHost
+    design-time-name="Package\Data Flow Task">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="16" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
+        <NodeLayout
+          Size="189,42"
+          Id="Package\Data Flow Task\Surrogada de sucursal"
+          TopLeft="603,377" />
+        <NodeLayout
+          Size="175,42"
+          Id="Package\Data Flow Task\Surrogada de fecha"
+          TopLeft="614,266" />
+        <NodeLayout
+          Size="196,42"
+          Id="Package\Data Flow Task\Surrogada de programa"
+          TopLeft="294,140" />
+        <NodeLayout
+          Size="175,42"
+          Id="Package\Data Flow Task\Surrogada de venta"
+          TopLeft="304,268" />
+        <NodeLayout
+          Size="197,42"
+          Id="Package\Data Flow Task\Tabla pos_order_line pg"
+          TopLeft="45,33" />
+        <NodeLayout
+          Size="185,42"
+          Id="Package\Data Flow Task\Surrogada de product"
+          TopLeft="293,34" />
+        <NodeLayout
+          Size="181,42"
+          Id="Package\Data Flow Task\Tabla FactSaleDetail"
+          TopLeft="608,480" />
+        <EdgeLayout
+          Id="Package\Data Flow Task.Paths[Salida de origen de ADO NET]"
+          TopLeft="242,54.5">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="51,0"
+              Start="0,0"
+              End="43.5,0">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="43.5,0" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Data Flow Task.Paths[Lookup Match Output4]"
+          TopLeft="698,419">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,61"
+              Start="0,0"
+              End="0,53.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,53.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="-48.19138671875,20.9453125,96.3827734375,11.609375"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Data Flow Task.Paths[Lookup Match Output3]"
+          TopLeft="699.5,308">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,69"
+              Start="0,0"
+              End="0,61.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,61.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="-48.19138671875,24.9453125,96.3827734375,11.609375"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Data Flow Task.Paths[Lookup Match Output2]"
+          TopLeft="479,288">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="135,0"
+              Start="0,0"
+              End="127.5,0">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="127.5,0" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="15.55861328125,5,96.3827734375,11.609375"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Data Flow Task.Paths[Lookup Match Output1]"
+          TopLeft="391.75,182">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,86"
+              Start="0,0"
+              End="0,78.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,78.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="-48.19138671875,33.4453125,96.3827734375,11.609375"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Data Flow Task.Paths[Lookup Match Output]"
+          TopLeft="388.75,76">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,64"
+              Start="0,0"
+              End="0,56.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,56.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="-48.19138671875,22.4453125,96.3827734375,11.609375"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <AnnotationLayout
+          Text="p"
+          ParentId="Package\Data Flow Task"
+          FontInfo="{assembly:Null}"
+          Size="36,40"
+          Id="e3189edd-53b3-4487-a351-81d965660711"
+          TopLeft="1105,210" />
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+  <PipelineComponentMetadata
+    design-time-name="Package\Data Flow Task\Surrogada de sucursal">
+    <Properties>
+      <Property>
+        <Name>OverwriteParamsSQLProp</Name>
+        <Value
+          type="q2:string">false</Value>
+      </Property>
+      <Property>
+        <Name>UsedTableName</Name>
+        <Value
+          type="q3:string">[dbo].[DimStore]</Value>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q4:string">0</Value>
+      </Property>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\Data Flow Task\Surrogada de fecha">
+    <Properties>
+      <Property>
+        <Name>OverwriteParamsSQLProp</Name>
+        <Value
+          type="q2:string">false</Value>
+      </Property>
+      <Property>
+        <Name>UsedTableName</Name>
+        <Value
+          type="q3:string">[dbo].[DimDate]</Value>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q4:string">0</Value>
+      </Property>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\Data Flow Task\Surrogada de programa">
+    <Properties>
+      <Property>
+        <Name>OverwriteParamsSQLProp</Name>
+        <Value
+          type="q2:string">false</Value>
+      </Property>
+      <Property>
+        <Name>UsedTableName</Name>
+        <Value
+          type="q3:string">[dbo].[DimProgram]</Value>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q4:string">0</Value>
+      </Property>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\Data Flow Task\Surrogada de venta">
+    <Properties>
+      <Property>
+        <Name>OverwriteParamsSQLProp</Name>
+        <Value
+          type="q2:string">false</Value>
+      </Property>
+      <Property>
+        <Name>UsedTableName</Name>
+        <Value
+          type="q3:string">[dbo].[DimSale]</Value>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q4:string">0</Value>
+      </Property>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\Data Flow Task\Tabla pos_order_line pg">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\Data Flow Task\Surrogada de product">
+    <Properties>
+      <Property>
+        <Name>OverwriteParamsSQLProp</Name>
+        <Value
+          type="q2:string">false</Value>
+      </Property>
+      <Property>
+        <Name>UsedTableName</Name>
+        <Value
+          type="q3:string">[dbo].[DimProduct]</Value>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q4:string">0</Value>
+      </Property>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\Data Flow Task\Tabla FactSaleDetail">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
 </Objects>]]></DTS:DesignTimeProperties>
 </DTS:Executable>

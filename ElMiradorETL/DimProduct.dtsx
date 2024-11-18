@@ -11,8 +11,8 @@
   DTS:LocaleID="1033"
   DTS:ObjectName="Package1"
   DTS:PackageType="5"
-  DTS:VersionBuild="32"
-  DTS:VersionGUID="{81E6E4F6-6AD6-47D6-B1F1-46F5978850E5}">
+  DTS:VersionBuild="67"
+  DTS:VersionGUID="{D5617217-24EE-44EF-B7EB-FE2D07187EFB}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:ConnectionManagers>
@@ -27,6 +27,18 @@
       </DTS:ObjectData>
     </DTS:ConnectionManager>
     <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[OLEDB FarmaciaElMirador]"
+      DTS:CreationName="OLEDB"
+      DTS:DTSID="{16B124D1-EF5C-49EB-AE7E-2ADBBD833206}"
+      DTS:ObjectName="OLEDB FarmaciaElMirador">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectRetryCount="1"
+          DTS:ConnectRetryInterval="5"
+          DTS:ConnectionString="Data Source=CLL\SQLEXPRESS;Initial Catalog=FarmaciaMiradorDW;Provider=SQLOLEDB.1;Integrated Security=SSPI;Auto Translate=False;Application Name=SSIS-Package1-{16B124D1-EF5C-49EB-AE7E-2ADBBD833206}CLL\SQLEXPRESS.FarmaciaMiradorDW1;" />
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+    <DTS:ConnectionManager
       DTS:refId="Package.ConnectionManagers[PostgreSQL35W.openpgadmin]"
       DTS:CreationName="ADO.NET:System.Data.Odbc.OdbcConnection, System.Data, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089"
       DTS:DTSID="{02C63D52-FE24-4D42-9BBC-06D88ACBA6C7}"
@@ -37,7 +49,7 @@
           <DTS:Password
             DTS:Name="pwd"
             Sensitive="1"
-            Encrypted="1">AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAASQhfRqDEDkOYTZFasgjSZgAAAAAIAAAARABUAFMAAAAQZgAAAAEAACAAAAADT65Ka/neYeJ7kQrs7OOkyEeY0oaKz6xKxXlwk60xPAAAAAAOgAAAAAIAACAAAAArP7/ZpEDXV3dZtpMHvh51S0WsNi/gk7Nv7TW0o8G1TCAAAACEp9mx7FZAtscKJLoH0mNkpM94osM48ztinJiBSUmoskAAAABzxp8KZaTvklOjecM1pUR6jBVQ07yaa2rlXhBysVksuqeP/AmXye6PNoLcU3UJhq0EoFDcaHnbdSqBhD26uj21</DTS:Password>
+            Encrypted="1">AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAASQhfRqDEDkOYTZFasgjSZgAAAAAIAAAARABUAFMAAAAQZgAAAAEAACAAAABUsZ1/bFA9h5wE8PmAVcF2brFQdiJ9Wc2N15ets7PIuAAAAAAOgAAAAAIAACAAAAB4+JDS7+06pWKD8U3VhCRlNOHlpJyeJCy0kw8QHYydXSAAAAA2h172so3O/VvWkSDhLxRyxqROK3Qln7H9OkLHju4lp0AAAAA4wcgd7ZH1OWYsbUpdLtYO8nwQZ6ayQrZ6mHrnZUT3p85i+ltuQaO1j/rTk8dlLschcGlezxdVBKgYfydYNnmo</DTS:Password>
         </DTS:ConnectionManager>
       </DTS:ObjectData>
     </DTS:ConnectionManager>
@@ -59,11 +71,251 @@
           version="1">
           <components>
             <component
-              refId="Package\Tabla DimProduct\Destino de ADO NET"
+              refId="Package\Tabla DimProduct\Actualizacion DimProduct"
+              componentClassID="Microsoft.OLEDBCommand"
+              contactInfo="OLE DB Command;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;2"
+              description="Runs an SQL statement for each row in a data flow. For example, call a 'new employee setup' stored procedure for each row in the 'new employees' table. Note: running an SQL statement for each row of a large data flow may take a long time."
+              name="Actualizacion DimProduct"
+              usesDispositions="true"
+              version="2">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  expressionType="Notify"
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">EXEC spUpdateDimProduct ?, ?, ?, ?, ?, ?, ?, ?</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Tabla DimProduct\Actualizacion DimProduct.Connections[OleDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[OLEDB FarmaciaElMirador]"
+                  connectionManagerRefId="Package.ConnectionManagers[OLEDB FarmaciaElMirador]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\Tabla DimProduct\Actualizacion DimProduct.Inputs[OLE DB Command Input]"
+                  errorOrTruncationOperation="Command Execution"
+                  errorRowDisposition="FailComponent"
+                  hasSideEffects="true"
+                  name="OLE DB Command Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Tabla DimProduct\Actualizacion DimProduct.Inputs[OLE DB Command Input].Columns[listPrice]"
+                      cachedDataType="numeric"
+                      cachedName="listPrice"
+                      cachedPrecision="28"
+                      cachedScale="6"
+                      externalMetadataColumnId="Package\Tabla DimProduct\Actualizacion DimProduct.Inputs[OLE DB Command Input].ExternalColumns[@listPrice]"
+                      lineageId="Package\Tabla DimProduct\Lectura de programa transaccional.Outputs[Salida de origen de ADO NET].Columns[listPrice]" />
+                    <inputColumn
+                      refId="Package\Tabla DimProduct\Actualizacion DimProduct.Inputs[OLE DB Command Input].Columns[productKey]"
+                      cachedDataType="i4"
+                      cachedName="productKey"
+                      externalMetadataColumnId="Package\Tabla DimProduct\Actualizacion DimProduct.Inputs[OLE DB Command Input].ExternalColumns[@productKey]"
+                      lineageId="Package\Tabla DimProduct\Validar si ya existe registro.Outputs[Lookup Match Output].Columns[productKey]" />
+                    <inputColumn
+                      refId="Package\Tabla DimProduct\Actualizacion DimProduct.Inputs[OLE DB Command Input].Columns[productnameToString]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="255"
+                      cachedName="productnameToString"
+                      externalMetadataColumnId="Package\Tabla DimProduct\Actualizacion DimProduct.Inputs[OLE DB Command Input].ExternalColumns[@productName]"
+                      lineageId="Package\Tabla DimProduct\ToSTR.Outputs[Data Conversion Output].Columns[productnameToString]" />
+                    <inputColumn
+                      refId="Package\Tabla DimProduct\Actualizacion DimProduct.Inputs[OLE DB Command Input].Columns[unitOfMeasureToString]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="255"
+                      cachedName="unitOfMeasureToString"
+                      externalMetadataColumnId="Package\Tabla DimProduct\Actualizacion DimProduct.Inputs[OLE DB Command Input].ExternalColumns[@unitOfMeasure]"
+                      lineageId="Package\Tabla DimProduct\ToSTR.Outputs[Data Conversion Output].Columns[unitOfMeasureToString]" />
+                    <inputColumn
+                      refId="Package\Tabla DimProduct\Actualizacion DimProduct.Inputs[OLE DB Command Input].Columns[descriptionSaleToString]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="500"
+                      cachedName="descriptionSaleToString"
+                      externalMetadataColumnId="Package\Tabla DimProduct\Actualizacion DimProduct.Inputs[OLE DB Command Input].ExternalColumns[@descriptionSale]"
+                      lineageId="Package\Tabla DimProduct\ToSTR.Outputs[Data Conversion Output].Columns[descriptionSaleToString]" />
+                    <inputColumn
+                      refId="Package\Tabla DimProduct\Actualizacion DimProduct.Inputs[OLE DB Command Input].Columns[activeToString]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="255"
+                      cachedName="activeToString"
+                      externalMetadataColumnId="Package\Tabla DimProduct\Actualizacion DimProduct.Inputs[OLE DB Command Input].ExternalColumns[@activate]"
+                      lineageId="Package\Tabla DimProduct\ToSTR.Outputs[Data Conversion Output].Columns[activeToString]" />
+                    <inputColumn
+                      refId="Package\Tabla DimProduct\Actualizacion DimProduct.Inputs[OLE DB Command Input].Columns[categoryToString]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="255"
+                      cachedName="categoryToString"
+                      externalMetadataColumnId="Package\Tabla DimProduct\Actualizacion DimProduct.Inputs[OLE DB Command Input].ExternalColumns[@category]"
+                      lineageId="Package\Tabla DimProduct\ToSTR.Outputs[Data Conversion Output].Columns[categoryToString]" />
+                    <inputColumn
+                      refId="Package\Tabla DimProduct\Actualizacion DimProduct.Inputs[OLE DB Command Input].Columns[typeToString]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="255"
+                      cachedName="typeToString"
+                      externalMetadataColumnId="Package\Tabla DimProduct\Actualizacion DimProduct.Inputs[OLE DB Command Input].ExternalColumns[@type]"
+                      lineageId="Package\Tabla DimProduct\ToSTR.Outputs[Data Conversion Output].Columns[typeToString]" />
+                  </inputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Tabla DimProduct\Actualizacion DimProduct.Inputs[OLE DB Command Input].ExternalColumns[@productKey]"
+                      dataType="i4"
+                      name="@productKey">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Parameter information.  Matches OLE DB's DBPARAMFLAGSENUM values."
+                          name="DBParamInfoFlags">81</property>
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\Tabla DimProduct\Actualizacion DimProduct.Inputs[OLE DB Command Input].ExternalColumns[@productName]"
+                      codePage="1252"
+                      dataType="str"
+                      length="255"
+                      name="@productName">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Parameter information.  Matches OLE DB's DBPARAMFLAGSENUM values."
+                          name="DBParamInfoFlags">65</property>
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\Tabla DimProduct\Actualizacion DimProduct.Inputs[OLE DB Command Input].ExternalColumns[@category]"
+                      codePage="1252"
+                      dataType="str"
+                      length="255"
+                      name="@category">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Parameter information.  Matches OLE DB's DBPARAMFLAGSENUM values."
+                          name="DBParamInfoFlags">65</property>
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\Tabla DimProduct\Actualizacion DimProduct.Inputs[OLE DB Command Input].ExternalColumns[@unitOfMeasure]"
+                      codePage="1252"
+                      dataType="str"
+                      length="255"
+                      name="@unitOfMeasure">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Parameter information.  Matches OLE DB's DBPARAMFLAGSENUM values."
+                          name="DBParamInfoFlags">65</property>
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\Tabla DimProduct\Actualizacion DimProduct.Inputs[OLE DB Command Input].ExternalColumns[@type]"
+                      codePage="1252"
+                      dataType="str"
+                      length="255"
+                      name="@type">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Parameter information.  Matches OLE DB's DBPARAMFLAGSENUM values."
+                          name="DBParamInfoFlags">65</property>
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\Tabla DimProduct\Actualizacion DimProduct.Inputs[OLE DB Command Input].ExternalColumns[@listPrice]"
+                      dataType="r8"
+                      name="@listPrice">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Parameter information.  Matches OLE DB's DBPARAMFLAGSENUM values."
+                          name="DBParamInfoFlags">81</property>
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\Tabla DimProduct\Actualizacion DimProduct.Inputs[OLE DB Command Input].ExternalColumns[@descriptionSale]"
+                      codePage="1252"
+                      dataType="str"
+                      length="500"
+                      name="@descriptionSale">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Parameter information.  Matches OLE DB's DBPARAMFLAGSENUM values."
+                          name="DBParamInfoFlags">65</property>
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\Tabla DimProduct\Actualizacion DimProduct.Inputs[OLE DB Command Input].ExternalColumns[@activate]"
+                      codePage="1252"
+                      dataType="str"
+                      length="255"
+                      name="@activate">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Parameter information.  Matches OLE DB's DBPARAMFLAGSENUM values."
+                          name="DBParamInfoFlags">65</property>
+                      </properties>
+                    </externalMetadataColumn>
+                  </externalMetadataColumns>
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Tabla DimProduct\Actualizacion DimProduct.Outputs[OLE DB Command Output]"
+                  exclusionGroup="1"
+                  name="OLE DB Command Output"
+                  synchronousInputId="Package\Tabla DimProduct\Actualizacion DimProduct.Inputs[OLE DB Command Input]">
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\Tabla DimProduct\Actualizacion DimProduct.Outputs[OLE DB Command Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="OLE DB Command Error Output"
+                  synchronousInputId="Package\Tabla DimProduct\Actualizacion DimProduct.Inputs[OLE DB Command Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Tabla DimProduct\Actualizacion DimProduct.Outputs[OLE DB Command Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Tabla DimProduct\Actualizacion DimProduct.Outputs[OLE DB Command Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Tabla DimProduct\Actualizacion DimProduct.Outputs[OLE DB Command Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Tabla DimProduct\Actualizacion DimProduct.Outputs[OLE DB Command Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Tabla DimProduct\Insert new DimProduct"
               componentClassID="Microsoft.ManagedComponentHost"
               contactInfo="Carga datos en una base de datos compatible con ADO.NET que use una vista o tabla de base de datos. Se cargan datos en una tabla nueva o existente. Por ejemplo, se usa un proveedor ADO.NET para ODBC para cargar datos en un destino ODBC.;Microsoft Corporation; Microsoft SQL Server; © Microsoft Corporation; Todos los derechos reservados; http://www.microsoft.com/sql/support;2"
               description="Carga datos en una base de datos compatible con ADO.NET que use una vista o tabla de base de datos. Se cargan datos en una tabla nueva o existente. Por ejemplo, se usa un proveedor ADO.NET para ODBC para cargar datos en un destino ODBC."
-              name="Destino de ADO NET"
+              name="Insert new DimProduct"
               usesDispositions="true"
               version="2">
               <properties>
@@ -94,7 +346,7 @@
               </properties>
               <connections>
                 <connection
-                  refId="Package\Tabla DimProduct\Destino de ADO NET.Connections[IDbConnection]"
+                  refId="Package\Tabla DimProduct\Insert new DimProduct.Connections[IDbConnection]"
                   connectionManagerID="Package.ConnectionManagers[CLL\SQLEXPRESS.FarmaciaMiradorDW]"
                   connectionManagerRefId="Package.ConnectionManagers[CLL\SQLEXPRESS.FarmaciaMiradorDW]"
                   description="Administrador de conexiones administrado"
@@ -102,129 +354,129 @@
               </connections>
               <inputs>
                 <input
-                  refId="Package\Tabla DimProduct\Destino de ADO NET.Inputs[Entrada de destino de ADO NET]"
+                  refId="Package\Tabla DimProduct\Insert new DimProduct.Inputs[Entrada de destino de ADO NET]"
                   errorRowDisposition="FailComponent"
                   hasSideEffects="true"
                   name="Entrada de destino de ADO NET">
                   <inputColumns>
                     <inputColumn
-                      refId="Package\Tabla DimProduct\Destino de ADO NET.Inputs[Entrada de destino de ADO NET].Columns[productname]"
+                      refId="Package\Tabla DimProduct\Insert new DimProduct.Inputs[Entrada de destino de ADO NET].Columns[productname]"
                       cachedDataType="nText"
                       cachedName="productname"
-                      externalMetadataColumnId="Package\Tabla DimProduct\Destino de ADO NET.Inputs[Entrada de destino de ADO NET].ExternalColumns[productName]"
-                      lineageId="Package\Tabla DimProduct\Origen de ADO NET.Outputs[Salida de origen de ADO NET].Columns[productname]" />
+                      externalMetadataColumnId="Package\Tabla DimProduct\Insert new DimProduct.Inputs[Entrada de destino de ADO NET].ExternalColumns[productName]"
+                      lineageId="Package\Tabla DimProduct\Lectura de programa transaccional.Outputs[Salida de origen de ADO NET].Columns[productname]" />
                     <inputColumn
-                      refId="Package\Tabla DimProduct\Destino de ADO NET.Inputs[Entrada de destino de ADO NET].Columns[category]"
+                      refId="Package\Tabla DimProduct\Insert new DimProduct.Inputs[Entrada de destino de ADO NET].Columns[category]"
                       cachedDataType="wstr"
                       cachedLength="255"
                       cachedName="category"
-                      externalMetadataColumnId="Package\Tabla DimProduct\Destino de ADO NET.Inputs[Entrada de destino de ADO NET].ExternalColumns[category]"
-                      lineageId="Package\Tabla DimProduct\Origen de ADO NET.Outputs[Salida de origen de ADO NET].Columns[category]" />
+                      externalMetadataColumnId="Package\Tabla DimProduct\Insert new DimProduct.Inputs[Entrada de destino de ADO NET].ExternalColumns[category]"
+                      lineageId="Package\Tabla DimProduct\Lectura de programa transaccional.Outputs[Salida de origen de ADO NET].Columns[category]" />
                     <inputColumn
-                      refId="Package\Tabla DimProduct\Destino de ADO NET.Inputs[Entrada de destino de ADO NET].Columns[unitOfMeasure]"
+                      refId="Package\Tabla DimProduct\Insert new DimProduct.Inputs[Entrada de destino de ADO NET].Columns[unitOfMeasure]"
                       cachedDataType="nText"
                       cachedName="unitOfMeasure"
-                      externalMetadataColumnId="Package\Tabla DimProduct\Destino de ADO NET.Inputs[Entrada de destino de ADO NET].ExternalColumns[unitOfMeasure]"
-                      lineageId="Package\Tabla DimProduct\Origen de ADO NET.Outputs[Salida de origen de ADO NET].Columns[unitOfMeasure]" />
+                      externalMetadataColumnId="Package\Tabla DimProduct\Insert new DimProduct.Inputs[Entrada de destino de ADO NET].ExternalColumns[unitOfMeasure]"
+                      lineageId="Package\Tabla DimProduct\Lectura de programa transaccional.Outputs[Salida de origen de ADO NET].Columns[unitOfMeasure]" />
                     <inputColumn
-                      refId="Package\Tabla DimProduct\Destino de ADO NET.Inputs[Entrada de destino de ADO NET].Columns[type]"
+                      refId="Package\Tabla DimProduct\Insert new DimProduct.Inputs[Entrada de destino de ADO NET].Columns[type]"
                       cachedDataType="wstr"
                       cachedLength="255"
                       cachedName="type"
-                      externalMetadataColumnId="Package\Tabla DimProduct\Destino de ADO NET.Inputs[Entrada de destino de ADO NET].ExternalColumns[type]"
-                      lineageId="Package\Tabla DimProduct\Origen de ADO NET.Outputs[Salida de origen de ADO NET].Columns[type]" />
+                      externalMetadataColumnId="Package\Tabla DimProduct\Insert new DimProduct.Inputs[Entrada de destino de ADO NET].ExternalColumns[type]"
+                      lineageId="Package\Tabla DimProduct\Lectura de programa transaccional.Outputs[Salida de origen de ADO NET].Columns[type]" />
                     <inputColumn
-                      refId="Package\Tabla DimProduct\Destino de ADO NET.Inputs[Entrada de destino de ADO NET].Columns[listPrice]"
+                      refId="Package\Tabla DimProduct\Insert new DimProduct.Inputs[Entrada de destino de ADO NET].Columns[listPrice]"
                       cachedDataType="numeric"
                       cachedName="listPrice"
                       cachedPrecision="28"
                       cachedScale="6"
-                      externalMetadataColumnId="Package\Tabla DimProduct\Destino de ADO NET.Inputs[Entrada de destino de ADO NET].ExternalColumns[listPrice]"
-                      lineageId="Package\Tabla DimProduct\Origen de ADO NET.Outputs[Salida de origen de ADO NET].Columns[listPrice]" />
+                      externalMetadataColumnId="Package\Tabla DimProduct\Insert new DimProduct.Inputs[Entrada de destino de ADO NET].ExternalColumns[listPrice]"
+                      lineageId="Package\Tabla DimProduct\Lectura de programa transaccional.Outputs[Salida de origen de ADO NET].Columns[listPrice]" />
                     <inputColumn
-                      refId="Package\Tabla DimProduct\Destino de ADO NET.Inputs[Entrada de destino de ADO NET].Columns[descriptionSale]"
+                      refId="Package\Tabla DimProduct\Insert new DimProduct.Inputs[Entrada de destino de ADO NET].Columns[descriptionSale]"
                       cachedDataType="nText"
                       cachedName="descriptionSale"
-                      externalMetadataColumnId="Package\Tabla DimProduct\Destino de ADO NET.Inputs[Entrada de destino de ADO NET].ExternalColumns[descriptionSale]"
-                      lineageId="Package\Tabla DimProduct\Origen de ADO NET.Outputs[Salida de origen de ADO NET].Columns[descriptionSale]" />
+                      externalMetadataColumnId="Package\Tabla DimProduct\Insert new DimProduct.Inputs[Entrada de destino de ADO NET].ExternalColumns[descriptionSale]"
+                      lineageId="Package\Tabla DimProduct\Lectura de programa transaccional.Outputs[Salida de origen de ADO NET].Columns[descriptionSale]" />
                     <inputColumn
-                      refId="Package\Tabla DimProduct\Destino de ADO NET.Inputs[Entrada de destino de ADO NET].Columns[active]"
+                      refId="Package\Tabla DimProduct\Insert new DimProduct.Inputs[Entrada de destino de ADO NET].Columns[active]"
                       cachedDataType="nText"
                       cachedName="active"
-                      externalMetadataColumnId="Package\Tabla DimProduct\Destino de ADO NET.Inputs[Entrada de destino de ADO NET].ExternalColumns[active]"
-                      lineageId="Package\Tabla DimProduct\Origen de ADO NET.Outputs[Salida de origen de ADO NET].Columns[active]" />
+                      externalMetadataColumnId="Package\Tabla DimProduct\Insert new DimProduct.Inputs[Entrada de destino de ADO NET].ExternalColumns[active]"
+                      lineageId="Package\Tabla DimProduct\Lectura de programa transaccional.Outputs[Salida de origen de ADO NET].Columns[active]" />
                     <inputColumn
-                      refId="Package\Tabla DimProduct\Destino de ADO NET.Inputs[Entrada de destino de ADO NET].Columns[id]"
+                      refId="Package\Tabla DimProduct\Insert new DimProduct.Inputs[Entrada de destino de ADO NET].Columns[id]"
                       cachedDataType="i4"
                       cachedName="id"
-                      externalMetadataColumnId="Package\Tabla DimProduct\Destino de ADO NET.Inputs[Entrada de destino de ADO NET].ExternalColumns[productID]"
-                      lineageId="Package\Tabla DimProduct\Origen de ADO NET.Outputs[Salida de origen de ADO NET].Columns[id]" />
+                      externalMetadataColumnId="Package\Tabla DimProduct\Insert new DimProduct.Inputs[Entrada de destino de ADO NET].ExternalColumns[productID]"
+                      lineageId="Package\Tabla DimProduct\Lectura de programa transaccional.Outputs[Salida de origen de ADO NET].Columns[id]" />
                   </inputColumns>
                   <externalMetadataColumns
                     isUsed="True">
                     <externalMetadataColumn
-                      refId="Package\Tabla DimProduct\Destino de ADO NET.Inputs[Entrada de destino de ADO NET].ExternalColumns[productKey]"
+                      refId="Package\Tabla DimProduct\Insert new DimProduct.Inputs[Entrada de destino de ADO NET].ExternalColumns[productKey]"
                       dataType="i4"
                       name="productKey" />
                     <externalMetadataColumn
-                      refId="Package\Tabla DimProduct\Destino de ADO NET.Inputs[Entrada de destino de ADO NET].ExternalColumns[productID]"
+                      refId="Package\Tabla DimProduct\Insert new DimProduct.Inputs[Entrada de destino de ADO NET].ExternalColumns[productID]"
                       dataType="i4"
                       name="productID" />
                     <externalMetadataColumn
-                      refId="Package\Tabla DimProduct\Destino de ADO NET.Inputs[Entrada de destino de ADO NET].ExternalColumns[productName]"
+                      refId="Package\Tabla DimProduct\Insert new DimProduct.Inputs[Entrada de destino de ADO NET].ExternalColumns[productName]"
                       dataType="wstr"
-                      length="50"
+                      length="255"
                       name="productName" />
                     <externalMetadataColumn
-                      refId="Package\Tabla DimProduct\Destino de ADO NET.Inputs[Entrada de destino de ADO NET].ExternalColumns[category]"
+                      refId="Package\Tabla DimProduct\Insert new DimProduct.Inputs[Entrada de destino de ADO NET].ExternalColumns[category]"
                       dataType="wstr"
-                      length="50"
+                      length="255"
                       name="category" />
                     <externalMetadataColumn
-                      refId="Package\Tabla DimProduct\Destino de ADO NET.Inputs[Entrada de destino de ADO NET].ExternalColumns[unitOfMeasure]"
+                      refId="Package\Tabla DimProduct\Insert new DimProduct.Inputs[Entrada de destino de ADO NET].ExternalColumns[unitOfMeasure]"
                       dataType="wstr"
-                      length="50"
+                      length="255"
                       name="unitOfMeasure" />
                     <externalMetadataColumn
-                      refId="Package\Tabla DimProduct\Destino de ADO NET.Inputs[Entrada de destino de ADO NET].ExternalColumns[type]"
+                      refId="Package\Tabla DimProduct\Insert new DimProduct.Inputs[Entrada de destino de ADO NET].ExternalColumns[type]"
                       dataType="wstr"
-                      length="50"
+                      length="255"
                       name="type" />
                     <externalMetadataColumn
-                      refId="Package\Tabla DimProduct\Destino de ADO NET.Inputs[Entrada de destino de ADO NET].ExternalColumns[listPrice]"
+                      refId="Package\Tabla DimProduct\Insert new DimProduct.Inputs[Entrada de destino de ADO NET].ExternalColumns[listPrice]"
                       dataType="r8"
                       name="listPrice" />
                     <externalMetadataColumn
-                      refId="Package\Tabla DimProduct\Destino de ADO NET.Inputs[Entrada de destino de ADO NET].ExternalColumns[descriptionSale]"
+                      refId="Package\Tabla DimProduct\Insert new DimProduct.Inputs[Entrada de destino de ADO NET].ExternalColumns[descriptionSale]"
                       dataType="wstr"
-                      length="300"
+                      length="500"
                       name="descriptionSale" />
                     <externalMetadataColumn
-                      refId="Package\Tabla DimProduct\Destino de ADO NET.Inputs[Entrada de destino de ADO NET].ExternalColumns[active]"
+                      refId="Package\Tabla DimProduct\Insert new DimProduct.Inputs[Entrada de destino de ADO NET].ExternalColumns[active]"
                       dataType="wstr"
-                      length="10"
+                      length="255"
                       name="active" />
                   </externalMetadataColumns>
                 </input>
               </inputs>
               <outputs>
                 <output
-                  refId="Package\Tabla DimProduct\Destino de ADO NET.Outputs[Salida de error de destino de ADO NET]"
+                  refId="Package\Tabla DimProduct\Insert new DimProduct.Outputs[Salida de error de destino de ADO NET]"
                   exclusionGroup="1"
                   isErrorOut="true"
                   name="Salida de error de destino de ADO NET"
-                  synchronousInputId="Package\Tabla DimProduct\Destino de ADO NET.Inputs[Entrada de destino de ADO NET]">
+                  synchronousInputId="Package\Tabla DimProduct\Insert new DimProduct.Inputs[Entrada de destino de ADO NET]">
                   <outputColumns>
                     <outputColumn
-                      refId="Package\Tabla DimProduct\Destino de ADO NET.Outputs[Salida de error de destino de ADO NET].Columns[ErrorCode]"
+                      refId="Package\Tabla DimProduct\Insert new DimProduct.Outputs[Salida de error de destino de ADO NET].Columns[ErrorCode]"
                       dataType="i4"
-                      lineageId="Package\Tabla DimProduct\Destino de ADO NET.Outputs[Salida de error de destino de ADO NET].Columns[ErrorCode]"
+                      lineageId="Package\Tabla DimProduct\Insert new DimProduct.Outputs[Salida de error de destino de ADO NET].Columns[ErrorCode]"
                       name="ErrorCode"
                       specialFlags="1" />
                     <outputColumn
-                      refId="Package\Tabla DimProduct\Destino de ADO NET.Outputs[Salida de error de destino de ADO NET].Columns[ErrorColumn]"
+                      refId="Package\Tabla DimProduct\Insert new DimProduct.Outputs[Salida de error de destino de ADO NET].Columns[ErrorColumn]"
                       dataType="i4"
-                      lineageId="Package\Tabla DimProduct\Destino de ADO NET.Outputs[Salida de error de destino de ADO NET].Columns[ErrorColumn]"
+                      lineageId="Package\Tabla DimProduct\Insert new DimProduct.Outputs[Salida de error de destino de ADO NET].Columns[ErrorColumn]"
                       name="ErrorColumn"
                       specialFlags="2" />
                   </outputColumns>
@@ -233,11 +485,11 @@
               </outputs>
             </component>
             <component
-              refId="Package\Tabla DimProduct\Origen de ADO NET"
+              refId="Package\Tabla DimProduct\Lectura de programa transaccional"
               componentClassID="Microsoft.ManagedComponentHost"
               contactInfo="Consume datos de SQL Server, OLE DB, ODBC u Oracle mediante el correspondiente proveedor de datos de .NET Framework. Se usa una instrucción Transact-SQL para definir el conjunto de resultados. Por ejemplo, se extraen datos de SQL Server con el proveedor de datos de .NET Framework para SQL Server.;Microsoft Corporation; Microsoft SQL Server; © Microsoft Corporation; Todos los derechos reservados; http://www.microsoft.com/sql/support;4"
               description="Consume datos de SQL Server, OLE DB, ODBC u Oracle mediante el correspondiente proveedor de datos de .NET Framework. Se usa una instrucción Transact-SQL para definir el conjunto de resultados. Por ejemplo, se extraen datos de SQL Server con el proveedor de datos de .NET Framework para SQL Server."
-              name="Origen de ADO NET"
+              name="Lectura de programa transaccional"
               usesDispositions="true"
               version="4">
               <properties>
@@ -300,7 +552,7 @@ left outer join jsonb_each_text(pt.description_sale) ds on true</property>
               </properties>
               <connections>
                 <connection
-                  refId="Package\Tabla DimProduct\Origen de ADO NET.Connections[IDbConnection]"
+                  refId="Package\Tabla DimProduct\Lectura de programa transaccional.Connections[IDbConnection]"
                   connectionManagerID="Package.ConnectionManagers[PostgreSQL35W.openpgadmin]"
                   connectionManagerRefId="Package.ConnectionManagers[PostgreSQL35W.openpgadmin]"
                   description="Administrador de conexiones administrado"
@@ -308,185 +560,778 @@ left outer join jsonb_each_text(pt.description_sale) ds on true</property>
               </connections>
               <outputs>
                 <output
-                  refId="Package\Tabla DimProduct\Origen de ADO NET.Outputs[Salida de origen de ADO NET]"
+                  refId="Package\Tabla DimProduct\Lectura de programa transaccional.Outputs[Salida de origen de ADO NET]"
                   name="Salida de origen de ADO NET">
                   <outputColumns>
                     <outputColumn
-                      refId="Package\Tabla DimProduct\Origen de ADO NET.Outputs[Salida de origen de ADO NET].Columns[id]"
+                      refId="Package\Tabla DimProduct\Lectura de programa transaccional.Outputs[Salida de origen de ADO NET].Columns[id]"
                       dataType="i4"
                       errorOrTruncationOperation="Conversión"
                       errorRowDisposition="FailComponent"
-                      externalMetadataColumnId="Package\Tabla DimProduct\Origen de ADO NET.Outputs[Salida de origen de ADO NET].ExternalColumns[id]"
-                      lineageId="Package\Tabla DimProduct\Origen de ADO NET.Outputs[Salida de origen de ADO NET].Columns[id]"
+                      externalMetadataColumnId="Package\Tabla DimProduct\Lectura de programa transaccional.Outputs[Salida de origen de ADO NET].ExternalColumns[id]"
+                      lineageId="Package\Tabla DimProduct\Lectura de programa transaccional.Outputs[Salida de origen de ADO NET].Columns[id]"
                       name="id"
                       truncationRowDisposition="FailComponent" />
                     <outputColumn
-                      refId="Package\Tabla DimProduct\Origen de ADO NET.Outputs[Salida de origen de ADO NET].Columns[productname]"
+                      refId="Package\Tabla DimProduct\Lectura de programa transaccional.Outputs[Salida de origen de ADO NET].Columns[productname]"
                       dataType="nText"
                       errorOrTruncationOperation="Conversión"
                       errorRowDisposition="FailComponent"
-                      externalMetadataColumnId="Package\Tabla DimProduct\Origen de ADO NET.Outputs[Salida de origen de ADO NET].ExternalColumns[productname]"
-                      lineageId="Package\Tabla DimProduct\Origen de ADO NET.Outputs[Salida de origen de ADO NET].Columns[productname]"
+                      externalMetadataColumnId="Package\Tabla DimProduct\Lectura de programa transaccional.Outputs[Salida de origen de ADO NET].ExternalColumns[productname]"
+                      lineageId="Package\Tabla DimProduct\Lectura de programa transaccional.Outputs[Salida de origen de ADO NET].Columns[productname]"
                       name="productname"
                       truncationRowDisposition="FailComponent" />
                     <outputColumn
-                      refId="Package\Tabla DimProduct\Origen de ADO NET.Outputs[Salida de origen de ADO NET].Columns[category]"
+                      refId="Package\Tabla DimProduct\Lectura de programa transaccional.Outputs[Salida de origen de ADO NET].Columns[category]"
                       dataType="wstr"
                       errorOrTruncationOperation="Conversión"
                       errorRowDisposition="FailComponent"
-                      externalMetadataColumnId="Package\Tabla DimProduct\Origen de ADO NET.Outputs[Salida de origen de ADO NET].ExternalColumns[category]"
+                      externalMetadataColumnId="Package\Tabla DimProduct\Lectura de programa transaccional.Outputs[Salida de origen de ADO NET].ExternalColumns[category]"
                       length="255"
-                      lineageId="Package\Tabla DimProduct\Origen de ADO NET.Outputs[Salida de origen de ADO NET].Columns[category]"
+                      lineageId="Package\Tabla DimProduct\Lectura de programa transaccional.Outputs[Salida de origen de ADO NET].Columns[category]"
                       name="category"
                       truncationRowDisposition="FailComponent" />
                     <outputColumn
-                      refId="Package\Tabla DimProduct\Origen de ADO NET.Outputs[Salida de origen de ADO NET].Columns[unitOfMeasure]"
+                      refId="Package\Tabla DimProduct\Lectura de programa transaccional.Outputs[Salida de origen de ADO NET].Columns[unitOfMeasure]"
                       dataType="nText"
                       errorOrTruncationOperation="Conversión"
                       errorRowDisposition="FailComponent"
-                      externalMetadataColumnId="Package\Tabla DimProduct\Origen de ADO NET.Outputs[Salida de origen de ADO NET].ExternalColumns[unitOfMeasure]"
-                      lineageId="Package\Tabla DimProduct\Origen de ADO NET.Outputs[Salida de origen de ADO NET].Columns[unitOfMeasure]"
+                      externalMetadataColumnId="Package\Tabla DimProduct\Lectura de programa transaccional.Outputs[Salida de origen de ADO NET].ExternalColumns[unitOfMeasure]"
+                      lineageId="Package\Tabla DimProduct\Lectura de programa transaccional.Outputs[Salida de origen de ADO NET].Columns[unitOfMeasure]"
                       name="unitOfMeasure"
                       truncationRowDisposition="FailComponent" />
                     <outputColumn
-                      refId="Package\Tabla DimProduct\Origen de ADO NET.Outputs[Salida de origen de ADO NET].Columns[type]"
+                      refId="Package\Tabla DimProduct\Lectura de programa transaccional.Outputs[Salida de origen de ADO NET].Columns[type]"
                       dataType="wstr"
                       errorOrTruncationOperation="Conversión"
                       errorRowDisposition="FailComponent"
-                      externalMetadataColumnId="Package\Tabla DimProduct\Origen de ADO NET.Outputs[Salida de origen de ADO NET].ExternalColumns[type]"
+                      externalMetadataColumnId="Package\Tabla DimProduct\Lectura de programa transaccional.Outputs[Salida de origen de ADO NET].ExternalColumns[type]"
                       length="255"
-                      lineageId="Package\Tabla DimProduct\Origen de ADO NET.Outputs[Salida de origen de ADO NET].Columns[type]"
+                      lineageId="Package\Tabla DimProduct\Lectura de programa transaccional.Outputs[Salida de origen de ADO NET].Columns[type]"
                       name="type"
                       truncationRowDisposition="FailComponent" />
                     <outputColumn
-                      refId="Package\Tabla DimProduct\Origen de ADO NET.Outputs[Salida de origen de ADO NET].Columns[listPrice]"
+                      refId="Package\Tabla DimProduct\Lectura de programa transaccional.Outputs[Salida de origen de ADO NET].Columns[listPrice]"
                       dataType="numeric"
                       errorOrTruncationOperation="Conversión"
                       errorRowDisposition="FailComponent"
-                      externalMetadataColumnId="Package\Tabla DimProduct\Origen de ADO NET.Outputs[Salida de origen de ADO NET].ExternalColumns[listPrice]"
-                      lineageId="Package\Tabla DimProduct\Origen de ADO NET.Outputs[Salida de origen de ADO NET].Columns[listPrice]"
+                      externalMetadataColumnId="Package\Tabla DimProduct\Lectura de programa transaccional.Outputs[Salida de origen de ADO NET].ExternalColumns[listPrice]"
+                      lineageId="Package\Tabla DimProduct\Lectura de programa transaccional.Outputs[Salida de origen de ADO NET].Columns[listPrice]"
                       name="listPrice"
                       precision="28"
                       scale="6"
                       truncationRowDisposition="FailComponent" />
                     <outputColumn
-                      refId="Package\Tabla DimProduct\Origen de ADO NET.Outputs[Salida de origen de ADO NET].Columns[descriptionSale]"
+                      refId="Package\Tabla DimProduct\Lectura de programa transaccional.Outputs[Salida de origen de ADO NET].Columns[descriptionSale]"
                       dataType="nText"
                       errorOrTruncationOperation="Conversión"
                       errorRowDisposition="FailComponent"
-                      externalMetadataColumnId="Package\Tabla DimProduct\Origen de ADO NET.Outputs[Salida de origen de ADO NET].ExternalColumns[descriptionSale]"
-                      lineageId="Package\Tabla DimProduct\Origen de ADO NET.Outputs[Salida de origen de ADO NET].Columns[descriptionSale]"
+                      externalMetadataColumnId="Package\Tabla DimProduct\Lectura de programa transaccional.Outputs[Salida de origen de ADO NET].ExternalColumns[descriptionSale]"
+                      lineageId="Package\Tabla DimProduct\Lectura de programa transaccional.Outputs[Salida de origen de ADO NET].Columns[descriptionSale]"
                       name="descriptionSale"
                       truncationRowDisposition="FailComponent" />
                     <outputColumn
-                      refId="Package\Tabla DimProduct\Origen de ADO NET.Outputs[Salida de origen de ADO NET].Columns[active]"
+                      refId="Package\Tabla DimProduct\Lectura de programa transaccional.Outputs[Salida de origen de ADO NET].Columns[active]"
                       dataType="nText"
                       errorOrTruncationOperation="Conversión"
                       errorRowDisposition="FailComponent"
-                      externalMetadataColumnId="Package\Tabla DimProduct\Origen de ADO NET.Outputs[Salida de origen de ADO NET].ExternalColumns[active]"
-                      lineageId="Package\Tabla DimProduct\Origen de ADO NET.Outputs[Salida de origen de ADO NET].Columns[active]"
+                      externalMetadataColumnId="Package\Tabla DimProduct\Lectura de programa transaccional.Outputs[Salida de origen de ADO NET].ExternalColumns[active]"
+                      lineageId="Package\Tabla DimProduct\Lectura de programa transaccional.Outputs[Salida de origen de ADO NET].Columns[active]"
                       name="active"
                       truncationRowDisposition="FailComponent" />
                   </outputColumns>
                   <externalMetadataColumns
                     isUsed="True">
                     <externalMetadataColumn
-                      refId="Package\Tabla DimProduct\Origen de ADO NET.Outputs[Salida de origen de ADO NET].ExternalColumns[id]"
+                      refId="Package\Tabla DimProduct\Lectura de programa transaccional.Outputs[Salida de origen de ADO NET].ExternalColumns[id]"
                       dataType="i4"
                       name="id" />
                     <externalMetadataColumn
-                      refId="Package\Tabla DimProduct\Origen de ADO NET.Outputs[Salida de origen de ADO NET].ExternalColumns[productname]"
-                      dataType="nText"
+                      refId="Package\Tabla DimProduct\Lectura de programa transaccional.Outputs[Salida de origen de ADO NET].ExternalColumns[productname]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
                       name="productname" />
                     <externalMetadataColumn
-                      refId="Package\Tabla DimProduct\Origen de ADO NET.Outputs[Salida de origen de ADO NET].ExternalColumns[category]"
-                      dataType="wstr"
-                      length="255"
+                      refId="Package\Tabla DimProduct\Lectura de programa transaccional.Outputs[Salida de origen de ADO NET].ExternalColumns[category]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
                       name="category" />
                     <externalMetadataColumn
-                      refId="Package\Tabla DimProduct\Origen de ADO NET.Outputs[Salida de origen de ADO NET].ExternalColumns[unitOfMeasure]"
-                      dataType="nText"
+                      refId="Package\Tabla DimProduct\Lectura de programa transaccional.Outputs[Salida de origen de ADO NET].ExternalColumns[unitOfMeasure]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
                       name="unitOfMeasure" />
                     <externalMetadataColumn
-                      refId="Package\Tabla DimProduct\Origen de ADO NET.Outputs[Salida de origen de ADO NET].ExternalColumns[type]"
-                      dataType="wstr"
-                      length="255"
+                      refId="Package\Tabla DimProduct\Lectura de programa transaccional.Outputs[Salida de origen de ADO NET].ExternalColumns[type]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
                       name="type" />
                     <externalMetadataColumn
-                      refId="Package\Tabla DimProduct\Origen de ADO NET.Outputs[Salida de origen de ADO NET].ExternalColumns[listPrice]"
+                      refId="Package\Tabla DimProduct\Lectura de programa transaccional.Outputs[Salida de origen de ADO NET].ExternalColumns[listPrice]"
                       dataType="numeric"
                       name="listPrice"
                       precision="28"
                       scale="6" />
                     <externalMetadataColumn
-                      refId="Package\Tabla DimProduct\Origen de ADO NET.Outputs[Salida de origen de ADO NET].ExternalColumns[descriptionSale]"
-                      dataType="nText"
+                      refId="Package\Tabla DimProduct\Lectura de programa transaccional.Outputs[Salida de origen de ADO NET].ExternalColumns[descriptionSale]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
                       name="descriptionSale" />
                     <externalMetadataColumn
-                      refId="Package\Tabla DimProduct\Origen de ADO NET.Outputs[Salida de origen de ADO NET].ExternalColumns[active]"
-                      dataType="nText"
+                      refId="Package\Tabla DimProduct\Lectura de programa transaccional.Outputs[Salida de origen de ADO NET].ExternalColumns[active]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
                       name="active" />
                   </externalMetadataColumns>
                 </output>
                 <output
-                  refId="Package\Tabla DimProduct\Origen de ADO NET.Outputs[Salida de error de origen de ADO NET]"
+                  refId="Package\Tabla DimProduct\Lectura de programa transaccional.Outputs[Salida de error de origen de ADO NET]"
                   isErrorOut="true"
                   name="Salida de error de origen de ADO NET">
                   <outputColumns>
                     <outputColumn
-                      refId="Package\Tabla DimProduct\Origen de ADO NET.Outputs[Salida de error de origen de ADO NET].Columns[id]"
+                      refId="Package\Tabla DimProduct\Lectura de programa transaccional.Outputs[Salida de error de origen de ADO NET].Columns[id]"
                       dataType="i4"
-                      lineageId="Package\Tabla DimProduct\Origen de ADO NET.Outputs[Salida de error de origen de ADO NET].Columns[id]"
+                      lineageId="Package\Tabla DimProduct\Lectura de programa transaccional.Outputs[Salida de error de origen de ADO NET].Columns[id]"
                       name="id" />
                     <outputColumn
-                      refId="Package\Tabla DimProduct\Origen de ADO NET.Outputs[Salida de error de origen de ADO NET].Columns[productname]"
+                      refId="Package\Tabla DimProduct\Lectura de programa transaccional.Outputs[Salida de error de origen de ADO NET].Columns[productname]"
                       dataType="nText"
-                      lineageId="Package\Tabla DimProduct\Origen de ADO NET.Outputs[Salida de error de origen de ADO NET].Columns[productname]"
+                      lineageId="Package\Tabla DimProduct\Lectura de programa transaccional.Outputs[Salida de error de origen de ADO NET].Columns[productname]"
                       name="productname" />
                     <outputColumn
-                      refId="Package\Tabla DimProduct\Origen de ADO NET.Outputs[Salida de error de origen de ADO NET].Columns[category]"
+                      refId="Package\Tabla DimProduct\Lectura de programa transaccional.Outputs[Salida de error de origen de ADO NET].Columns[category]"
                       dataType="wstr"
                       length="255"
-                      lineageId="Package\Tabla DimProduct\Origen de ADO NET.Outputs[Salida de error de origen de ADO NET].Columns[category]"
+                      lineageId="Package\Tabla DimProduct\Lectura de programa transaccional.Outputs[Salida de error de origen de ADO NET].Columns[category]"
                       name="category" />
                     <outputColumn
-                      refId="Package\Tabla DimProduct\Origen de ADO NET.Outputs[Salida de error de origen de ADO NET].Columns[unitOfMeasure]"
+                      refId="Package\Tabla DimProduct\Lectura de programa transaccional.Outputs[Salida de error de origen de ADO NET].Columns[unitOfMeasure]"
                       dataType="nText"
-                      lineageId="Package\Tabla DimProduct\Origen de ADO NET.Outputs[Salida de error de origen de ADO NET].Columns[unitOfMeasure]"
+                      lineageId="Package\Tabla DimProduct\Lectura de programa transaccional.Outputs[Salida de error de origen de ADO NET].Columns[unitOfMeasure]"
                       name="unitOfMeasure" />
                     <outputColumn
-                      refId="Package\Tabla DimProduct\Origen de ADO NET.Outputs[Salida de error de origen de ADO NET].Columns[type]"
+                      refId="Package\Tabla DimProduct\Lectura de programa transaccional.Outputs[Salida de error de origen de ADO NET].Columns[type]"
                       dataType="wstr"
                       length="255"
-                      lineageId="Package\Tabla DimProduct\Origen de ADO NET.Outputs[Salida de error de origen de ADO NET].Columns[type]"
+                      lineageId="Package\Tabla DimProduct\Lectura de programa transaccional.Outputs[Salida de error de origen de ADO NET].Columns[type]"
                       name="type" />
                     <outputColumn
-                      refId="Package\Tabla DimProduct\Origen de ADO NET.Outputs[Salida de error de origen de ADO NET].Columns[listPrice]"
+                      refId="Package\Tabla DimProduct\Lectura de programa transaccional.Outputs[Salida de error de origen de ADO NET].Columns[listPrice]"
                       dataType="numeric"
-                      lineageId="Package\Tabla DimProduct\Origen de ADO NET.Outputs[Salida de error de origen de ADO NET].Columns[listPrice]"
+                      lineageId="Package\Tabla DimProduct\Lectura de programa transaccional.Outputs[Salida de error de origen de ADO NET].Columns[listPrice]"
                       name="listPrice"
                       precision="28"
                       scale="6" />
                     <outputColumn
-                      refId="Package\Tabla DimProduct\Origen de ADO NET.Outputs[Salida de error de origen de ADO NET].Columns[descriptionSale]"
+                      refId="Package\Tabla DimProduct\Lectura de programa transaccional.Outputs[Salida de error de origen de ADO NET].Columns[descriptionSale]"
                       dataType="nText"
-                      lineageId="Package\Tabla DimProduct\Origen de ADO NET.Outputs[Salida de error de origen de ADO NET].Columns[descriptionSale]"
+                      lineageId="Package\Tabla DimProduct\Lectura de programa transaccional.Outputs[Salida de error de origen de ADO NET].Columns[descriptionSale]"
                       name="descriptionSale" />
                     <outputColumn
-                      refId="Package\Tabla DimProduct\Origen de ADO NET.Outputs[Salida de error de origen de ADO NET].Columns[active]"
+                      refId="Package\Tabla DimProduct\Lectura de programa transaccional.Outputs[Salida de error de origen de ADO NET].Columns[active]"
                       dataType="nText"
-                      lineageId="Package\Tabla DimProduct\Origen de ADO NET.Outputs[Salida de error de origen de ADO NET].Columns[active]"
+                      lineageId="Package\Tabla DimProduct\Lectura de programa transaccional.Outputs[Salida de error de origen de ADO NET].Columns[active]"
                       name="active" />
                     <outputColumn
-                      refId="Package\Tabla DimProduct\Origen de ADO NET.Outputs[Salida de error de origen de ADO NET].Columns[ErrorCode]"
+                      refId="Package\Tabla DimProduct\Lectura de programa transaccional.Outputs[Salida de error de origen de ADO NET].Columns[ErrorCode]"
                       dataType="i4"
-                      lineageId="Package\Tabla DimProduct\Origen de ADO NET.Outputs[Salida de error de origen de ADO NET].Columns[ErrorCode]"
+                      lineageId="Package\Tabla DimProduct\Lectura de programa transaccional.Outputs[Salida de error de origen de ADO NET].Columns[ErrorCode]"
                       name="ErrorCode"
                       specialFlags="1" />
                     <outputColumn
-                      refId="Package\Tabla DimProduct\Origen de ADO NET.Outputs[Salida de error de origen de ADO NET].Columns[ErrorColumn]"
+                      refId="Package\Tabla DimProduct\Lectura de programa transaccional.Outputs[Salida de error de origen de ADO NET].Columns[ErrorColumn]"
                       dataType="i4"
-                      lineageId="Package\Tabla DimProduct\Origen de ADO NET.Outputs[Salida de error de origen de ADO NET].Columns[ErrorColumn]"
+                      lineageId="Package\Tabla DimProduct\Lectura de programa transaccional.Outputs[Salida de error de origen de ADO NET].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Tabla DimProduct\ToSTR"
+              componentClassID="Microsoft.DataConvert"
+              contactInfo="Data Conversion;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;0"
+              description="Data Conversion"
+              name="ToSTR"
+              usesDispositions="true">
+              <inputs>
+                <input
+                  refId="Package\Tabla DimProduct\ToSTR.Inputs[Data Conversion Input]"
+                  name="Data Conversion Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Tabla DimProduct\ToSTR.Inputs[Data Conversion Input].Columns[Copy of productname]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="Copy of productname"
+                      lineageId="Package\Tabla DimProduct\ToWSTR.Outputs[Data Conversion Output].Columns[Copy of productname]" />
+                    <inputColumn
+                      refId="Package\Tabla DimProduct\ToSTR.Inputs[Data Conversion Input].Columns[Copy of unitOfMeasure]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="Copy of unitOfMeasure"
+                      lineageId="Package\Tabla DimProduct\ToWSTR.Outputs[Data Conversion Output].Columns[Copy of unitOfMeasure]" />
+                    <inputColumn
+                      refId="Package\Tabla DimProduct\ToSTR.Inputs[Data Conversion Input].Columns[Copy of descriptionSale]"
+                      cachedDataType="wstr"
+                      cachedLength="500"
+                      cachedName="Copy of descriptionSale"
+                      lineageId="Package\Tabla DimProduct\ToWSTR.Outputs[Data Conversion Output].Columns[Copy of descriptionSale]" />
+                    <inputColumn
+                      refId="Package\Tabla DimProduct\ToSTR.Inputs[Data Conversion Input].Columns[Copy of active]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="Copy of active"
+                      lineageId="Package\Tabla DimProduct\ToWSTR.Outputs[Data Conversion Output].Columns[Copy of active]" />
+                    <inputColumn
+                      refId="Package\Tabla DimProduct\ToSTR.Inputs[Data Conversion Input].Columns[Copy of category]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="Copy of category"
+                      lineageId="Package\Tabla DimProduct\ToWSTR.Outputs[Data Conversion Output].Columns[Copy of category]" />
+                    <inputColumn
+                      refId="Package\Tabla DimProduct\ToSTR.Inputs[Data Conversion Input].Columns[Copy of type]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="Copy of type"
+                      lineageId="Package\Tabla DimProduct\ToWSTR.Outputs[Data Conversion Output].Columns[Copy of type]" />
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Tabla DimProduct\ToSTR.Outputs[Data Conversion Output]"
+                  exclusionGroup="1"
+                  name="Data Conversion Output"
+                  synchronousInputId="Package\Tabla DimProduct\ToSTR.Inputs[Data Conversion Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Tabla DimProduct\ToSTR.Outputs[Data Conversion Output].Columns[productnameToString]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      length="255"
+                      lineageId="Package\Tabla DimProduct\ToSTR.Outputs[Data Conversion Output].Columns[productnameToString]"
+                      name="productnameToString"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the input column used as the source of data for the conversion."
+                          name="SourceInputColumnLineageID">#{Package\Tabla DimProduct\ToWSTR.Outputs[Data Conversion Output].Columns[Copy of productname]}</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Tabla DimProduct\ToSTR.Outputs[Data Conversion Output].Columns[unitOfMeasureToString]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      length="255"
+                      lineageId="Package\Tabla DimProduct\ToSTR.Outputs[Data Conversion Output].Columns[unitOfMeasureToString]"
+                      name="unitOfMeasureToString"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the input column used as the source of data for the conversion."
+                          name="SourceInputColumnLineageID">#{Package\Tabla DimProduct\ToWSTR.Outputs[Data Conversion Output].Columns[Copy of unitOfMeasure]}</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Tabla DimProduct\ToSTR.Outputs[Data Conversion Output].Columns[descriptionSaleToString]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      length="500"
+                      lineageId="Package\Tabla DimProduct\ToSTR.Outputs[Data Conversion Output].Columns[descriptionSaleToString]"
+                      name="descriptionSaleToString"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the input column used as the source of data for the conversion."
+                          name="SourceInputColumnLineageID">#{Package\Tabla DimProduct\ToWSTR.Outputs[Data Conversion Output].Columns[Copy of descriptionSale]}</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Tabla DimProduct\ToSTR.Outputs[Data Conversion Output].Columns[activeToString]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      length="255"
+                      lineageId="Package\Tabla DimProduct\ToSTR.Outputs[Data Conversion Output].Columns[activeToString]"
+                      name="activeToString"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the input column used as the source of data for the conversion."
+                          name="SourceInputColumnLineageID">#{Package\Tabla DimProduct\ToWSTR.Outputs[Data Conversion Output].Columns[Copy of active]}</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Tabla DimProduct\ToSTR.Outputs[Data Conversion Output].Columns[categoryToString]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      length="255"
+                      lineageId="Package\Tabla DimProduct\ToSTR.Outputs[Data Conversion Output].Columns[categoryToString]"
+                      name="categoryToString"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the input column used as the source of data for the conversion."
+                          name="SourceInputColumnLineageID">#{Package\Tabla DimProduct\ToWSTR.Outputs[Data Conversion Output].Columns[Copy of category]}</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Tabla DimProduct\ToSTR.Outputs[Data Conversion Output].Columns[typeToString]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      length="255"
+                      lineageId="Package\Tabla DimProduct\ToSTR.Outputs[Data Conversion Output].Columns[typeToString]"
+                      name="typeToString"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the input column used as the source of data for the conversion."
+                          name="SourceInputColumnLineageID">#{Package\Tabla DimProduct\ToWSTR.Outputs[Data Conversion Output].Columns[Copy of type]}</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                      </properties>
+                    </outputColumn>
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\Tabla DimProduct\ToSTR.Outputs[Data Conversion Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="Data Conversion Error Output"
+                  synchronousInputId="Package\Tabla DimProduct\ToSTR.Inputs[Data Conversion Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Tabla DimProduct\ToSTR.Outputs[Data Conversion Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Tabla DimProduct\ToSTR.Outputs[Data Conversion Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Tabla DimProduct\ToSTR.Outputs[Data Conversion Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Tabla DimProduct\ToSTR.Outputs[Data Conversion Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Tabla DimProduct\ToWSTR"
+              componentClassID="Microsoft.DataConvert"
+              contactInfo="Data Conversion;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;0"
+              description="Data Conversion"
+              name="ToWSTR"
+              usesDispositions="true">
+              <inputs>
+                <input
+                  refId="Package\Tabla DimProduct\ToWSTR.Inputs[Data Conversion Input]"
+                  name="Data Conversion Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Tabla DimProduct\ToWSTR.Inputs[Data Conversion Input].Columns[productname]"
+                      cachedDataType="nText"
+                      cachedName="productname"
+                      lineageId="Package\Tabla DimProduct\Lectura de programa transaccional.Outputs[Salida de origen de ADO NET].Columns[productname]" />
+                    <inputColumn
+                      refId="Package\Tabla DimProduct\ToWSTR.Inputs[Data Conversion Input].Columns[unitOfMeasure]"
+                      cachedDataType="nText"
+                      cachedName="unitOfMeasure"
+                      lineageId="Package\Tabla DimProduct\Lectura de programa transaccional.Outputs[Salida de origen de ADO NET].Columns[unitOfMeasure]" />
+                    <inputColumn
+                      refId="Package\Tabla DimProduct\ToWSTR.Inputs[Data Conversion Input].Columns[descriptionSale]"
+                      cachedDataType="nText"
+                      cachedName="descriptionSale"
+                      lineageId="Package\Tabla DimProduct\Lectura de programa transaccional.Outputs[Salida de origen de ADO NET].Columns[descriptionSale]" />
+                    <inputColumn
+                      refId="Package\Tabla DimProduct\ToWSTR.Inputs[Data Conversion Input].Columns[active]"
+                      cachedDataType="nText"
+                      cachedName="active"
+                      lineageId="Package\Tabla DimProduct\Lectura de programa transaccional.Outputs[Salida de origen de ADO NET].Columns[active]" />
+                    <inputColumn
+                      refId="Package\Tabla DimProduct\ToWSTR.Inputs[Data Conversion Input].Columns[category]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="category"
+                      lineageId="Package\Tabla DimProduct\Lectura de programa transaccional.Outputs[Salida de origen de ADO NET].Columns[category]" />
+                    <inputColumn
+                      refId="Package\Tabla DimProduct\ToWSTR.Inputs[Data Conversion Input].Columns[type]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="type"
+                      lineageId="Package\Tabla DimProduct\Lectura de programa transaccional.Outputs[Salida de origen de ADO NET].Columns[type]" />
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Tabla DimProduct\ToWSTR.Outputs[Data Conversion Output]"
+                  exclusionGroup="1"
+                  name="Data Conversion Output"
+                  synchronousInputId="Package\Tabla DimProduct\ToWSTR.Inputs[Data Conversion Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Tabla DimProduct\ToWSTR.Outputs[Data Conversion Output].Columns[Copy of productname]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      length="255"
+                      lineageId="Package\Tabla DimProduct\ToWSTR.Outputs[Data Conversion Output].Columns[Copy of productname]"
+                      name="Copy of productname"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the input column used as the source of data for the conversion."
+                          name="SourceInputColumnLineageID">#{Package\Tabla DimProduct\Lectura de programa transaccional.Outputs[Salida de origen de ADO NET].Columns[productname]}</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Tabla DimProduct\ToWSTR.Outputs[Data Conversion Output].Columns[Copy of unitOfMeasure]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      length="255"
+                      lineageId="Package\Tabla DimProduct\ToWSTR.Outputs[Data Conversion Output].Columns[Copy of unitOfMeasure]"
+                      name="Copy of unitOfMeasure"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the input column used as the source of data for the conversion."
+                          name="SourceInputColumnLineageID">#{Package\Tabla DimProduct\Lectura de programa transaccional.Outputs[Salida de origen de ADO NET].Columns[unitOfMeasure]}</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Tabla DimProduct\ToWSTR.Outputs[Data Conversion Output].Columns[Copy of descriptionSale]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      length="500"
+                      lineageId="Package\Tabla DimProduct\ToWSTR.Outputs[Data Conversion Output].Columns[Copy of descriptionSale]"
+                      name="Copy of descriptionSale"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the input column used as the source of data for the conversion."
+                          name="SourceInputColumnLineageID">#{Package\Tabla DimProduct\Lectura de programa transaccional.Outputs[Salida de origen de ADO NET].Columns[descriptionSale]}</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Tabla DimProduct\ToWSTR.Outputs[Data Conversion Output].Columns[Copy of active]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      length="255"
+                      lineageId="Package\Tabla DimProduct\ToWSTR.Outputs[Data Conversion Output].Columns[Copy of active]"
+                      name="Copy of active"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the input column used as the source of data for the conversion."
+                          name="SourceInputColumnLineageID">#{Package\Tabla DimProduct\Lectura de programa transaccional.Outputs[Salida de origen de ADO NET].Columns[active]}</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Tabla DimProduct\ToWSTR.Outputs[Data Conversion Output].Columns[Copy of category]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      length="255"
+                      lineageId="Package\Tabla DimProduct\ToWSTR.Outputs[Data Conversion Output].Columns[Copy of category]"
+                      name="Copy of category"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the input column used as the source of data for the conversion."
+                          name="SourceInputColumnLineageID">#{Package\Tabla DimProduct\Lectura de programa transaccional.Outputs[Salida de origen de ADO NET].Columns[category]}</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Tabla DimProduct\ToWSTR.Outputs[Data Conversion Output].Columns[Copy of type]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      length="255"
+                      lineageId="Package\Tabla DimProduct\ToWSTR.Outputs[Data Conversion Output].Columns[Copy of type]"
+                      name="Copy of type"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the input column used as the source of data for the conversion."
+                          name="SourceInputColumnLineageID">#{Package\Tabla DimProduct\Lectura de programa transaccional.Outputs[Salida de origen de ADO NET].Columns[type]}</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                      </properties>
+                    </outputColumn>
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\Tabla DimProduct\ToWSTR.Outputs[Data Conversion Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="Data Conversion Error Output"
+                  synchronousInputId="Package\Tabla DimProduct\ToWSTR.Inputs[Data Conversion Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Tabla DimProduct\ToWSTR.Outputs[Data Conversion Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Tabla DimProduct\ToWSTR.Outputs[Data Conversion Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Tabla DimProduct\ToWSTR.Outputs[Data Conversion Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Tabla DimProduct\ToWSTR.Outputs[Data Conversion Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Tabla DimProduct\Validar si ya existe registro"
+              componentClassID="Microsoft.Lookup"
+              contactInfo="Lookup;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;6"
+              description="Joins additional columns to the data flow by looking up values in a table. For example, join to the 'employee id' column the employees table to get 'hire date' and 'employee name'. We recommend this transformation when the lookup table can fit into memory."
+              name="Validar si ya existe registro"
+              usesDispositions="true"
+              version="6">
+              <properties>
+                <property
+                  dataType="System.String"
+                  description="Specifies the SQL statement that generates the lookup table."
+                  expressionType="Notify"
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">select * from [dbo].[DimProduct]</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies a SQL statement that uses parameters to generate the lookup table."
+                  expressionType="Notify"
+                  name="SqlCommandParam"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">select * from (select * from [dbo].[DimProduct]) [refTable]
+where [refTable].[productID] = ?</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the type of connection used to access the reference dataset."
+                  name="ConnectionType"
+                  typeConverter="LookupConnectionType">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the cache type of the lookup table."
+                  name="CacheType"
+                  typeConverter="CacheType">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies how the Lookup transformation handles rows without matching entries in the reference data set."
+                  name="NoMatchBehavior"
+                  typeConverter="LookupNoMatchBehavior">1</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the percentage of the cache that is allocated for rows with no matching entries in the reference dataset."
+                  name="NoMatchCachePercentage">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Maximum Memory Usage for Reference Cache on a 32 bit platform."
+                  name="MaxMemoryUsage">25</property>
+                <property
+                  dataType="System.Int64"
+                  description="Maximum Memory Usage for Reference Cache on a 64 bit platform."
+                  name="MaxMemoryUsage64">25</property>
+                <property
+                  dataType="System.String"
+                  description="Indicates whether to reference metadata in an XML format."
+                  name="ReferenceMetadataXml">&lt;referenceMetadata&gt;&lt;referenceColumns&gt;&lt;referenceColumn name="productKey" dataType="DT_I4" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="productID" dataType="DT_I4" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="productName" dataType="DT_STR" length="255" precision="0" scale="0" codePage="1252"/&gt;&lt;referenceColumn name="category" dataType="DT_STR" length="255" precision="0" scale="0" codePage="1252"/&gt;&lt;referenceColumn name="unitOfMeasure" dataType="DT_STR" length="255" precision="0" scale="0" codePage="1252"/&gt;&lt;referenceColumn name="type" dataType="DT_STR" length="255" precision="0" scale="0" codePage="1252"/&gt;&lt;referenceColumn name="listPrice" dataType="DT_R8" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="descriptionSale" dataType="DT_STR" length="500" precision="0" scale="0" codePage="1252"/&gt;&lt;referenceColumn name="active" dataType="DT_STR" length="255" precision="0" scale="0" codePage="1252"/&gt;&lt;/referenceColumns&gt;&lt;/referenceMetadata&gt;</property>
+                <property
+                  containsID="true"
+                  dataType="System.String"
+                  description="Specifies the list of lineage identifiers that map to the parameters that the SQL statement in the SQLCommand property uses. Entries in the list are separated by semicolons."
+                  name="ParameterMap">#{Package\Tabla DimProduct\Lectura de programa transaccional.Outputs[Salida de origen de ADO NET].Columns[id]};</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Determines whether duplicate keys in the reference data should be treated as errors when full cache mode is used."
+                  name="TreatDuplicateKeysAsError">false</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Tabla DimProduct\Validar si ya existe registro.Connections[OleDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[OLEDB FarmaciaElMirador]"
+                  connectionManagerRefId="Package.ConnectionManagers[OLEDB FarmaciaElMirador]"
+                  description="Connection manager used to access lookup data."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\Tabla DimProduct\Validar si ya existe registro.Inputs[Lookup Input]"
+                  name="Lookup Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Tabla DimProduct\Validar si ya existe registro.Inputs[Lookup Input].Columns[id]"
+                      cachedDataType="i4"
+                      cachedName="id"
+                      lineageId="Package\Tabla DimProduct\Lectura de programa transaccional.Outputs[Salida de origen de ADO NET].Columns[id]">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          description="Specifies the column in the reference table that a column joins."
+                          name="JoinToReferenceColumn">productID</property>
+                        <property
+                          dataType="System.Null"
+                          description="Specifies the column in the reference table from which a column is copied."
+                          name="CopyFromReferenceColumn" />
+                      </properties>
+                    </inputColumn>
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Tabla DimProduct\Validar si ya existe registro.Outputs[Lookup Match Output]"
+                  errorOrTruncationOperation="Lookup"
+                  exclusionGroup="1"
+                  name="Lookup Match Output"
+                  synchronousInputId="Package\Tabla DimProduct\Validar si ya existe registro.Inputs[Lookup Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Tabla DimProduct\Validar si ya existe registro.Outputs[Lookup Match Output].Columns[productKey]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Copy Column"
+                      lineageId="Package\Tabla DimProduct\Validar si ya existe registro.Outputs[Lookup Match Output].Columns[productKey]"
+                      name="productKey"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          description="Specifies the column in the reference table from which a column is copied."
+                          name="CopyFromReferenceColumn">productKey</property>
+                      </properties>
+                    </outputColumn>
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\Tabla DimProduct\Validar si ya existe registro.Outputs[Lookup No Match Output]"
+                  description="The Lookup output that handles rows with no matching entries in the reference dataset. Use this output when the NoMatchBehavior property is set to &quot;Send rows with no matching entries to the no match output.&quot;"
+                  exclusionGroup="1"
+                  name="Lookup No Match Output"
+                  synchronousInputId="Package\Tabla DimProduct\Validar si ya existe registro.Inputs[Lookup Input]">
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\Tabla DimProduct\Validar si ya existe registro.Outputs[Lookup Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="Lookup Error Output"
+                  synchronousInputId="Package\Tabla DimProduct\Validar si ya existe registro.Inputs[Lookup Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Tabla DimProduct\Validar si ya existe registro.Outputs[Lookup Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Tabla DimProduct\Validar si ya existe registro.Outputs[Lookup Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Tabla DimProduct\Validar si ya existe registro.Outputs[Lookup Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Tabla DimProduct\Validar si ya existe registro.Outputs[Lookup Error Output].Columns[ErrorColumn]"
                       name="ErrorColumn"
                       specialFlags="2" />
                   </outputColumns>
@@ -497,10 +1342,30 @@ left outer join jsonb_each_text(pt.description_sale) ds on true</property>
           </components>
           <paths>
             <path
+              refId="Package\Tabla DimProduct.Paths[Data Conversion Output]"
+              endId="Package\Tabla DimProduct\ToSTR.Inputs[Data Conversion Input]"
+              name="Data Conversion Output"
+              startId="Package\Tabla DimProduct\ToWSTR.Outputs[Data Conversion Output]" />
+            <path
+              refId="Package\Tabla DimProduct.Paths[Data Conversion Output1]"
+              endId="Package\Tabla DimProduct\Actualizacion DimProduct.Inputs[OLE DB Command Input]"
+              name="Data Conversion Output"
+              startId="Package\Tabla DimProduct\ToSTR.Outputs[Data Conversion Output]" />
+            <path
+              refId="Package\Tabla DimProduct.Paths[Lookup Match Output]"
+              endId="Package\Tabla DimProduct\ToWSTR.Inputs[Data Conversion Input]"
+              name="Lookup Match Output"
+              startId="Package\Tabla DimProduct\Validar si ya existe registro.Outputs[Lookup Match Output]" />
+            <path
+              refId="Package\Tabla DimProduct.Paths[Lookup No Match Output]"
+              endId="Package\Tabla DimProduct\Insert new DimProduct.Inputs[Entrada de destino de ADO NET]"
+              name="Lookup No Match Output"
+              startId="Package\Tabla DimProduct\Validar si ya existe registro.Outputs[Lookup No Match Output]" />
+            <path
               refId="Package\Tabla DimProduct.Paths[Salida de origen de ADO NET]"
-              endId="Package\Tabla DimProduct\Destino de ADO NET.Inputs[Entrada de destino de ADO NET]"
+              endId="Package\Tabla DimProduct\Validar si ya existe registro.Inputs[Lookup Input]"
               name="Salida de origen de ADO NET"
-              startId="Package\Tabla DimProduct\Origen de ADO NET.Outputs[Salida de origen de ADO NET]" />
+              startId="Package\Tabla DimProduct\Lectura de programa transaccional.Outputs[Salida de origen de ADO NET]" />
           </paths>
         </pipeline>
       </DTS:ObjectData>
@@ -509,6 +1374,7 @@ left outer join jsonb_each_text(pt.description_sale) ds on true</property>
       DTS:refId="Package\Tabla product_template pg"
       DTS:CreationName="Microsoft.ExecuteSQLTask"
       DTS:Description="Tarea Ejecutar SQL"
+      DTS:Disabled="True"
       DTS:DTSID="{55682C1B-2D36-4B8A-808F-CCD7004CC303}"
       DTS:ExecutableType="Microsoft.ExecuteSQLTask"
       DTS:LocaleID="-1"
@@ -582,29 +1448,45 @@ left outer join jsonb_each_text(pt.description_sale) ds on true</property>
     design-time-name="Package\Tabla DimProduct">
     <LayoutInfo>
       <GraphLayout
-        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        Capacity="16" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
         <NodeLayout
-          Size="183,42"
-          Id="Package\Tabla DimProduct\Destino de ADO NET"
-          TopLeft="505,290" />
+          Size="114,42"
+          Id="Package\Tabla DimProduct\ToSTR"
+          TopLeft="736.5,341.5" />
         <NodeLayout
-          Size="179,42"
-          Id="Package\Tabla DimProduct\Origen de ADO NET"
-          TopLeft="504,123" />
+          Size="249,42"
+          Id="Package\Tabla DimProduct\Lectura de programa transaccional"
+          TopLeft="416,48" />
+        <NodeLayout
+          Size="204,42"
+          Id="Package\Tabla DimProduct\Actualizacion DimProduct"
+          TopLeft="696,479" />
+        <NodeLayout
+          Size="124,42"
+          Id="Package\Tabla DimProduct\ToWSTR"
+          TopLeft="737,168" />
+        <NodeLayout
+          Size="210,42"
+          Id="Package\Tabla DimProduct\Validar si ya existe registro"
+          TopLeft="436,168" />
+        <NodeLayout
+          Size="190,42"
+          Id="Package\Tabla DimProduct\Insert new DimProduct"
+          TopLeft="265,346" />
         <EdgeLayout
-          Id="Package\Tabla DimProduct.Paths[Salida de origen de ADO NET]"
-          TopLeft="595,165">
+          Id="Package\Tabla DimProduct.Paths[Data Conversion Output1]"
+          TopLeft="795.75,383.5">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="0,125"
+              EndConnector="0,95.5"
               Start="0,0"
-              End="0,117.5">
+              End="0,88">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,117.5" />
+                    End="0,88" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -613,11 +1495,115 @@ left outer join jsonb_each_text(pt.description_sale) ds on true</property>
             <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Tabla DimProduct.Paths[Data Conversion Output]"
+          TopLeft="796.25,210">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,131.5"
+              Start="0,0"
+              End="0,124">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,124" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Tabla DimProduct.Paths[Salida de origen de ADO NET]"
+          TopLeft="540.75,90">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,78"
+              Start="0,0"
+              End="0,70.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,70.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Tabla DimProduct.Paths[Lookup No Match Output]"
+          TopLeft="541,210">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-181,136"
+              Start="0,0"
+              End="-181,128.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,64" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,64"
+                    Point2="0,68"
+                    Point3="-4,68" />
+                  <mssgle:LineSegment
+                    End="-177,68" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-177,68"
+                    Point2="-181,68"
+                    Point3="-181,72" />
+                  <mssgle:LineSegment
+                    End="-181,128.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="-155.1750390625,73,129.350078125,16"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Tabla DimProduct.Paths[Lookup Match Output]"
+          TopLeft="646,189">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="91,0"
+              Start="0,0"
+              End="83.5,0">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="83.5,0" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="-6.44138671875,5,96.3827734375,11.609375"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
       </GraphLayout>
     </LayoutInfo>
   </TaskHost>
   <PipelineComponentMetadata
-    design-time-name="Package\Tabla DimProduct\Destino de ADO NET">
+    design-time-name="Package\Tabla DimProduct\Lectura de programa transaccional">
     <Properties>
       <Property>
         <Name>DataSourceViewID</Name>
@@ -625,7 +1611,30 @@ left outer join jsonb_each_text(pt.description_sale) ds on true</property>
     </Properties>
   </PipelineComponentMetadata>
   <PipelineComponentMetadata
-    design-time-name="Package\Tabla DimProduct\Origen de ADO NET">
+    design-time-name="Package\Tabla DimProduct\Validar si ya existe registro">
+    <Properties>
+      <Property>
+        <Name>OverwriteParamsSQLProp</Name>
+        <Value
+          type="q2:string">false</Value>
+      </Property>
+      <Property>
+        <Name>UsedTableName</Name>
+        <Value
+          type="q3:string">[dbo].[DimProduct]</Value>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q4:string">0</Value>
+      </Property>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\Tabla DimProduct\Insert new DimProduct">
     <Properties>
       <Property>
         <Name>DataSourceViewID</Name>

@@ -1,7 +1,7 @@
 /* DDL for the date dimension */
 create table TempDimDate (
 date_key int not null,
-full_date smalldatetime,
+full_date date,
 day_of_week tinyint,
 day_num_in_month tinyint,
 day_num_overall smallint,
